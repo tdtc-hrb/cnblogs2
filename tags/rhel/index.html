@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="RHEL"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="RHEL &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs2/tags/rhel/" />
+
+    
+        
+    
+
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="" />
+    
+
+    <title>RHEL &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs2/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs2/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs2/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+        <link href='/cnblogs2/tags/rhel/index.xml' rel="alternate" type="application/rss+xml" title="RHEL &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+    
+    <meta name="generator" content="Hugo 0.145.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs2/tags/rhel/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs2/",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs2/"
+    },
+    "description":  null 
+}
+  </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs2/tags/rhel/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+	<header class="main-header tag-head no-cover">
+
+    <nav class="main-nav overlay clearfix">
+      
+      
+        
+          <a class="menu-button icon-feed" href='/cnblogs2/tags/rhel/index.xml'>&nbsp;&nbsp;Subscribe</a>
+        
+      
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">RHEL</h1>
+            <h2 class="page-description">
+                
+            </h2>
+        </div>
+    </div>
+</header>
+
+<main class="content" role="main">
+    
+
+	<div class="extra-pagination inner">
+    <nav class="pagination" role="navigation">
+	
+	<span class="page-number">Page 1 of 1</span>
+	
+</nav>
+
+	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/redis-rhel/">Install Redis from Source</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>OS: RHEL Community Minimal</p></blockquote>
+<ul>
+<li>AlmaLinux 8.x</li>
+<li>RockyLinux 8.x</li>
+<li>CentOS 7.9</li>
+</ul>
+<h1 id="prepare">prepare</h1>
+<ul>
+<li><a href="https://tdtc-hrb.github.io/csdn/post/ops_sudo/">User set</a></li>
+<li><a href="https://tdtc-hrb.github.io/csdn/post/ops_firewall/">Firewall</a></li>
+</ul>
+<p>dependencies:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo dnf group install <span style="color:#e6db74">&#39;Development Tools&#39;</span>
+</span></span><span style="display:flex;"><span>$sudo dnf install tcl wget
+</span></span></code></pre></div><h2 id="v6">v6+</h2>
+<p>Just to clarify: <br>
+there is no way this issue will be fixed, Redis &gt;= 6 will require a C11 compiler.</p>
+<ul>
+<li>RHEL7</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf install centos-release-scl
+</span></span><span style="display:flex;"><span>sudo dnf install devtoolset-8
+</span></span><span style="display:flex;"><span>scl enable devtoolset-8 bash
+</span></span></code></pre></div><h2 id="verification">verification</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$gcc -v
+</span></span><span style="display:flex;"><span>$make -v
+</span></span><span style="display:flex;"><span>$echo <span style="color:#e6db74">&#39;puts [info patchlevel];exit 0&#39;</span> | tclsh
+</span></span></code></pre></div><h1 id="installation">installation</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$wget https://download.redis.io/redis-stable.tar.gz
+</span></span><span style="display:flex;"><span>$tar xzvf redis-stable.tar.gz
+</span></span><span style="display:flex;"><span>$cd redis-stable
+</span></span><span style="display:flex;"><span>$make
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Single Core</span>
+</span></span><span style="display:flex;"><span>$taskset -c <span style="color:#ae81ff">0</span> make test
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## sudo</span>
+</span></span><span style="display:flex;"><span>$sudo make install
+</span></span></code></pre></div><h2 id="configure">configure</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo mkdir /etc/redis
+</span></span><span style="display:flex;"><span>$sudo mkdir -p /var/redis
+</span></span><span style="display:flex;"><span>$sudo cp /home/tdtc/redis-stable/redis.conf /etc/redis
+</span></span></code></pre></div><p>/etc/redis/redis.conf:</p> <a class="read-more" href="/cnblogs2/post/redis-rhel/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        on
+            
+                <a href="https://tdtc-hrb.github.io/cnblogs2//tags/redis/">#Redis</a>,
+            
+                <a href="https://tdtc-hrb.github.io/cnblogs2//tags/development-tools/">#Development Tools</a>,
+            
+                <a href="https://tdtc-hrb.github.io/cnblogs2//tags/wget/">#wget</a>,
+            
+                <a href="https://tdtc-hrb.github.io/cnblogs2//tags/rhel/">#RHEL</a>,
+            
+        
+        <time class="post-date" datetime="2022-10-07T04:58:39&#43;08:00">
+            7 Oct 2022
+        </time>
+    </footer>
+</article>
+
+	
+
+	<nav class="pagination" role="navigation">
+	
+	<span class="page-number">Page 1 of 1</span>
+	
+</nav>
+
+</main>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/index.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="Redis Server installation FAQs"/>
+<meta name="twitter:description" content="redis调优"/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="Redis Server installation FAQs &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs2/post/redis-rhel-setup/" />
+
+    
+        
+    
+
+    
+    <meta property="og:description" content="redis调优" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2022-10-08T08:08:08&#43;08:00" />
+
+    
+    
+
+    <title>Redis Server installation FAQs &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="redis调优" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs2/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs2/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs2/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.145.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs2/post/redis-rhel-setup/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null 
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "Redis Server installation FAQs",
+    "name": "Redis Server installation FAQs",
+    "wordCount":  478 ,
+    "timeRequired": "PT3M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs2/post/redis-rhel-setup/",
+    "datePublished": "2022-10-08T08:08Z",
+    "dateModified": "2022-10-08T08:08Z",
+    
+    
+    "description": "redis调优",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs2/post/redis-rhel-setup/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs2/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="/cnblogs2/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Redis Server installation FAQs</h1>
+        <small>redis调优</small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2022-10-08T08:08:08&#43;08:00">
+            Oct 8, 2022
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <blockquote>
+<p>OS: RHEL Community Minimal</p></blockquote>
+<ul>
+<li>AlmaLinux 8.x</li>
+<li>RockyLinux 8.x</li>
+<li>CentOS 7.9</li>
+</ul>
+<p>Root Permission:</p>
+<pre tabindex="0"><code>$su - root
+</code></pre><h1 id="0-open-files">0) open files</h1>
+<p>Q: Increased maximum number of open files to 10032 (it was originally set to 1024).
+A:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#ulimit -a</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#vi /etc/systemd/system/redis.service</span>
+</span></span></code></pre></div><p>In the &ldquo;[Service]&rdquo; unit, add the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>LimitNOFILE=10032
+</span></span></code></pre></div><h1 id="1-somaxconn">1) somaxconn</h1>
+<p>Q: WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+A:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#vi /etc/sysctl.conf</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>net.core.somaxconn=1024
+</span></span></code></pre></div><h1 id="2-overcommit_memory">2) overcommit_memory</h1>
+<p>Q: WARNING overcommit_memory is set to 0! Background save may fail under low memory condition.
+To fix this issue add &lsquo;vm.overcommit_memory = 1&rsquo; to /etc/sysctl.conf and then reboot or run the command &lsquo;sysctl vm.overcommit_memory=1&rsquo;
+for this to take effect.</p>
+<p>A:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#echo &#34;vm.overcommit_memory=1&#34; &gt; /etc/sysctl.conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#reboot</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#echo 1 &gt; /proc/sys/vm/overcommit_memory</span>
+</span></span></code></pre></div><h1 id="3-thp-disable">3) thp disable</h1>
+<p>Q: WARNING you have Transparent Huge Pages (THP) support enabled in your kernel.
+This will create latency and memory usage issues with Redis.
+To fix this issue run the command &rsquo;echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled&rsquo; as root,
+and add it to your /etc/rc.local in order to retain the setting after a reboot.
+Redis must be restarted after THP is disabled.</p>
+<p>A:
+reference: <a href="https://www.centos.org/forums/viewtopic.php?t=49428">https://www.centos.org/forums/viewtopic.php?t=49428</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#vi /etc/rc.d/rc.local</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled
+</span></span><span style="display:flex;"><span>echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#chmod +x /etc/rc.d/rc.local</span>
+</span></span></code></pre></div><h1 id="addition">Addition</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#vi /var/log/redis.log</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>981:M <span style="color:#ae81ff">02</span> Sep 05:36:07.544 <span style="color:#75715e"># Server started, Redis version 3.2.12</span>
+</span></span><span style="display:flex;"><span>981:M <span style="color:#ae81ff">02</span> Sep 05:36:07.545 <span style="color:#75715e"># WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command &#39;echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled&#39; as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.</span>
+</span></span><span style="display:flex;"><span>981:M <span style="color:#ae81ff">02</span> Sep 05:36:07.550 * DB loaded from disk: 0.005 seconds
+</span></span><span style="display:flex;"><span>981:M <span style="color:#ae81ff">02</span> Sep 05:36:07.550 * The server is now ready to accept connections on port <span style="color:#ae81ff">6379</span>
+</span></span><span style="display:flex;"><span>981:M <span style="color:#ae81ff">02</span> Sep 05:38:47.949 <span style="color:#75715e"># User requested shutdown...</span>
+</span></span><span style="display:flex;"><span>981:M <span style="color:#ae81ff">02</span> Sep 05:38:47.949 * Saving the final RDB snapshot before exiting.
+</span></span><span style="display:flex;"><span>981:M <span style="color:#ae81ff">02</span> Sep 05:38:47.964 * DB saved on disk
+</span></span><span style="display:flex;"><span>981:M <span style="color:#ae81ff">02</span> Sep 05:38:47.964 * Removing the pid file.
+</span></span><span style="display:flex;"><span>981:M <span style="color:#ae81ff">02</span> Sep 05:38:47.965 <span style="color:#75715e"># Redis is now ready to exit, bye bye...</span>
+</span></span><span style="display:flex;"><span>969:C <span style="color:#ae81ff">02</span> Sep 05:39:18.272 <span style="color:#75715e"># systemd supervision requested, but NOTIFY_SOCKET not found</span>
+</span></span><span style="display:flex;"><span>                _._                                                  
+</span></span><span style="display:flex;"><span>           _.-<span style="color:#e6db74">``</span>__ <span style="color:#e6db74">&#39;&#39;</span>-._                                             
+</span></span><span style="display:flex;"><span>      _.-<span style="color:#e6db74">``</span>    <span style="color:#e6db74">`</span>.  <span style="color:#e6db74">`</span>_.  <span style="color:#e6db74">&#39;&#39;</span>-._           Redis 3.2.12 <span style="color:#f92672">(</span>00000000/0<span style="color:#f92672">)</span> <span style="color:#ae81ff">64</span> bit
+</span></span><span style="display:flex;"><span>  .-<span style="color:#e6db74">``</span> .-<span style="color:#e6db74">```</span>.  <span style="color:#e6db74">```</span><span style="color:#ae81ff">\/</span>    _.,_ <span style="color:#e6db74">&#39;&#39;</span>-._                                   
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">(</span>    <span style="color:#e6db74">&#39;      ,       .-`  | `,    )     Running in standalone mode
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> |`-._`-...-` __...-.``-._|&#39;</span><span style="color:#e6db74">`</span> _.-<span style="color:#e6db74">&#39;|     Port: 6379
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> |    `-._   `._    /     _.-&#39;</span>    |     PID: <span style="color:#ae81ff">978</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">`</span>-._    <span style="color:#e6db74">`</span>-._  <span style="color:#e6db74">`</span>-./  _.-<span style="color:#e6db74">&#39;    _.-&#39;</span>                                   
+</span></span><span style="display:flex;"><span> |<span style="color:#e6db74">`</span>-._<span style="color:#e6db74">`</span>-._    <span style="color:#e6db74">`</span>-.__.-<span style="color:#e6db74">&#39;    _.-&#39;</span>_.-<span style="color:#e6db74">&#39;|                                  
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> |    `-._`-._        _.-&#39;</span>_.-<span style="color:#e6db74">&#39;    |           http://redis.io        
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  `-._    `-._`-.__.-&#39;</span>_.-<span style="color:#e6db74">&#39;    _.-&#39;</span>                                   
+</span></span><span style="display:flex;"><span> |<span style="color:#e6db74">`</span>-._<span style="color:#e6db74">`</span>-._    <span style="color:#e6db74">`</span>-.__.-<span style="color:#e6db74">&#39;    _.-&#39;</span>_.-<span style="color:#e6db74">&#39;|                                  
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> |    `-._`-._        _.-&#39;</span>_.-<span style="color:#e6db74">&#39;    |                                  
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  `-._    `-._`-.__.-&#39;</span>_.-<span style="color:#e6db74">&#39;    _.-&#39;</span>                                   
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">`</span>-._    <span style="color:#e6db74">`</span>-.__.-<span style="color:#e6db74">&#39;    _.-&#39;</span>                                       
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">`</span>-._        _.-<span style="color:#e6db74">&#39;                                           
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              `-.__.-&#39;</span>                                               
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>978:M <span style="color:#ae81ff">02</span> Sep 05:39:18.340 <span style="color:#75715e"># Server started, Redis version 3.2.12</span>
+</span></span><span style="display:flex;"><span>978:M <span style="color:#ae81ff">02</span> Sep 05:39:18.361 * DB loaded from disk: 0.007 seconds
+</span></span><span style="display:flex;"><span>978:M <span style="color:#ae81ff">02</span> Sep 05:39:18.361 * The server is now ready to accept connections on port <span style="color:#ae81ff">6379</span>
+</span></span></code></pre></div>
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Redis%20Server%20installation%20FAQs&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fredis-rhel-setup%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fredis-rhel-setup%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fredis-rhel-setup%2f&amp;description=Redis%20Server%20installation%20FAQs"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fredis-rhel-setup%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/cnblogs2/post/ops_spark_rhel/">
+          <section class="post">
+              <h2>spark安装</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs2/post/redis-rhel/">
+          <section class="post">
+              <h2>Install Redis from Source</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/index.js"></script>
+    
+</body>
+</html>
+

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="freeRTOS基础"/>
+<meta name="twitter:description" content="约定、基本文件、最小系统、基本task"/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="freeRTOS基础 &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs2/post/e-freertos-base/" />
+
+    
+        
+    
+
+    
+    <meta property="og:description" content="约定、基本文件、最小系统、基本task" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2020-07-04T08:08:08&#43;08:00" />
+
+    
+    
+
+    <title>freeRTOS基础 &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="约定、基本文件、最小系统、基本task" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs2/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs2/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs2/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.145.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs2/post/e-freertos-base/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null 
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "freeRTOS基础",
+    "name": "freeRTOS基础",
+    "wordCount":  273 ,
+    "timeRequired": "PT2M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs2/post/e-freertos-base/",
+    "datePublished": "2020-07-04T08:08Z",
+    "dateModified": "2020-07-04T08:08Z",
+    
+    
+    "description": "约定、基本文件、最小系统、基本task",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs2/post/e-freertos-base/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs2/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="/cnblogs2/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">freeRTOS基础</h1>
+        <small>约定、基本文件、最小系统、基本task</small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2020-07-04T08:08:08&#43;08:00">
+            Jul 4, 2020
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <blockquote>
+<p>freeRTOS v6.1.1</p></blockquote>
+<h1 id="约定">约定</h1>
+<h2 id="变量名">变量名</h2>
+<p>u: unsigned
+c: char
+s: int16_t(short)
+l: int32_t(long)<br>
+x: BaseType_t 和其他所有</p>
+<h2 id="函数名">函数名</h2>
+<blockquote>
+<p>前面的小写字母表示返回值；
+紧随其后的是文件名。</p></blockquote>
+<p>p: pointer
+v: void
+x: xQueueReceive() returns a variable of type BaseType_t and is defined within queue.c.</p>
+<h1 id="必须使用">必须使用</h1>
+<ul>
+<li>task.c</li>
+<li>list.c</li>
+<li>queue.c <br>
+task-to-task, task-to-interrupt, interrupt-to-task.</li>
+</ul>
+<h2 id="移植必须">移植必须</h2>
+<blockquote>
+<p>实现 portable.h</p></blockquote>
+<ul>
+<li>heap_1.c or heap_2.c or heap_3.c</li>
+<li>port.c</li>
+</ul>
+<h3 id="header">header</h3>
+<ul>
+<li>portmacro.h</li>
+</ul>
+<h1 id="最小化系统">最小化系统</h1>
+<p>main.c</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;FreeRTOS.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">vTaskStartScheduler</span>();
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="header-1">header</h2>
+<blockquote>
+<p>vc <br>
+Configuration Properties -&gt; c/c++ -&gt; Additional include Directories</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>ProjectDir<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>ProjectDir<span style="color:#66d9ef">)</span><span style="color:#e6db74">\..\..\Source\include&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>ProjectDir<span style="color:#66d9ef">)</span><span style="color:#e6db74">\..\..\Source\portable\MSVC-MingW&#34;</span>
+</span></span></code></pre></div><p>FreeRTOSConfig.h</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_PREEMPTION			1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_IDLE_HOOK				0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_TICK_HOOK				0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_CO_ROUTINES 			0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_16_BIT_TICKS			0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMAX_PRIORITIES			( ( unsigned portBASE_TYPE ) 7 )
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMINIMAL_STACK_SIZE		( ( unsigned portSHORT ) 50 )
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configTICK_RATE_HZ				( 50 )
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* Set the following definitions to 1 to include the API function, or zero
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">to exclude the API function. */</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskPrioritySet			1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_uxTaskPriorityGet			1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskDelete					1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskCleanUpResources		0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskSuspend				1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskDelayUntil				1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskDelay					1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_xTaskGetSchedulerState		1
+</span></span></span></code></pre></div><h1 id="add-task">add task</h1>
+<h2 id="task-function">task function</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vTask1</span> (<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>pvParameter)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> pcTaskName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Task 1</span><span style="color:#ae81ff">\r\n</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> ul;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span>(;;) {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">printf</span>( pcTaskName );
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">vTaskDelay</span>( <span style="color:#ae81ff">100</span> );
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="call-them">call them</h2>
+<blockquote>
+<p>main.c</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">xTaskCreate</span>( vTask1, <span style="color:#75715e">/* Pointer to the function that implements the task. */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;Task 1&#34;</span>,<span style="color:#75715e">/* Text name for the task. This is to facilitate debugging only. */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">1000</span>, <span style="color:#75715e">/* Stack depth - small microcontrollers will use much less stack than this. */</span>
+</span></span><span style="display:flex;"><span>  NULL, <span style="color:#75715e">/* This example does not use the task parameter. */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">1</span>, <span style="color:#75715e">/* This task will run at priority 1. */</span>
+</span></span><span style="display:flex;"><span>  NULL ); <span style="color:#75715e">/* This example does not use the task handle. */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">vTaskStartScheduler</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=freeRTOS%e5%9f%ba%e7%a1%80&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fe-freertos-base%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fe-freertos-base%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fe-freertos-base%2f&amp;description=freeRTOS%e5%9f%ba%e7%a1%80"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fe-freertos-base%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/cnblogs2/post/e-freertos-port_win32/">
+          <section class="post">
+              <h2>freeRTOS移植</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs2/post/e-iar-project-setup/">
+          <section class="post">
+              <h2>iar 工程基本设置</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/index.js"></script>
+    
+</body>
+</html>
+

@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="8位单片机PIC汇编语言"/>
+<meta name="twitter:description" content="Instruction Set"/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="8位单片机PIC汇编语言 &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs2/post/e-pic16f_instruction-set/" />
+
+    
+        
+    
+
+    
+    <meta property="og:description" content="Instruction Set" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2023-05-17T10:08:08&#43;08:00" />
+
+    
+    
+
+    <title>8位单片机PIC汇编语言 &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="Instruction Set" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs2/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs2/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs2/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.145.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs2/post/e-pic16f_instruction-set/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null 
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "8位单片机PIC汇编语言",
+    "name": "8位单片机PIC汇编语言",
+    "wordCount":  1128 ,
+    "timeRequired": "PT6M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs2/post/e-pic16f_instruction-set/",
+    "datePublished": "2023-05-17T10:08Z",
+    "dateModified": "2023-05-17T10:08Z",
+    
+    
+    "description": "Instruction Set",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs2/post/e-pic16f_instruction-set/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs2/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="/cnblogs2/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">8位单片机PIC汇编语言</h1>
+        <small>Instruction Set</small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2023-05-17T10:08:08&#43;08:00">
+            May 17, 2023
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>TABLE 1-1: OPCODE FIELD DESCRIPTIONS</p>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>f</td>
+          <td>Register file address (0x00 to 0x7F)</td>
+      </tr>
+      <tr>
+          <td>W</td>
+          <td>Working register (accumulator)</td>
+      </tr>
+      <tr>
+          <td>d</td>
+          <td>Destination select;</td>
+      </tr>
+      <tr>
+          <td>b</td>
+          <td>Bit address within an 8-bit file register</td>
+      </tr>
+      <tr>
+          <td>k</td>
+          <td>Literal field, constant data or label</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>d value</th>
+          <th>where the results are placed</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>d = 0</td>
+          <td>W(orking) register</td>
+      </tr>
+      <tr>
+          <td>d = 1</td>
+          <td>file register; Default is d = 1.</td>
+      </tr>
+  </tbody>
+</table>
+<p>TABLE 1-2: ABBREVIATION DESCRIPTIONS</p>
+<p>|Field| Description|
+| PC | Program Counter|
+| TO | Time-Out bit|
+| C  | Carry bit|
+| DC | Digit Carry bit|
+| Z  | Zero bit|
+| PD | Power-Down bit|</p>
+<ul>
+<li>
+<p>Byte-Oriented File Register Operations</p>
+<table>
+  <thead>
+      <tr>
+          <th>Instruction</th>
+          <th>Description</th>
+          <th>Affected Flags</th>
+          <th>Instruction Cycles</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>CLRF   f</td>
+          <td>f=0 <br>Clears the content of File Register f.</br></td>
+          <td>Z</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>CLRW</td>
+          <td>W=0 <br>Clears W.</br></td>
+          <td>Z</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>SWAPF  f, d</td>
+          <td>Swaps the nibbles of f and write the result to destination d.</td>
+          <td>None</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>ADDWFC f, d</td>
+          <td>Add WREG and Carry bit to f. <sup>1<sup></td>
+          <td>C, DC, Z</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>ASRF   f, d</td>
+          <td>Arithmetic Right Shift. <sup>1<sup></td>
+          <td>C, Z</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>LSLF   f, d</td>
+          <td>Logical Left Shift. <sup>1<sup></td>
+          <td>C, Z</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>LSRF   f, d</td>
+          <td>Logical Right Shift. <sup>1<sup></td>
+          <td>C, Z</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>SUBWFB f, d</td>
+          <td>Subtract WREG from f with Borrow. <sup>1<sup></td>
+          <td>C, DC, Z</td>
+          <td>2</td>
+      </tr>
+  </tbody>
+</table>
+</li>
+<li>
+<p>Bit-Oriented File Register Operations</p>
+<table>
+  <thead>
+      <tr>
+          <th>Instruction</th>
+          <th>Description</th>
+          <th>Affected Flags</th>
+          <th>Instruction Cycles</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>BCF    f, b</td>
+          <td>Clears (equates to 0) the bit b of register f.</td>
+          <td>None</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>BSF    f, b</td>
+          <td>Sets (equates to 1) the bit b of register f.</td>
+          <td>None</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>BTFSC  f, b</td>
+          <td>Checks if bit b of register f is equal to 0 or not. If it is NOT zero continue with the next line of code, otherwise skips next line.</td>
+          <td>None</td>
+          <td>1 (if 1)<br>2 (if 0)</br></td>
+      </tr>
+      <tr>
+          <td>BTFSS  f, b</td>
+          <td>Checks if bit b of register f is equal to 1 or not. If it is ZERO continue with the next line of code, otherwise skips next line.</td>
+          <td>None</td>
+          <td>1 (if 0)<br>2 (if 1)</br></td>
+      </tr>
+  </tbody>
+</table>
+</li>
+<li>
+<p>Literal Operations</p>
+<table>
+  <thead>
+      <tr>
+          <th>Instruction</th>
+          <th>Description</th>
+          <th>Affected Flags</th>
+          <th>Instruction Cycles</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>MOVLB  k</td>
+          <td>Move literal to BSR. <sup>1<sup></td>
+          <td>None</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>MOVLP  k</td>
+          <td>Move literal to PCLATH. <sup>1<sup></td>
+          <td>None</td>
+          <td>1</td>
+      </tr>
+  </tbody>
+</table>
+</li>
+<li>
+<p>Control Operations</p>
+<table>
+  <thead>
+      <tr>
+          <th>Instruction</th>
+          <th>Description</th>
+          <th>Affected Flags</th>
+          <th>Instruction Cycles</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>BRA    k</td>
+          <td>Relative Branch. <sup>1<sup></td>
+          <td>None</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>BRW    —</td>
+          <td>Relative Branch with WREG. <sup>1<sup></td>
+          <td>None</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>CALL  LABEL</td>
+          <td>Calls subroutine LABEL.</td>
+          <td>None</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>CALLW  —</td>
+          <td>Call Subroutine with WREG. <sup>1<sup></td>
+          <td>None</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>GOTO  LABEL</td>
+          <td>Jumps to the code under LABEL.</td>
+          <td>None</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>RETFIE</td>
+          <td>Return command for interrupt subroutines.</td>
+          <td>None</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>RETLW  k</td>
+          <td>Return from a subroutine with W=N.</td>
+          <td>None</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>RETURN</td>
+          <td>Return from a subroutine.</td>
+          <td>None</td>
+          <td>2</td>
+      </tr>
+  </tbody>
+</table>
+</li>
+<li>
+<p>Inherent Operations</p>
+<table>
+  <thead>
+      <tr>
+          <th>Instruction</th>
+          <th>Description</th>
+          <th>Affected Flags</th>
+          <th>Instruction Cycles</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>CLRWDT</td>
+          <td>Clears Watchdog Timer.</td>
+          <td><SPAN style="TEXT-DECORATION: overline">TO</SPAN>, <SPAN style="TEXT-DECORATION: overline">PD</SPAN></td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>NOP</td>
+          <td>No Operation <br>Does Nothing.</br></td>
+          <td>None</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>RESET  —</td>
+          <td>Software device Reset. <sup>1<sup></td>
+          <td>None</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>SLEEP</td>
+          <td>Go into Standby Mode.</td>
+          <td><SPAN style="TEXT-DECORATION: overline">TO</SPAN>, <SPAN style="TEXT-DECORATION: overline">PD</SPAN></td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>TRIS   f</td>
+          <td>Load TRIS register with WREG. <sup>1<sup></td>
+          <td>None</td>
+          <td>1</td>
+      </tr>
+  </tbody>
+</table>
+</li>
+</ul>
+<p>*1: New MCU (PIC16F188/152 etc.) series add 12（47 in total） assembly instructions.</p>
+<h2 id="sing-data-memory-and-moving-data">sing data memory and moving data</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Instruction</th>
+          <th>Description</th>
+          <th>Affected Flags</th>
+          <th>Instruction Cycles</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>MOVF   f, d</td>
+          <td>f⇒W (if d=0), f⇒f (if d=1) <br>Moves the content of f to destination d.</br></td>
+          <td>Z</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>MOVWF  f</td>
+          <td>W⇒f <br>Moves W to file register f.</br></td>
+          <td>None</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>MOVLW  k</td>
+          <td>k⇒W <br>Copies the number k to W.</br></td>
+          <td>None</td>
+          <td>1</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="movf">MOVF</h3>
+<p>In general, f is assigned to W.</p>
+<pre tabindex="0"><code>MOVF    f, 0
+</code></pre><p>The following are special cases:</p>
+<ul>
+<li>Test</li>
+</ul>
+<pre tabindex="0"><code>MOVF    f, 1
+</code></pre><p>does not affect the content of f or W. <br>
+MOVF with a destination 1 (F), is generally used to check whether the content of the file register is zero or not.</p>
+<p>Equivalent Operation(s):</p>
+<pre tabindex="0"><code>TSTF    f          ;Test File
+</code></pre><ul>
+<li>Zero</li>
+</ul>
+<pre tabindex="0"><code>movf    buffer,F   ;Force Z bit
+</code></pre><p>强制置零</p>
+<h2 id="math">Math</h2>
+<ul>
+<li>Skip if Zero</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Instruction</th>
+          <th>Description</th>
+          <th>Affected Flags</th>
+          <th>Instruction Cycles</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>INCFSZ f, d</td>
+          <td>f+1⇒W (if d=0), f+1⇒f (if d=1) <br>Increments f and write the result to destination d. The next instruction is skipped if the result is 0 (f=255).</br></td>
+          <td>None</td>
+          <td>1 (f≠255) <br>2 (f=255)</br></td>
+      </tr>
+      <tr>
+          <td>DECFSZ f, d</td>
+          <td>f-1⇒W (if d=0), f-1⇒f (if d=1) <br>Decrements f and write the result to destination d. The next instruction is skipped if the result is 0.</br></td>
+          <td>None</td>
+          <td>1 (f≠1) <br>2 (f=1)</br></td>
+      </tr>
+  </tbody>
+</table>
+<ul>
+<li>Add &amp; Subtracts</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Instruction</th>
+          <th>Description</th>
+          <th>Affected Flags</th>
+          <th>Instruction Cycles</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ADDWF  f, d</td>
+          <td>f+W⇒W (if d=0), f+W⇒f (if d=1) <br>Add W with the content of file register f and write the result to destination d.</br></td>
+          <td>Z, DC, C</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>ADDLW  k</td>
+          <td>k+W⇒W <br>Add literal k and W.</br></td>
+          <td>Z, DC, C</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>INCF   f, d</td>
+          <td>f+1⇒W (if d=0), f+1⇒f (if d=1) <br>Increments f and write the result to destination d.</br></td>
+          <td>Z</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>SUBWF  f, d</td>
+          <td>f-W⇒W (if d=0), f-W⇒f (if d=1) <br>Subtracts W from f and write the result to destination d.</br></td>
+          <td>C, DC, Z</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>SUBLW  k</td>
+          <td>k-W⇒W <br>Subtract W from literal k and write the result to W.</br></td>
+          <td>Z, DC, C</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>DECF   f, d</td>
+          <td>f-1⇒W (if d=0), f-1⇒f (if d=1) <br>Decrements f and write the result to destination d.</br></td>
+          <td>Z</td>
+          <td>1</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="subwf"><a href="http://www.onlinepiccompiler.com/InstructionsENG.html#section=SUBWF">SUBWF</a></h3>
+<p><img src="http://www.onlinepiccompiler.com/img/subwfENG.png" alt="d=0">
+<img src="http://www.onlinepiccompiler.com/img/subwfENG.png" alt="d=1"></p>
+<h4 id="affected-flags">AFFECTED FLAGS</h4>
+<p>SUBWF affects the flags Z, DC and C. <br>
+Note: The destination D (=0, W, 1 or F) is not effective on the flags.</p>
+<ul>
+<li>Z <br>
+Zero Flag (Z) is set if the result of the subtraction is equal to zero. <br>
+In the example below, because the result is 48 (different from 0) Z=0 at the end of SUBWF instruction.</li>
+</ul>
+<p>Example: <br>
+Let&rsquo;s say W=15 and COUNTER=63, then</p>
+<pre tabindex="0"><code>SUBWF COUNTER, F
+</code></pre><p>makes COUNTER=48. W remains the same. If the destination was W (or 0), W becomes 48 and COUNTER remains the same.</p>
+<h3 id="logic-operation">logic operation</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Instruction</th>
+          <th>Description</th>
+          <th>Affected Flags</th>
+          <th>Instruction Cycles</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ANDWF  f, d</td>
+          <td>f&amp;W⇒W (if d=0), f&amp;W⇒f (if d=1) <br>Logically AND W with the content of file register f and write the result to destination d.</br></td>
+          <td>Z</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>ANDLW  k</td>
+          <td>k&amp;W⇒W <br>Logically ANDs literal k with W.</br></td>
+          <td>Z</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>IORWF  f, d</td>
+          <td>f | W⇒W (if d=0), f | W⇒f (if d=1) <br>Logically ORs f with W and write the result to destination d.</br></td>
+          <td>Z</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>IORLW  k</td>
+          <td>k | W⇒W <br>Logically ORs literal k with W.</br></td>
+          <td>Z</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>XORWF  f, d</td>
+          <td>f^W⇒W (if d=0), f^W⇒f (if d=1) <br>Logically XORs f with W and write the result to destination d.</br></td>
+          <td>Z</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>XORLW  k</td>
+          <td>k^W⇒W <br>Logically XORs literal k with W.</br></td>
+          <td>Z</td>
+          <td>1</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="code-bit-manipulation">Code bit manipulation</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Instruction</th>
+          <th>Description</th>
+          <th>Affected Flags</th>
+          <th>Instruction Cycles</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>COMF   f, d</td>
+          <td><SPAN style="TEXT-DECORATION: overline">f</SPAN>⇒W (if d=0), <SPAN style="TEXT-DECORATION: overline">f</SPAN>⇒f (if d=1) <br>Takes the complement of each bit in f and write the result to destination d.</br></td>
+          <td>Z</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>RLF    f, d</td>
+          <td>f&lt;1⇒W (if d=0), f&lt;1⇒f (if d=1) <br>Rotates f one bit to the left through Carry Bit and write the result to destination d.</br></td>
+          <td>C</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>RRF    f, d</td>
+          <td>f&gt;1⇒W (if d=0), f&gt;1⇒f (if d=1) <br>Rotates f one bit to the right through Carry Bit and write the result to destination d.</br></td>
+          <td>C</td>
+          <td>1</td>
+      </tr>
+  </tbody>
+</table>
+<h1 id="ref">Ref</h1>
+<ul>
+<li><a href="http://www.onlinepiccompiler.com/InstructionsENG.html#section=div0">Summary of Instructions</a></li>
+<li><a href="http://player.slideplayer.com/download/78/12900510/cNyMX-VU_CZjdfqY7w9taQ/1684229591/12900510.ppt">Lecture 29 - Continue with PIC example programs: Interrupt</a></li>
+<li>ASCII code</li>
+</ul>
+<pre tabindex="0"><code>&amp;#124; - |
+&amp;#96;  - `
+</code></pre><p><img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Dot_printer_ASCII.png" alt="Dot printer ASCII"></p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=8%e4%bd%8d%e5%8d%95%e7%89%87%e6%9c%baPIC%e6%b1%87%e7%bc%96%e8%af%ad%e8%a8%80&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fe-pic16f_instruction-set%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fe-pic16f_instruction-set%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fe-pic16f_instruction-set%2f&amp;description=8%e4%bd%8d%e5%8d%95%e7%89%87%e6%9c%baPIC%e6%b1%87%e7%bc%96%e8%af%ad%e8%a8%80"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fe-pic16f_instruction-set%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/cnblogs2/post/e-pic16f_blink7/">
+          <section class="post">
+              <h2>PIC blinked</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs2/post/e-proteus_component-designing/">
+          <section class="post">
+              <h2>Component Designing in Proteus ISIS</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/index.js"></script>
+    
+</body>
+</html>
+

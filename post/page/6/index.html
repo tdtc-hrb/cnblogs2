@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs2/post/" />
+
+    
+        
+    
+
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="" />
+    
+
+    <title>Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs2/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs2/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs2/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+        <link href='/cnblogs2/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+    
+    <meta name="generator" content="Hugo 0.145.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs2/post/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs2/",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs2/"
+    },
+    "description":  null 
+}
+  </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs2/post/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+	<header class="main-header tag-head no-cover">
+
+    <nav class="main-nav overlay clearfix">
+      
+      
+        
+          <a class="menu-button icon-feed" href='/cnblogs2/post/index.xml'>&nbsp;&nbsp;Subscribe</a>
+        
+      
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Posts</h1>
+            <h2 class="page-description">
+                
+            </h2>
+        </div>
+    </div>
+</header>
+
+<main class="content" role="main">
+    
+
+	<div class="extra-pagination inner">
+    <nav class="pagination" role="navigation">
+	
+	    <a class="newer-posts" href="/cnblogs2/post/page/5/">&larr; Newer Posts</a>
+	
+	<span class="page-number">Page 6 of 6</span>
+	
+</nav>
+
+	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/golang-ubuntu-config/">install go on ubuntu</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>WSL: Ubuntu 18.04</p></blockquote>
+<h1 id="1-install-go">1. install go</h1>
+<p><a href="https://dl.google.com/go/go1.13.10.linux-amd64.tar.gz">go1.13.10</a></p>
+<h2 id="1-unzip">1) unzip</h2>
+<p>rename:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /usr/local/go
+</span></span><span style="display:flex;"><span>sudo mv go 1.13
+</span></span></code></pre></div><h2 id="2-set-path">2) set path</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vi ~/.bashrc
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export GOROOT<span style="color:#f92672">=</span>/usr/local/go/1.13
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>export GOPATH<span style="color:#f92672">=</span>/home/tdtc/go
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PATH<span style="color:#f92672">=</span>$PATH:$GOROOT/bin:$GOPATH/bin
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>source ~/.bashrc
+</span></span></code></pre></div><h1 id="test">test</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>go version
+</span></span></code></pre></div><h1 id="reference">Reference</h1>
+<ul>
+<li><a href="https://tecadmin.net/install-go-on-ubuntu/">How To Install Go 1.12 on Ubuntu 18.04 &amp; 16.04 LTS</a></li>
+</ul> <a class="read-more" href="/cnblogs2/post/golang-ubuntu-config/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-05-17T00:08:08&#43;08:00">
+            17 May 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/dev-service_registry-zk/">ZooKeeper Installation(Dev)</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>Install ZooKeeper packages</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># sudo apt-get install openjdk-8-jre-headless</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># sudo apt-get install zookeeper zookeeperd</span>
+</span></span></code></pre></div><p>If you need a cluster, configure the Conf file, otherwise ignore it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Configure ZooKeeper
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Common Configuration
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Edit the /etc/zookeeper/conf/zoo.cfg file to contain the following:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>server.1<span style="color:#f92672">=</span>nsdb1:2888:3888
+</span></span><span style="display:flex;"><span>server.2<span style="color:#f92672">=</span>nsdb2:2888:3888
+</span></span><span style="display:flex;"><span>server.3<span style="color:#f92672">=</span>nsdb3:2888:3888
+</span></span><span style="display:flex;"><span>autopurge.snapRetainCount<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>autopurge.purgeInterval <span style="color:#f92672">=</span><span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Important<span style="color:#f92672">]</span>    Important
+</span></span><span style="display:flex;"><span>For production deployments it is recommended to configure the storage of snapshots in a different disk than the commit log, this is <span style="color:#66d9ef">done</span> by setting the parameters dataDir and dataLogDir in zoo.cfg. In addition we advice to use an SSD drive <span style="color:#66d9ef">for</span> the commit log.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Node-specific Configuration
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>NSDB Node <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Create the /var/lib/zookeeper/myid file and edit it to contain the host’s ID:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># echo 1 &gt; /var/lib/zookeeper/myid</span>
+</span></span><span style="display:flex;"><span>NSDB Node <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Create the /var/lib/zookeeper/myid file and edit it to contain the host’s ID:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># echo 2 &gt; /var/lib/zookeeper/myid</span>
+</span></span><span style="display:flex;"><span>NSDB Node <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Create the /var/lib/zookeeper/myid file and edit it to contain the host’s ID:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># echo 3 &gt; /var/lib/zookeeper/myid</span>
+</span></span></code></pre></div><p>Restart ZooKeeper</p> <a class="read-more" href="/cnblogs2/post/dev-service_registry-zk/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-05-16T18:08:08&#43;08:00">
+            16 May 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/cas-client-config/">cas client设置</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>The client and server are the same <a href="https://xiaobin80.gitee.io/cnblogs/post/cas-server-config/">thekeystore</a></p></blockquote>
+<p>cas client version: 3.5.1(<a href="https://github.com/apereo/java-cas-client/tree/master/cas-client-core">cas-client-core-3.5.1</a>)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://gitee.com/xiaobin80/cas-sample-java-webapp
+</span></span></code></pre></div><h1 id="1-config">1. config</h1>
+<p>web.xml(src\main\webapp\WEB-INF)</p>
+<h2 id="1-cas-single-sign-out-filter">1) CAS Single Sign Out Filter</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>https://localhost:8443/cas
+</span></span></code></pre></div><h2 id="2-cas-authentication-filter">2) CAS Authentication Filter</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>https://localhost:8443/cas/login
+</span></span></code></pre></div><h2 id="3-cas-validation-filter">3) CAS Validation Filter</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>https://localhost:8443/cas
+</span></span></code></pre></div><h2 id="4-server-name">4) server name</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>localhost
+</span></span></code></pre></div><h1 id="2-keystore">2. keystore</h1>
+<p>copy</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/etc/cas/jetty/thekeystore
+</span></span></code></pre></div><p>to</p>
+<p>The disk root directory of the application. <br>
+For example:
+my application:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>D:<span style="color:#ae81ff">\p</span>rojects<span style="color:#ae81ff">\c</span>as-sample-java-webapp
+</span></span></code></pre></div><p>then <br>
+thekeystore file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>D:<span style="color:#ae81ff">\e</span>tc<span style="color:#ae81ff">\c</span>as<span style="color:#ae81ff">\j</span>etty<span style="color:#ae81ff">\t</span>hekeystore
+</span></span></code></pre></div><p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20181113192532190.png" alt="win info"></p>
+<h1 id="3-build">3. build</h1>
+<p>alter context path(pom.xml):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;webApp&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;contextPath&gt;</span>/loginInfo<span style="color:#f92672">&lt;/contextPath&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;overrideDescriptor&gt;</span>${basedir}/etc/jetty/web.xml<span style="color:#f92672">&lt;/overrideDescriptor&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/webApp&gt;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mvn clean package jetty:run-forked
+</span></span></code></pre></div><h2 id="1-run-directly">1) Run directly</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mvn jetty:run-forked
+</span></span></code></pre></div><h1 id="4-test">4. test</h1>
+<p>http://localhost:9080/loginInfo
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20190811082322077.png" alt="browser info">
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20181115204456890.png" alt="cas info"></p> <a class="read-more" href="/cnblogs2/post/cas-client-config/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-05-16T12:08:08&#43;08:00">
+            16 May 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/cas-server-config/">cas server设置</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>Tomcat: V8.5.x</li>
+<li>Java: 1.8 x64</li>
+<li>MySQL: 5.5.x+</li>
+<li>OS: Win10 x64</li>
+</ul>
+<h1 id="下载部署包">下载部署包</h1>
+<blockquote>
+<p>使用gradle 的repo最高只支持gradle V4.3！</p></blockquote>
+<h2 id="0-clone">0. clone</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/apereo/cas-gradle-overlay-template.git
+</span></span></code></pre></div><h2 id="1-set-gradle">1. set gradle</h2>
+<h3 id="1-extract">1) extract</h3>
+<p><a href="https://gradle.org/next-steps/?version=4.10.3&amp;format=bin">gradle-4.10.3-bin.zip</a></p>
+<h3 id="2-set-system-variable">2) set system variable</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  $PATH<span style="color:#f92672">=</span>$PATH;%GRADLE_HOME%<span style="color:#ae81ff">\b</span>in
+</span></span></code></pre></div><h2 id="2-build-war">2. build war</h2>
+<blockquote>
+<p>File location: cas\build\libs\cas.war</p></blockquote>
+<h3 id="1-config-file">1) config file</h3>
+<p>gradle.properties</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cas.version<span style="color:#f92672">=</span>5.3.2
+</span></span><span style="display:flex;"><span><span style="color:#f92672">=</span>&gt;
+</span></span><span style="display:flex;"><span>cas.version<span style="color:#f92672">=</span>5.3.15.1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>gradle.version<span style="color:#f92672">=</span>4.8
+</span></span><span style="display:flex;"><span><span style="color:#f92672">=</span>&gt;
+</span></span><span style="display:flex;"><span>gradle.version<span style="color:#f92672">=</span>4.10.3
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>springboot.version<span style="color:#f92672">=</span>1.5.14.RELEASE
+</span></span><span style="display:flex;"><span><span style="color:#f92672">=</span>&gt;
+</span></span><span style="display:flex;"><span>springboot.version<span style="color:#f92672">=</span>1.5.18.RELEASE
+</span></span></code></pre></div><h3 id="2-build">2) build</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd cas-gradle-overlay-template
+</span></span><span style="display:flex;"><span>$gradle build
+</span></span></code></pre></div><h1 id="ii-run">II. Run</h1>
+<h2 id="0-keycertificate">0. key/certificate</h2>
+<h3 id="1-genkey">1) genkey</h3>
+<blockquote>
+<p>info:
+-dname &ldquo;CN=localhost,OU=test.com,O=test,L=WH,ST=HB,C=CN&rdquo;</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>keytool -genkey -keyalg RSA -alias thekeystore -keypass changeit -storepass changeit -keysize <span style="color:#ae81ff">2048</span> -keystore e:/etc/cas/thekeystore
+</span></span></code></pre></div><h3 id="2-export">2) export</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>keytool -export -alias thekeystore -file e:/etc/cas/cas5311.crt -keystore e:/etc/cas/thekeystore -storepass changeit
+</span></span></code></pre></div><h3 id="3-import">3) import</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>keytool -import -alias thekeystore -storepass changeit -file e:/etc/cas/cas5311.crt -keystore <span style="color:#e6db74">&#34;%JAVA_HOME%\jre\lib\security\cacerts&#34;</span>
+</span></span></code></pre></div><h2 id="1-set-tomcat">1. set tomcat</h2>
+<h3 id="1-thekeystore">1) thekeystore</h3>
+<p>copy thekeystore file to $TOMCAT_HOME/conf</p> <a class="read-more" href="/cnblogs2/post/cas-server-config/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-05-16T10:08:08&#43;08:00">
+            16 May 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/redis-centos7-setup/">Redis Server installation FAQs</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>OS: CentOS 7 Minimal</p></blockquote>
+<h1 id="0-open-files">0) open files</h1>
+<p>Q: Increased maximum number of open files to 10032 (it was originally set to 1024).
+A:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ulimit -a
+</span></span><span style="display:flex;"><span>$vi /etc/systemd/system/redis.service
+</span></span></code></pre></div><p>In the &ldquo;[Service]&rdquo; unit, add the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>LimitNOFILE<span style="color:#f92672">=</span><span style="color:#ae81ff">10032</span>
+</span></span></code></pre></div><h1 id="1-somaxconn">1) somaxconn</h1>
+<p>Q: WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+A:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$vi /etc/sysctl.conf
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>net.core.somaxconn<span style="color:#f92672">=</span><span style="color:#ae81ff">1024</span>
+</span></span></code></pre></div><h1 id="2-overcommit_memory">2) overcommit_memory</h1>
+<p>Q: WARNING overcommit_memory is set to 0! Background save may fail under low memory condition.
+To fix this issue add &lsquo;vm.overcommit_memory = 1&rsquo; to /etc/sysctl.conf and then reboot or run the command &lsquo;sysctl vm.overcommit_memory=1&rsquo;
+for this to take effect.</p> <a class="read-more" href="/cnblogs2/post/redis-centos7-setup/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-05-16T08:08:08&#43;08:00">
+            16 May 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/java-connector-cluster_mysql/">cluster connector</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h1 id="elementary">Elementary</h1>
+<blockquote>
+<p>在没有出来NDB之前，都是使用这个组件。</p></blockquote>
+<p><a href="http://www.frogthinker.org/projects/sequoia">C-JDBC</a></p>
+<blockquote>
+<p><a href="http://c-jdbc.ow2.org/index.html">c-jdbc文档</a> <br>
+<a href="https://sourceforge.net/projects/sequoiadb/files/">src-Sequoia 2.10.10</a></p></blockquote>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/Sequoia_architecture.jpg" alt="Sequoia architecture"></p>
+<h1 id="ndb-cluster">NDB Cluster</h1>
+<blockquote>
+<p>关于：</p>
+<blockquote>
+<p>JPA、JDBC省略不表。
+<img src="https://dev.mysql.com/doc/ndbapi/en/images/mccj-java-to-cluster.png" alt="mysql dev"></p></blockquote></blockquote>
+<h2 id="clusterj">ClusterJ</h2>
+<blockquote>
+<p>ClusterJ requires Java 1.7 or 1.8.</p></blockquote>
+<p><img src="https://dev.mysql.com/doc/ndbapi/en/images/mccj-clusterj-user-view.png" alt="Figure 4.2 ClusterJ User View Of Application And Environment"></p>
+<p>首先使用<a href="https://dev.mysql.com/doc/ndbapi/en/mccj-clusterj-sessionfactory.html">SessionFactory</a>建立一个会话实例， <br>
+然后用<a href="https://dev.mysql.com/doc/ndbapi/en/mccj-clusterj-session.html">Session</a>提供的方法操作数据。</p>
+<h3 id="会话实例">会话实例</h3>
+<p>读取配置文件，然后建立Session实例。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>File propsFile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File(<span style="color:#e6db74">&#34;clusterj.properties&#34;</span>);
+</span></span><span style="display:flex;"><span>InputStream inStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream(propsFile);
+</span></span><span style="display:flex;"><span>Properties props <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Properties();
+</span></span><span style="display:flex;"><span>props.<span style="color:#a6e22e">load</span>(inStream);
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>SessionFactory factory <span style="color:#f92672">=</span> ClusterJHelper.<span style="color:#a6e22e">getSessionFactory</span>(props);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Session session <span style="color:#f92672">=</span> factory.<span style="color:#a6e22e">getSession</span>();
+</span></span></code></pre></div><h4 id="配置信息">配置信息</h4>
+<blockquote>
+<p>clusterj.properties</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">com.mysql.clusterj.connectstring</span><span style="color:#f92672">=</span><span style="color:#e6db74">localhost:1186</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">com.mysql.clusterj.database</span><span style="color:#f92672">=</span><span style="color:#e6db74">mydb</span>
+</span></span></code></pre></div><h3 id="操作数据">操作数据</h3>
+<p>参考<a href="https://dev.mysql.com/doc/ndbapi/en/mccj-using-clusterj-operations.html">4.2.2.4 ClusterJ Basic Operations</a>文档。</p>
+<h1 id="reference">Reference</h1>
+<ul>
+<li><a href="https://dev.mysql.com/doc/ndbapi/en/mccj-using-clusterj.html">4.2.2 Using ClusterJ</a></li>
+</ul> <a class="read-more" href="/cnblogs2/post/java-connector-cluster_mysql/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-05-16T05:58:08&#43;08:00">
+            16 May 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/java-apache_cli/">Apache CLI Demo</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h1 id="1-options">1. Options</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> Options options <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Options();
+</span></span></code></pre></div><h1 id="2-option">2. option</h1>
+<p>增加选项有两种方式：直接赋值给各个参数； <br>
+另一种，就是赋值到一个实例中。</p>
+<h2 id="1-way1">1) way1</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>launcher.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">addOption</span>(<span style="color:#e6db74">&#34;h&#34;</span>, <span style="color:#e6db74">&#34;help&#34;</span>, <span style="color:#66d9ef">false</span>, <span style="color:#e6db74">&#34;show help.&#34;</span>);
+</span></span></code></pre></div><h2 id="2-way2">2) way2</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>launcher.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">addOption</span>(optFile);
+</span></span></code></pre></div><h1 id="3-command-line-parser">3. command line parser</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>CommandLineParser cmdParser <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DefaultParser();
+</span></span></code></pre></div><h1 id="4-exec-method">4. exec method</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">help</span>() {
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">// This prints out some help</span>
+</span></span><span style="display:flex;"><span>  HelpFormatter formater <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HelpFormatter();
+</span></span><span style="display:flex;"><span>  formater.<span style="color:#a6e22e">printHelp</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getClass</span>().<span style="color:#a6e22e">getSimpleName</span>(), options);
+</span></span><span style="display:flex;"><span>  System.<span style="color:#a6e22e">exit</span>(0);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="5-test">5. test</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -cp cliDemo-0.0.1-SNAPSHOT.jar;C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\x</span>iaobin<span style="color:#ae81ff">\.</span>m2<span style="color:#ae81ff">\r</span>epository<span style="color:#ae81ff">\c</span>ommons-cli<span style="color:#ae81ff">\c</span>ommons-cli<span style="color:#ae81ff">\1</span>.4<span style="color:#ae81ff">\c</span>ommons-cli-1.4.jar my.csdn9.ConsoleLauncher --help
+</span></span></code></pre></div><h1 id="source-code">source code</h1>
+<p>ConsoleLauncher.java</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">package</span> my.csdn9;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.CommandLine;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.CommandLineParser;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.DefaultParser;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.HelpFormatter;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.Option;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.Options;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.apache.commons.cli.ParseException;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ConsoleLauncher</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Step 1: otions</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Options options <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Options();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// TODO Auto-generated method stub</span>
+</span></span><span style="display:flex;"><span>        ConsoleLauncher launcher <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ConsoleLauncher();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Step 2: add option</span>
+</span></span><span style="display:flex;"><span>        Option optFile <span style="color:#f92672">=</span> Option.<span style="color:#a6e22e">builder</span>( <span style="color:#e6db74">&#34;file&#34;</span> )
+</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">longOpt</span>( <span style="color:#e6db74">&#34;logfile&#34;</span> )
+</span></span><span style="display:flex;"><span>                 .<span style="color:#a6e22e">hasArg</span>(<span style="color:#66d9ef">false</span>)
+</span></span><span style="display:flex;"><span>                 .<span style="color:#a6e22e">desc</span>(  <span style="color:#e6db74">&#34;use given file for log&#34;</span> )
+</span></span><span style="display:flex;"><span>                 .<span style="color:#a6e22e">build</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Way I: Direct definition</span>
+</span></span><span style="display:flex;"><span>        launcher.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">addOption</span>(<span style="color:#e6db74">&#34;h&#34;</span>, <span style="color:#e6db74">&#34;help&#34;</span>, <span style="color:#66d9ef">false</span>, <span style="color:#e6db74">&#34;show help.&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Way II: Use the option class to define</span>
+</span></span><span style="display:flex;"><span>        launcher.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">addOption</span>(optFile);
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Step 3: cmd parser</span>
+</span></span><span style="display:flex;"><span>        CommandLineParser cmdParser <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DefaultParser();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>            CommandLine cmd <span style="color:#f92672">=</span> cmdParser.<span style="color:#a6e22e">parse</span>(launcher.<span style="color:#a6e22e">options</span>, args);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (cmd.<span style="color:#a6e22e">hasOption</span>(<span style="color:#e6db74">&#34;h&#34;</span>)) {
+</span></span><span style="display:flex;"><span>                launcher.<span style="color:#a6e22e">help</span>();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (cmd.<span style="color:#a6e22e">hasOption</span>(<span style="color:#e6db74">&#34;file&#34;</span>)) {
+</span></span><span style="display:flex;"><span>                 System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;----file----&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (ParseException e) {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// TODO Auto-generated catch block</span>
+</span></span><span style="display:flex;"><span>             e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">// Step 4: exec method</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">help</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// This prints out some help</span>
+</span></span><span style="display:flex;"><span>         HelpFormatter formater <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HelpFormatter();
+</span></span><span style="display:flex;"><span>         formater.<span style="color:#a6e22e">printHelp</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getClass</span>().<span style="color:#a6e22e">getSimpleName</span>(), options);
+</span></span><span style="display:flex;"><span>         System.<span style="color:#a6e22e">exit</span>(0);
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="pom">pom</h2>
+<p>pom.xml</p> <a class="read-more" href="/cnblogs2/post/java-apache_cli/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-05-16T02:58:08&#43;08:00">
+            16 May 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/php-lamp2/">httpd配置</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h1 id="一apache24php56">一、Apache2.4+php5.6</h1>
+<h2 id="1-httpdconf">1. httpd.conf</h2>
+<h3 id="dso">DSO</h3>
+<blockquote>
+<p>Line:152</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>LoadModule php5_module        modules/libphp5.so
+</span></span></code></pre></div><h3 id="server-name">Server Name</h3>
+<blockquote>
+<p>Line:194 - Instead</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ServerName localhost:80
+</span></span></code></pre></div><h3 id="each-directory">Each Directory</h3>
+<blockquote>
+<p>Line:202 - Instead</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride all
+</span></span></code></pre></div><h3 id="document-root">Document Root</h3>
+<blockquote>
+<p>Line:239 - Instead</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride All
+</span></span></code></pre></div><h3 id="directory-index">Directory Index</h3>
+<blockquote>
+<p>Line:252 - Instead</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>DirectoryIndex index.html index.php
+</span></span></code></pre></div><h3 id="mime-type">MIME Type</h3>
+<blockquote>
+<p>Line:390 - Add</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AddType application/x-httpd-php .php
+</span></span></code></pre></div><h2 id="2-phpini">2. php.ini</h2>
+<h3 id="paths-and-directories">Paths and Directories</h3>
+<blockquote>
+<p>Line:709 - Instead</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>include_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/opt/php/lib/php&#34;</span>
+</span></span></code></pre></div><h3 id="socket">socket</h3>
+<h4 id="pdo_mysql">[Pdo_mysql]</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pdo_mysql.default_socket <span style="color:#f92672">=</span> /var/lib/mysql/mysql.sock
+</span></span></code></pre></div><h4 id="mysqli">[MySQLi]</h4>
+<blockquote>
+<p>Line:1221 - Instead</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mysqli.default_socket <span style="color:#f92672">=</span> /var/lib/mysql/mysql.sock
+</span></span></code></pre></div><h1 id="二apache22php53">二、Apache2.2+php5.3</h1>
+<h2 id="1-httpdconf-1">1. httpd.conf</h2>
+<ul>
+<li>DSO(Dynamic Shard Object)  <br>
+(Line:55 - Add)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>LoadModule php5_module        modules/libphp5.so
+</span></span></code></pre></div><ul>
+<li>Server Name  <br>
+(Line:99 - Instead)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ServerName localhost:80
+</span></span></code></pre></div><ul>
+<li>Each Directory  <br>
+(Line:118 - Instead)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride all
+</span></span></code></pre></div><ul>
+<li>Document Root  <br>
+(Line:153 - Instead)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride all
+</span></span></code></pre></div><ul>
+<li>Directory Index <br>
+(Line:168 - Instead)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>DirectoryIndex index.html index.php
+</span></span></code></pre></div><ul>
+<li>MIME Type <br>
+(Line:285 - Add)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AddType application/x-httpd-php .php
+</span></span></code></pre></div><h2 id="2-phpini-1">2. php.ini</h2>
+<ul>
+<li>Paths and Directories  <br>
+(Line:796 - Instead)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>include_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/opt/php/lib/php&#34;</span>
+</span></span></code></pre></div><ul>
+<li>socket</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Sock file when using RPM default installation location
+</span></span></code></pre></div><ol>
+<li>[Pdo_mysql] <br>
+(Line:1075 - Instead)</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pdo_mysql.default_socket <span style="color:#f92672">=</span> /var/lib/mysql/mysql.sock
+</span></span></code></pre></div><ol start="2">
+<li>[MySQL]  <br>
+(Line:1229 - Instead)</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mysql.default_socket <span style="color:#f92672">=</span> /var/lib/mysql/mysql.sock
+</span></span></code></pre></div> <a class="read-more" href="/cnblogs2/post/php-lamp2/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-04-13T03:38:08&#43;08:00">
+            13 Apr 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/php-lamp/">安装LAMP</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p> 操作系统：CentOS7.6(x86_64) <br>
+安装方式：源码安装 &amp; RPM包  <br>
+安装目录：/opt/</p>
+<blockquote>
+<p>安装文件：  <br>
+(1) Apache Httpd <a href="http://mirror.bit.edu.cn/apache//httpd/httpd-2.4.39.tar.gz">V2.4.x</a>  <br>
+(2) MariaDB V5.5(系统自带) <br>
+(3) PHP <a href="https://www.php.net/distributions/php-5.6.40.tar.gz">V5.6.x</a></p></blockquote></blockquote>
+<h1 id="一httpd">一、Httpd</h1>
+<p>卸载系统自带httpd（V2.4.6-89）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum remove httpd
+</span></span></code></pre></div><h2 id="1-depend-soft">1. depend soft</h2>
+<h2 id="apr">APR</h2>
+<p><a href="http://mirrors.tuna.tsinghua.edu.cn/apache//apr/apr-1.7.0.tar.gz">down</a></p>
+<h3 id="install">install</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$./configure --prefix<span style="color:#f92672">=</span>/opt/apr
+</span></span><span style="display:flex;"><span>$make <span style="color:#f92672">&amp;&amp;</span> sudo make install
+</span></span></code></pre></div><h2 id="apr-util">APR-util</h2>
+<blockquote>
+<p>Tips: <a href="https://bbs.csdn.net/topics/392191188">https://bbs.csdn.net/topics/392191188</a></p></blockquote>
+<p><a href="http://mirrors.tuna.tsinghua.edu.cn/apache//apr/apr-util-1.6.1.tar.gz">down</a></p>
+<h3 id="expat-devel">expat-devel</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum install expat-devel
+</span></span></code></pre></div><h3 id="install-apr-util">install apr-util</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$./configure --prefix<span style="color:#f92672">=</span>/opt/apr-util <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	    --with-apr<span style="color:#f92672">=</span>/opt/apr <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	    --with-expat<span style="color:#f92672">=</span>/usr/local/expat
+</span></span><span style="display:flex;"><span>$make <span style="color:#f92672">&amp;&amp;</span> sudo make install
+</span></span></code></pre></div><h2 id="install-httpd">install httpd</h2>
+<h3 id="pcre-devel">pcre-devel</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum -y install pcre-devel
+</span></span></code></pre></div><h2 id="setup">Setup</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ tar zxvf httpd-2.4.39.tar.gz
+</span></span><span style="display:flex;"><span>$ &lt;span class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;hljs-built_in&#34;</span>&gt;cd&lt;/span&gt; httpd-2.4.39
+</span></span><span style="display:flex;"><span>$ ./configure --prefix<span style="color:#f92672">=</span>/opt/httpd <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	    --with-apr-util<span style="color:#f92672">=</span>/opt/apr-util <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	    --&lt;span class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;hljs-built_in&#34;</span>&gt;enable&lt;/span&gt;-so <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>        --&lt;span class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;hljs-built_in&#34;</span>&gt;enable&lt;/span&gt;-rewrite
+</span></span><span style="display:flex;"><span>$ make
+</span></span><span style="display:flex;"><span>$ sudo make install
+</span></span></code></pre></div><h1 id="二php">二、PHP</h1>
+<h2 id="依赖包安装">依赖包安装</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum install libxml2-devel <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>            curl-devel <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>            libjpeg-devel <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>            libpng-devel
+</span></span></code></pre></div><p>如果系统没有安装普通包，则安装之。默认已安装。 <br>
+安装libmcrypt</p> <a class="read-more" href="/cnblogs2/post/php-lamp/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-04-13T03:28:08&#43;08:00">
+            13 Apr 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/php-faqs/">veic web的版本使用问题</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>推荐PHP版本<a href="https://windows.php.net/downloads/releases/archives/">v5.6.40/v7.1.33</a></p></blockquote>
+<h1 id="1-v01">1. <a href="https://github.com/xiaobin80/veic_web/archive/v0.1-alpha.zip">v0.1</a></h1>
+<h2 id="1only-variable-references-should-be-returned-by-reference">1）Only variable references should be returned by reference</h2>
+<p><a href="https://github.com/xiaobin80/veic_web/commit/87d0970a3d714372822656fc5189655655f46e11">https://github.com/xiaobin80/veic_web/commit/87d0970a3d714372822656fc5189655655f46e11</a></p>
+<p><img src="https://gitee.com/xiaobin80/csdn/raw/master/images/20190601144425762.png" alt="php encountered"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> $_config[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=&amp;</span> $config;
+</span></span></code></pre></div><p>==&gt;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$_config[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=&amp;</span> $config;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> $_config[<span style="color:#ae81ff">0</span>];
+</span></span></code></pre></div><h2 id="2-sqli">2) sqli</h2>
+<blockquote>
+<p>从PHP5.5之后，会出现</p>
+<blockquote>
+<p>Deprecated: mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in xxx</p></blockquote></blockquote>
+<p>提示mysql_connect()未来将要被移出。</p>
+<blockquote>
+<p>官网的<a href="http://php.net/manual/en/changelog.mysql.php">changelong</a>
+注意: php7.0.x已经移除了mysql.</p></blockquote>
+<p>在php.ini(windows)中注释掉</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>;extension<span style="color:#f92672">=</span>php_mysql.dll
+</span></span></code></pre></div><h1 id="2-mcrypt">2. mcrypt</h1>
+<blockquote>
+<p>php7.2~php7.4</p></blockquote>
+<p>使用 错误抑制符 停止提示。
+修改Encrypt.php（.\system\libraries\）</p>
+<ul>
+<li>Ln273</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$init_size <span style="color:#f92672">=</span> <span style="color:#f92672">@</span><span style="color:#a6e22e">mcrypt_get_iv_size</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_cipher</span>(), $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_mode</span>());
+</span></span></code></pre></div><ul>
+<li>Ln274</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$init_vect <span style="color:#f92672">=</span> <span style="color:#f92672">@</span><span style="color:#a6e22e">mcrypt_create_iv</span>($init_size, <span style="color:#a6e22e">MCRYPT_RAND</span>);
+</span></span></code></pre></div><ul>
+<li>Ln275</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_add_cipher_noise</span>($init_vect<span style="color:#f92672">.@</span><span style="color:#a6e22e">mcrypt_encrypt</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_cipher</span>(), 
+</span></span><span style="display:flex;"><span>    $key, $data, $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_mode</span>(), $init_vect), $key);
+</span></span></code></pre></div><ul>
+<li>Ln291</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$init_size <span style="color:#f92672">=</span> <span style="color:#f92672">@</span><span style="color:#a6e22e">mcrypt_get_iv_size</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_cipher</span>(), $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_mode</span>());
+</span></span></code></pre></div><ul>
+<li></li>
+<li>Ln300</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#a6e22e">rtrim</span>(<span style="color:#f92672">@</span><span style="color:#a6e22e">mcrypt_decrypt</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_cipher</span>(), $key, $data, $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_mode</span>(), $init_vect), <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\0</span><span style="color:#e6db74">&#34;</span>);
+</span></span></code></pre></div><h2 id="down"><a href="https://pecl.php.net/package/mcrypt/1.0.4/windows">down</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>Php</th>
+          <th>mcrypt</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>8.0</td>
+          <td><a href="https://windows.php.net/downloads/pecl/releases/mcrypt/1.0.4/php_mcrypt-1.0.4-8.0-ts-vs16-x64.zip">x64</a></td>
+      </tr>
+      <tr>
+          <td>7.4</td>
+          <td><a href="https://windows.php.net/downloads/pecl/releases/mcrypt/1.0.4/php_mcrypt-1.0.4-7.4-ts-vc15-x64.zip">x64</a></td>
+      </tr>
+      <tr>
+          <td>7.3</td>
+          <td><a href="https://windows.php.net/downloads/pecl/releases/mcrypt/1.0.4/php_mcrypt-1.0.4-7.3-ts-vc15-x64.zip">x64</a></td>
+      </tr>
+      <tr>
+          <td>7.2</td>
+          <td><a href="https://windows.php.net/downloads/pecl/releases/mcrypt/1.0.4/php_mcrypt-1.0.4-7.2-ts-vc15-x64.zip">x64</a></td>
+      </tr>
+  </tbody>
+</table>
+<p>把php_mcrypt.dll拷贝到&quot;ext&quot;中.</p> <a class="read-more" href="/cnblogs2/post/php-faqs/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-04-11T21:08:39&#43;08:00">
+            11 Apr 2020
+        </time>
+    </footer>
+</article>
+
+	
+
+	<nav class="pagination" role="navigation">
+	
+	    <a class="newer-posts" href="/cnblogs2/post/page/5/">&larr; Newer Posts</a>
+	
+	<span class="page-number">Page 6 of 6</span>
+	
+</nav>
+
+</main>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/index.js"></script>
+    
+</body>
+</html>

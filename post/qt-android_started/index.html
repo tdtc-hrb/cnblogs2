@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="Qt6 for android"/>
+<meta name="twitter:description" content="cmdline, ndk"/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="Qt6 for android &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs2/post/qt-android_started/" />
+
+    
+        
+    
+
+    
+    <meta property="og:description" content="cmdline, ndk" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2024-12-03T12:38:08&#43;08:00" />
+
+    
+    
+
+    <title>Qt6 for android &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="cmdline, ndk" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs2/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs2/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs2/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.145.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs2/post/qt-android_started/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null 
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "Qt6 for android",
+    "name": "Qt6 for android",
+    "wordCount":  281 ,
+    "timeRequired": "PT2M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs2/post/qt-android_started/",
+    "datePublished": "2024-12-03T12:38Z",
+    "dateModified": "2024-12-03T12:38Z",
+    
+    
+    "description": "cmdline, ndk",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs2/post/qt-android_started/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs2/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="/cnblogs2/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Qt6 for android</h1>
+        <small>cmdline, ndk</small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2024-12-03T12:38:08&#43;08:00">
+            Dec 3, 2024
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <ul>
+<li>ndk</li>
+<li>avd(Android Virtual Device)</li>
+</ul>
+<h1 id="preparation">Preparation</h1>
+<ul>
+<li>Environment</li>
+<li>cmdline</li>
+</ul>
+<h2 id="environment-variables">Environment variables</h2>
+<p>:warning: <br>
+After installing <a href="https://developer.android.google.cn/studio">Android Studio</a>, don&rsquo;t go into settings yet!</p>
+<h3 id="java-home">Java Home</h3>
+<ul>
+<li>Qt6.8/6.5 <br>
+set <a href="https://adoptium.net/temurin/archive/?variant=openjdk11&amp;version=17">JDK17</a></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\j</span>ava<span style="color:#ae81ff">\j</span>dk-7.0.12+7
+</span></span></code></pre></div><h3 id="android-home"><a href="https://developer.android.com/tools/variables#envar">Android Home</a></h3>
+<p>Sets the path to the SDK installation directory.
+Once set, the value does not typically change and can be shared by multiple users on the same machine.
+ANDROID_SDK_ROOT, which also points to the SDK installation directory, is deprecated.
+If you continue to use it, Android Studio and the Android Gradle plugin will check that the old and new variables are consistent.</p>
+<p>default value:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\&lt;</span>user name&gt;<span style="color:#ae81ff">\A</span>ppData<span style="color:#ae81ff">\L</span>ocal<span style="color:#ae81ff">\A</span>ndroid<span style="color:#ae81ff">\S</span>dk
+</span></span></code></pre></div><h3 id="open-ssl">open ssl</h3>
+<p>Download &ldquo;<a href="https://github.com/KDAB/android_openssl">android openssl</a>&rdquo;
+and place it in the &ldquo;%ANDROID_SDK_ROOT%&rdquo;/&quot;%ANDROID_HOME%&quot; directory.</p>
+<h2 id="cmdline-tools">cmdline-tools</h2>
+<p>Qt Creator&rsquo;s version info(sdk_definitions.json):</p>
+<pre tabindex="0"><code>&lt;QT_INSTALL&gt;\Tools\QtCreator\share\qtcreator\android
+</code></pre><h3 id="versions"><a href="https://packages.debian.org/source/sid/google-android-installers">versions</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>ver</th>
+          <th>name</th>
+          <th>qt creator</th>
+          <th>jdk</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>2.1</td>
+          <td>6609375_latest</td>
+          <td>v5.0.2</td>
+          <td>v8</td>
+      </tr>
+      <tr>
+          <td>3.0</td>
+          <td>6858069_latest</td>
+          <td>none</td>
+          <td>v8</td>
+      </tr>
+      <tr>
+          <td>4.0</td>
+          <td>7302050_latest</td>
+          <td>none</td>
+          <td>v8</td>
+      </tr>
+      <tr>
+          <td>5.0</td>
+          <td>7583922_latest</td>
+          <td>none</td>
+          <td>v8</td>
+      </tr>
+      <tr>
+          <td>6.0</td>
+          <td>8092744_latest</td>
+          <td>none</td>
+          <td>v8</td>
+      </tr>
+      <tr>
+          <td>7.0</td>
+          <td>8512546_latest</td>
+          <td>none</td>
+          <td>v8</td>
+      </tr>
+      <tr>
+          <td>8.0</td>
+          <td>9123335_latest</td>
+          <td>v11.0.3</td>
+          <td>v8</td>
+      </tr>
+      <tr>
+          <td>9.0</td>
+          <td>9477386_latest</td>
+          <td>none</td>
+          <td>v11</td>
+      </tr>
+      <tr>
+          <td>10.0</td>
+          <td>9862592_latest</td>
+          <td>none</td>
+          <td>v11</td>
+      </tr>
+      <tr>
+          <td>11.0</td>
+          <td>10406996_latest</td>
+          <td>none</td>
+          <td>v17</td>
+      </tr>
+      <tr>
+          <td>12.0</td>
+          <td>11076708_latest</td>
+          <td>v14.0.1</td>
+          <td>v17</td>
+      </tr>
+      <tr>
+          <td>13.0</td>
+          <td>11479570_latest</td>
+          <td>none</td>
+          <td>v17</td>
+      </tr>
+  </tbody>
+</table>
+<p>Take v12.0 as an example: Open <a href="https://packages.debian.org/sid/i386/google-android-cmdline-tools-12.0-installer/filelist">list of files</a>
+and see the version information: <strong>11076708_latest</strong></p>
+<pre tabindex="0"><code>/usr/share/google-android-cmdline-tools-12.0-installer/commandlinetools-linux-11076708_latest.zip.sha1
+</code></pre><h3 id="download">Download</h3>
+<p>down <a href="https://dl.google.com/android/repository/commandlinetools-win-10406996_latest.zip">Command line tools only</a>
+放置到&quot;Android Home&quot;目录下,
+解压缩(extract here)这个文件, 进入目录(cmdline-tools), 建立一个新的子文件夹</p>
+<pre tabindex="0"><code>latest
+</code></pre><p>把所有文件(夹)移到这个子目录(latest)中。</p>
+<pre tabindex="0"><code>bin
+lib
+NOTICE.txt
+source.properties
+</code></pre><h1 id="ndk">ndk</h1>
+<table>
+  <thead>
+      <tr>
+          <th>Qt version</th>
+          <th>NDK <a href="https://github.com/android/ndk/wiki/Unsupported-Downloads">version</a></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Qt 6.8</td>
+          <td>r26b(26.1.10909125) and r25b</td>
+      </tr>
+      <tr>
+          <td>Qt 6.5</td>
+          <td>r25b(25.1.8937393)</td>
+      </tr>
+  </tbody>
+</table>
+<p>usb driver:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sdkmanager --sdk_root<span style="color:#f92672">=</span>%ANDROID_SDK_ROOT% --install <span style="color:#e6db74">&#34;extras;google;usb_driver&#34;</span>
+</span></span></code></pre></div><h3 id="qt68">Qt6.8</h3>
+<ul>
+<li>Android SDK</li>
+</ul>
+<pre tabindex="0"><code>sdkmanager --sdk_root=%ANDROID_HOME% --install &#34;platform-tools&#34; &#34;platforms;android-34&#34; &#34;build-tools;34.0.0&#34;
+</code></pre><ul>
+<li>Android NDK</li>
+</ul>
+<pre tabindex="0"><code>sdkmanager --sdk_root=%ANDROID_HOME% --install &#34;ndk;25.1.8937393&#34; &#34;ndk;26.1.10909125&#34;
+</code></pre><h3 id="qt65">Qt6.5</h3>
+<ul>
+<li>Android SDK</li>
+</ul>
+<pre tabindex="0"><code>sdkmanager --sdk_root=%ANDROID_HOME% --install &#34;platform-tools&#34; &#34;platforms;android-31&#34; &#34;build-tools;31.0.0&#34;
+</code></pre><pre tabindex="0"><code>sdkmanager --sdk_root=%ANDROID_HOME% --install &#34;platform-tools&#34; &#34;platforms;android-33&#34; &#34;build-tools;33.0.0&#34;
+</code></pre><ul>
+<li>Android NDK</li>
+</ul>
+<pre tabindex="0"><code>sdkmanager --sdk_root=%ANDROID_HOME% --install &#34;ndk;25.1.8937393&#34;
+</code></pre><h1 id="avd">avd</h1>
+<p>install emulator:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sdkmanager --sdk_root<span style="color:#f92672">=</span>%ANDROID_HOME% --install <span style="color:#e6db74">&#34;emulator&#34;</span> <span style="color:#e6db74">&#34;patcher;v4&#34;</span>
+</span></span></code></pre></div><h3 id="hypervisor">Hypervisor</h3>
+<p>If you use android_x86/android_x86_64, you must install HAXM and AEHD.</p>
+<ul>
+<li>HAXM</li>
+</ul>
+<pre tabindex="0"><code>android_x86
+</code></pre><ul>
+<li>AEHD</li>
+</ul>
+<pre tabindex="0"><code>android_x86_64
+</code></pre><h1 id="ref">Ref</h1>
+<ul>
+<li><a href="https://doc.qt.io/qt-6/android-getting-started.html">qt6</a></li>
+<li><a href="https://doc.qt.io/qt-6.8/android-getting-started.html">qt6.8</a></li>
+<li><a href="https://doc.qt.io/qt-6.5/android-getting-started.html">qt6.5</a></li>
+</ul>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Qt6%20for%20android&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fqt-android_started%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fqt-android_started%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fqt-android_started%2f&amp;description=Qt6%20for%20android"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fqt-android_started%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/cnblogs2/post/qt-webview/">
+          <section class="post">
+              <h2>qtwebview minibrowser example</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs2/post/vc-sqlite3lib/">
+          <section class="post">
+              <h2>Windows的SQLite静态库</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/index.js"></script>
+    
+</body>
+</html>
+

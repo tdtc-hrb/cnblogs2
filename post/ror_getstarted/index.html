@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="开始Ruby On Rails"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="开始Ruby On Rails &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs2/post/ror_getstarted/" />
+
+    
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2024-09-30T08:08:08&#43;08:00" />
+
+    
+    
+
+    <title>开始Ruby On Rails &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="&lt;h1 id=&#34;prepare&#34;&gt;Prepare&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://tdtc-hrb.github.io/csdn/post/nodejs-ubuntu/&#34;&gt;nodejs&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;foreman&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs2/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs2/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs2/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.145.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs2/post/ror_getstarted/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null 
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "开始Ruby On Rails",
+    "name": "开始Ruby On Rails",
+    "wordCount":  477 ,
+    "timeRequired": "PT3M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs2/post/ror_getstarted/",
+    "datePublished": "2024-09-30T08:08Z",
+    "dateModified": "2024-09-30T08:08Z",
+    
+    
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs2/post/ror_getstarted/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs2/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="/cnblogs2/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">开始Ruby On Rails</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2024-09-30T08:08:08&#43;08:00">
+            Sep 30, 2024
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <h1 id="prepare">Prepare</h1>
+<ul>
+<li>
+<p><a href="https://tdtc-hrb.github.io/csdn/post/nodejs-ubuntu/">nodejs</a></p>
+</li>
+<li>
+<p>foreman</p>
+</li>
+</ul>
+<pre tabindex="0"><code>gem install foreman
+</code></pre><h2 id="mysql-dev">mysql-dev</h2>
+<ul>
+<li>ubuntu</li>
+</ul>
+<pre tabindex="0"><code>sudo apt install mysql-client libmysqlclient-dev
+gem install mysql2
+</code></pre><h3 id="debian"><a href="https://stackoverflow.com/a/34384709">Debian</a></h3>
+<ul>
+<li>mariadb</li>
+</ul>
+<pre tabindex="0"><code>sudo apt-get install mariadb-server
+</code></pre><ul>
+<li><a href="https://github.com/ansible-community/ara-collection/issues/8">mariadbclient-dev</a></li>
+</ul>
+<pre tabindex="0"><code>sudo apt-get install libmariadb-dev-compat libmariadb-dev
+</code></pre><ul>
+<li><a href="https://stackoverflow.com/questions/72000977/how-do-i-install-libmysqlclient21-on-debianbuster-slim-based-docker-image">client</a></li>
+</ul>
+<pre tabindex="0"><code>sudo apt-get install mariadb-client mysql-common default-mysql-client
+</code></pre><ul>
+<li>mysql2</li>
+</ul>
+<pre tabindex="0"><code>gem install mysql2
+</code></pre><h2 id="yarn">Yarn</h2>
+<p>upload <a href="https://github.com/yarnpkg/yarn/releases/download/v1.22.22/yarn_1.22.22_all.deb">yarn_1.22.22_all.deb</a> to ubuntu:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>scp d:\yarn_1.22.22_all.deb tdtc@192.168.3.99:/home/tdtc/
+</span></span></code></pre></div><p>install:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x yarn_1.22.22_all.deb
+</span></span><span style="display:flex;"><span>sudo dpkg -i yarn_1.22.22_all.deb
+</span></span></code></pre></div><h1 id="creating-a-new-rails-project">Creating a New Rails Project</h1>
+<p>new:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rails new veic_web-r2 -j esbuild --css bulma -d mysql
+</span></span></code></pre></div><h2 id="upload-images">upload images</h2>
+<p>windows 10:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>tar zcvf img.tar.gz ./img/ --transform s/img/images/
+</span></span><span style="display:flex;"><span>scp d:\projects\img.tar.gz tdtc@192.168.3.99:/home/tdtc/veic_web-r2/app/assets/
+</span></span></code></pre></div><p>ubuntu:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd ~/veic_web-r2/app/assets/
+</span></span><span style="display:flex;"><span>tar zxvf img.tar.gz
+</span></span></code></pre></div><h2 id="config-db">config db</h2>
+<pre tabindex="0"><code>vi ./config/database.yml
+</code></pre><p>remote user:</p>
+<pre tabindex="0"><code>username: tdtc2022
+password: qaz1xsw2
+</code></pre><p>Remote db server:</p>
+<pre tabindex="0"><code>host: 192.168.3.128
+</code></pre><h1 id="retrieval">Retrieval</h1>
+<pre tabindex="0"><code>cd veic_web-r2
+rails generate controller Product index --skip-routes
+</code></pre><h2 id="data-manage">data manage</h2>
+<pre tabindex="0"><code>rails console
+</code></pre><h3 id="model">model</h3>
+<ul>
+<li>Parameter</li>
+</ul>
+<pre tabindex="0"><code>rails generate model Parameter --skip-migration
+</code></pre><ul>
+<li>Image</li>
+</ul>
+<pre tabindex="0"><code>rails generate model Image --skip-migration
+</code></pre><ul>
+<li>Product</li>
+</ul>
+<pre tabindex="0"><code>rails generate model Product parameter:references image:references --skip-migration
+</code></pre><h3 id="3nf">3NF</h3>
+<ul>
+<li>Parameter <br>
+add &ldquo;./app/models/parameter.rb&rdquo;:</li>
+</ul>
+<pre tabindex="0"><code>has_many :products
+</code></pre><ul>
+<li>Image <br>
+add &ldquo;./app/models/image.rb&rdquo;:</li>
+</ul>
+<pre tabindex="0"><code>has_many :products
+</code></pre><h2 id="showing-product-data">Showing product data</h2>
+<p>see routes:</p>
+<pre tabindex="0"><code>rails routes
+</code></pre><p>default Action name:</p>
+<pre tabindex="0"><code>       Prefix Verb   URI Pattern                    Controller#Action
+         root GET    /                              product#index
+product_index GET    /product(.:format)             product#index
+              POST   /product(.:format)             product#create
+  new_product GET    /product/new(.:format)         product#new
+ edit_product GET    /product/:id/edit(.:format)    product#edit
+      product GET    /product/:id(.:format)         product#show
+              PATCH  /product/:id(.:format)         product#update
+              PUT    /product/:id(.:format)         product#update
+              DELETE /product/:id(.:format)         product#destroy
+</code></pre><p>Modify route in &ldquo;./config/routes.rb&rdquo;:</p>
+<pre tabindex="0"><code>  resources :product do
+    collection do
+      get &#39;catalog&#39;
+    end
+  end
+</code></pre><h3 id="actions">Actions</h3>
+<p>In &ldquo;./app/controllers/product_controller.rb&rdquo;</p>
+<ul>
+<li>default</li>
+</ul>
+<pre tabindex="0"><code>  def index
+    @products = Product.all
+  end
+
+  def show
+    @product = Product.find(params[:id])
+  end
+</code></pre><ul>
+<li>Custom</li>
+</ul>
+<pre tabindex="0"><code>  def catalog
+    @product = Product.find_by(name: params[:name], lang_id: params[:lang])
+    @parameter = Parameter.find(@product.param_id)
+    @image = Image.find(@product.img_id)
+  end
+</code></pre><h3 id="views">views</h3>
+<ul>
+<li>index <br>
+in &ldquo;./app/views/product/index.html.erb&rdquo;:</li>
+</ul>
+<pre tabindex="0"><code>&lt;h1&gt;Products&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;% @products.each do |product| %&gt;
+    &lt;li&gt;
+      &lt;%= link_to product.name + &#34; - &#34; + product.lang_id.to_s, product %&gt;
+    &lt;/li&gt;
+  &lt;% end %&gt;
+&lt;/ul&gt;
+</code></pre><ul>
+<li>show <br>
+in &ldquo;./app/views/product/show.html.erb&rdquo;:</li>
+</ul>
+<pre tabindex="0"><code>&lt;h1&gt;&lt;%= @product.name %&gt;&lt;/h1&gt;
+
+&lt;p&gt;
+  &lt;%= @product.description %&gt;
+&lt;/p&gt;
+</code></pre><ul>
+<li>catalog <br>
+In &ldquo;./app/views/product/catalog.html.erb&rdquo; with bulma:</li>
+</ul>
+<pre tabindex="0"><code>&lt;h1&gt;&lt;%= @product.name %&gt;&lt;/h1&gt;
+
+&lt;div id=&#34;tabs-with-content&#34;&gt;
+  &lt;div class=&#34;tabs is-centered&#34;&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a&gt;Home&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a&gt;Tech Parameters&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;section class=&#34;tab-content&#34;&gt;
+      &lt;table class=&#34;table&#34;&gt;
+        &lt;tbody&gt;
+          &lt;td&gt;
+            &lt;%= image_tag &#34;#{@image.name}&#34; %&gt;
+          &lt;/td&gt;
+          &lt;td&gt;
+            &lt;%= @product.description %&gt;
+          &lt;/td&gt;
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/section&gt;
+    &lt;section class=&#34;tab-content&#34;&gt;
+      &lt;%= @parameter.ipxx %&gt;
+    &lt;/section&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><h2 id="launch">launch</h2>
+<p>startup server:</p>
+<pre tabindex="0"><code>$ ./bin/dev
+</code></pre><h3 id="config-env">config env</h3>
+<ul>
+<li>edit Procfile.dev</li>
+</ul>
+<pre tabindex="0"><code>web: env RUBY_DEBUG_OPEN=true bin/rails server -p 3000 -b 0.0.0.0
+</code></pre><p>If the port is defined in /bin/dev, then:</p>
+<pre tabindex="0"><code>web: env RUBY_DEBUG_OPEN=true bin/rails server -b 0.0.0.0
+</code></pre><h3 id="allow-port">allow port</h3>
+<pre tabindex="0"><code>$ sudo ufw allow 3000
+</code></pre><p>If it is a clone project, you need to execute:</p>
+<pre tabindex="0"><code>$ bundle exec rake app:update:bin
+</code></pre><h3 id="permission-denied">Permission denied</h3>
+<ul>
+<li>Error message</li>
+</ul>
+<pre tabindex="0"><code>./bin/dev: Permission denied
+ env: ‘bin/rails’: Permission denied
+</code></pre><ul>
+<li>exec</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x ./bin/dev
+</span></span><span style="display:flex;"><span>sudo chmod +x ./bin/rails
+</span></span></code></pre></div><h3 id="node-modules">node modules</h3>
+<p>When moving this folder, some files will be lost!</p>
+<pre tabindex="0"><code>esbuild: not found
+sass: not found
+</code></pre><p>Need to rebuild:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rm -rf ./node_modules
+</span></span><span style="display:flex;"><span>npm install
+</span></span></code></pre></div><h3 id="web-access-addr">web access addr</h3>
+<ul>
+<li><a href="http://192.168.3.99:3000/product/">product list</a></li>
+<li><a href="http://192.168.3.99:3000/product/1">product id1</a></li>
+<li><a href="http://192.168.3.99:3000/product/catalog?name=aei&amp;lang=4136">product catalog</a></li>
+</ul>
+<h1 id="ref">Ref</h1>
+<ul>
+<li><a href="https://stackoverflow.com/a/9333316">runtimes.rb:58:in `autodetect&rsquo;: Could not find a JavaScript runtime.</a></li>
+<li><a href="https://stackoverflow.com/a/11178349">Ruby on rails route to a custom method in the controller from the view</a></li>
+<li><a href="https://stackoverflow.com/a/56686825">Weird rails error &ldquo;permission denied: bin/rails&rdquo; for old rails apps</a></li>
+<li><a href="https://eiji.dev/bulma-tabs-with-content.html">Bulma: Tabs with Content</a></li>
+<li><a href="https://bulma.io/documentation/columns/options/#multiline">bulma css grid</a></li>
+</ul>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=%e5%bc%80%e5%a7%8bRuby%20On%20Rails&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fror_getstarted%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fror_getstarted%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fror_getstarted%2f&amp;description=%e5%bc%80%e5%a7%8bRuby%20On%20Rails"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fror_getstarted%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/cnblogs2/post/asp-base/">
+          <section class="post">
+              <h2>3小时搞定asp.net 9.0</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs2/post/ror_installation/">
+          <section class="post">
+              <h2>安装Ruby On Rails</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/index.js"></script>
+    
+</body>
+</html>
+

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="veic web的版本使用问题"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="veic web的版本使用问题 &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs2/post/php-faqs/" />
+
+    
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2020-04-11T21:08:39&#43;08:00" />
+
+    
+    
+
+    <title>veic web的版本使用问题 &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="&lt;blockquote&gt;
+&lt;p&gt;推荐PHP版本&lt;a href=&#34;https://windows.php.net/downloads/releases/archives/&#34;&gt;v5.6.40/v7.1.33&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h1 id=&#34;1-v01&#34;&gt;1. &lt;a href=&#34;https://gi" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs2/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs2/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs2/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.145.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs2/post/php-faqs/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null 
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "veic web的版本使用问题",
+    "name": "veic web的版本使用问题",
+    "wordCount":  120 ,
+    "timeRequired": "PT1M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs2/post/php-faqs/",
+    "datePublished": "2020-04-11T21:08Z",
+    "dateModified": "2020-04-11T21:08Z",
+    
+    
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs2/post/php-faqs/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs2/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="/cnblogs2/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">veic web的版本使用问题</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2020-04-11T21:08:39&#43;08:00">
+            Apr 11, 2020
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <blockquote>
+<p>推荐PHP版本<a href="https://windows.php.net/downloads/releases/archives/">v5.6.40/v7.1.33</a></p></blockquote>
+<h1 id="1-v01">1. <a href="https://github.com/xiaobin80/veic_web/archive/v0.1-alpha.zip">v0.1</a></h1>
+<h2 id="1only-variable-references-should-be-returned-by-reference">1）Only variable references should be returned by reference</h2>
+<p><a href="https://github.com/xiaobin80/veic_web/commit/87d0970a3d714372822656fc5189655655f46e11">https://github.com/xiaobin80/veic_web/commit/87d0970a3d714372822656fc5189655655f46e11</a></p>
+<p><img src="https://gitee.com/xiaobin80/csdn/raw/master/images/20190601144425762.png" alt="php encountered"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> $_config[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=&amp;</span> $config;
+</span></span></code></pre></div><p>==&gt;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$_config[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=&amp;</span> $config;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> $_config[<span style="color:#ae81ff">0</span>];
+</span></span></code></pre></div><h2 id="2-sqli">2) sqli</h2>
+<blockquote>
+<p>从PHP5.5之后，会出现</p>
+<blockquote>
+<p>Deprecated: mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in xxx</p></blockquote></blockquote>
+<p>提示mysql_connect()未来将要被移出。</p>
+<blockquote>
+<p>官网的<a href="http://php.net/manual/en/changelog.mysql.php">changelong</a>
+注意: php7.0.x已经移除了mysql.</p></blockquote>
+<p>在php.ini(windows)中注释掉</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>;extension<span style="color:#f92672">=</span>php_mysql.dll
+</span></span></code></pre></div><h1 id="2-mcrypt">2. mcrypt</h1>
+<blockquote>
+<p>php7.2~php7.4</p></blockquote>
+<p>使用 错误抑制符 停止提示。
+修改Encrypt.php（.\system\libraries\）</p>
+<ul>
+<li>Ln273</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$init_size <span style="color:#f92672">=</span> <span style="color:#f92672">@</span><span style="color:#a6e22e">mcrypt_get_iv_size</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_cipher</span>(), $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_mode</span>());
+</span></span></code></pre></div><ul>
+<li>Ln274</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$init_vect <span style="color:#f92672">=</span> <span style="color:#f92672">@</span><span style="color:#a6e22e">mcrypt_create_iv</span>($init_size, <span style="color:#a6e22e">MCRYPT_RAND</span>);
+</span></span></code></pre></div><ul>
+<li>Ln275</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_add_cipher_noise</span>($init_vect<span style="color:#f92672">.@</span><span style="color:#a6e22e">mcrypt_encrypt</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_cipher</span>(), 
+</span></span><span style="display:flex;"><span>    $key, $data, $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_mode</span>(), $init_vect), $key);
+</span></span></code></pre></div><ul>
+<li>Ln291</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$init_size <span style="color:#f92672">=</span> <span style="color:#f92672">@</span><span style="color:#a6e22e">mcrypt_get_iv_size</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_cipher</span>(), $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_mode</span>());
+</span></span></code></pre></div><ul>
+<li></li>
+<li>Ln300</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#a6e22e">rtrim</span>(<span style="color:#f92672">@</span><span style="color:#a6e22e">mcrypt_decrypt</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_cipher</span>(), $key, $data, $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">_get_mode</span>(), $init_vect), <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\0</span><span style="color:#e6db74">&#34;</span>);
+</span></span></code></pre></div><h2 id="down"><a href="https://pecl.php.net/package/mcrypt/1.0.4/windows">down</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>Php</th>
+          <th>mcrypt</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>8.0</td>
+          <td><a href="https://windows.php.net/downloads/pecl/releases/mcrypt/1.0.4/php_mcrypt-1.0.4-8.0-ts-vs16-x64.zip">x64</a></td>
+      </tr>
+      <tr>
+          <td>7.4</td>
+          <td><a href="https://windows.php.net/downloads/pecl/releases/mcrypt/1.0.4/php_mcrypt-1.0.4-7.4-ts-vc15-x64.zip">x64</a></td>
+      </tr>
+      <tr>
+          <td>7.3</td>
+          <td><a href="https://windows.php.net/downloads/pecl/releases/mcrypt/1.0.4/php_mcrypt-1.0.4-7.3-ts-vc15-x64.zip">x64</a></td>
+      </tr>
+      <tr>
+          <td>7.2</td>
+          <td><a href="https://windows.php.net/downloads/pecl/releases/mcrypt/1.0.4/php_mcrypt-1.0.4-7.2-ts-vc15-x64.zip">x64</a></td>
+      </tr>
+  </tbody>
+</table>
+<p>把php_mcrypt.dll拷贝到&quot;ext&quot;中.</p>
+<h2 id="配置">配置</h2>
+<p>在Dynamic Extensions最上边添加如下:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>extension<span style="color:#f92672">=</span>php_mcrypt.dll
+</span></span></code></pre></div><h1 id="ref">Ref</h1>
+<ul>
+<li><a href="https://news-web.php.net/php.internals/110907">Microsoft: We&rsquo;re pulling the plug on Windows builds of programming language - 微软停止支持PHP8</a></li>
+</ul>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=veic%20web%e7%9a%84%e7%89%88%e6%9c%ac%e4%bd%bf%e7%94%a8%e9%97%ae%e9%a2%98&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fphp-faqs%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fphp-faqs%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fphp-faqs%2f&amp;description=veic%20web%e7%9a%84%e7%89%88%e6%9c%ac%e4%bd%bf%e7%94%a8%e9%97%ae%e9%a2%98"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fphp-faqs%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/cnblogs2/post/php-lamp/">
+          <section class="post">
+              <h2>安装LAMP</h2>
+              
+          </section>
+      </a>
+  
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/index.js"></script>
+    
+</body>
+</html>
+

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="Distributed traceability with Spring Cloud: Sleuth and Zipkin"/>
+<meta name="twitter:description" content="zipkin 2.12/2.14&#43;"/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="Distributed traceability with Spring Cloud: Sleuth and Zipkin &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs2/post/trace-zipkin-config/" />
+
+    
+        
+    
+
+    
+    <meta property="og:description" content="zipkin 2.12/2.14&#43;" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2022-05-25T08:08:08&#43;08:00" />
+
+    
+    
+
+    <title>Distributed traceability with Spring Cloud: Sleuth and Zipkin &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="zipkin 2.12/2.14&#43;" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs2/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs2/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs2/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.145.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs2/post/trace-zipkin-config/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null 
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "Distributed traceability with Spring Cloud: Sleuth and Zipkin",
+    "name": "Distributed traceability with Spring Cloud: Sleuth and Zipkin",
+    "wordCount":  521 ,
+    "timeRequired": "PT3M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs2/post/trace-zipkin-config/",
+    "datePublished": "2022-05-25T08:08Z",
+    "dateModified": "2022-05-25T08:08Z",
+    
+    
+    "description": "zipkin 2.12/2.14+",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs2/post/trace-zipkin-config/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs2/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="/cnblogs2/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Distributed traceability with Spring Cloud: Sleuth and Zipkin</h1>
+        <small>zipkin 2.12/2.14&#43;</small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2022-05-25T08:08:08&#43;08:00">
+            May 25, 2022
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <h1 id="i-sleuth">I. Sleuth</h1>
+<h2 id="0-concept">0. Concept</h2>
+<ul>
+<li>
+<p>Trace <br>
+A set of spans that form a call tree structure, forms the trace of the request.</p>
+</li>
+<li>
+<p>Span <br>
+It is the basic unit of work, for example a call to a service.
+They are identified with a span ID and a trace ID to which span is owned.
+They have start and end, and with it you get track the response time between requests.</p>
+</li>
+<li>
+<p>Tag <br>
+Key/value pair that identifies certain information in the span.
+It doesn&rsquo;t contain timestamps, it just identifies.
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20181202033721712.png" alt="ms info">
+<strong>Annotation:</strong> Used to record the existence of an event in time.
+With <a href="https://github.com/openzipkin/brave">Brave</a> instrumentation,
+we no longer need to set special events for Zipkin to understand who the client and server are,
+where the request started, and where it ended.
+For learning purposes, however, we mark these events to highlight what kind of an action took place.</p>
+</li>
+<li>
+<p>cs: Client Sent.  <br>
+The client has made a request. This annotation indicates the start of the span.</p>
+</li>
+<li>
+<p>sr: Server Received: The server side got the request and started processing it. <br>
+Subtracting the cs timestamp from this timestamp reveals the network latency.</p>
+</li>
+<li>
+<p>ss: Server Sent.  <br>
+Annotated upon completion of request processing (when the response got sent back to the client).
+Subtracting the sr timestamp from this timestamp reveals the time needed by the server side to process the request.</p>
+</li>
+<li>
+<p>cr: Client Received. Signifies the end of the span.  <br>
+The client has successfully received the response from the server side.
+Subtracting the cs timestamp from this timestamp reveals the whole time needed by the client to receive the response from the server.</p>
+</li>
+</ul>
+<h2 id="1-pom">1. pom</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.cloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;artifactId&gt;</span>spring-cloud-starter-sleuth<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><h2 id="2-config">2. config</h2>
+<h3 id="1-sampler">1) sampler</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spring</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">sleuth</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">sampler</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">probability</span>: <span style="color:#ae81ff">1.0</span>
+</span></span></code></pre></div><h1 id="ii-zipkin">II. zipkin</h1>
+<ul>
+<li>http
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20181202025422633.png" alt="http way"></li>
+<li>Messaging Brokers
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20181202025518778.png" alt="Messaging Brokers way"></li>
+</ul>
+<h2 id="0-zipkin-client">0. zipkin client</h2>
+<h3 id="1-pom-1">1) pom</h3>
+<p>spring boot 2.4.x(2020.0) before:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.cloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;artifactId&gt;</span>spring-cloud-starter-zipkin<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><p>spring boot 2.4.x(2020.0) later:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.cloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;artifactId&gt;</span>spring-cloud-sleuth-zipkin<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><h3 id="2-config-1">2) config</h3>
+<h4 id="base-url">base url</h4>
+<p>old:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spring</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">zipkin</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">base-url</span>: <span style="color:#ae81ff">http://localhost:9411</span>
+</span></span></code></pre></div><p>new:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spring</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">zipkin</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">baseUrl</span>: <span style="color:#ae81ff">http://localhost:9411</span>
+</span></span></code></pre></div><h4 id="sender">sender</h4>
+<h5 id="rabbitmq">RabbitMQ</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spring</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">zipkin</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">sender</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">type</span>: <span style="color:#ae81ff">RABBIT</span>
+</span></span></code></pre></div><h5 id="kafka">Kafka</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spring</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">zipkin</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">sender</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">type</span>: <span style="color:#ae81ff">KAFKA</span>
+</span></span></code></pre></div><h5 id="web">Web</h5>
+<p>default</p>
+<h2 id="1-zipkin-server">1. zipkin server</h2>
+<p><a href="https://github.com/openzipkin/zipkin/issues/1962">upgrade to Spring Boot 2.0 NoClassDefFoundError UndertowEmbeddedServletContainerFactory</a></p>
+<h3 id="1-down">1) down</h3>
+<p>Note: ES2.4.x最高只能匹配到<a href="https://repo1.maven.org/maven2/io/zipkin/java/zipkin-server/2.12.9/zipkin-server-2.12.9-exec.jar">v2.12.9</a></p>
+<p>About v2.14+:</p>
+<p><a href="https://repo1.maven.org/maven2/io/zipkin/zipkin-server/">The Elasticsearch component uses Elasticsearch 5+ features, but is tested against Elasticsearch 6-7.x</a></p>
+<p>Simply put, only supports <a href="https://github.com/openzipkin/zipkin#elasticsearch">v6-7.x</a>.</p>
+<h3 id="2-run">2) run</h3>
+<blockquote>
+<p>es2.4.x/7.x安装在WSL中。</p></blockquote>
+<p>详细 see<a href="https://tdtc-hrb.github.io/cnblogs/post/es24-install/">Elasticsearch 2.4 安装</a></p>
+<p>详细 see<a href="https://tdtc-hrb.github.io/cnblogs/post/ES6p-install/">Elasticsearch 7.x 安装</a></p>
+<h4 id="es24x">es2.4.x</h4>
+<ul>
+<li>for Rabbit</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -jar zipkin-server-2.12.9-exec.jar --RABBIT_URI<span style="color:#f92672">=</span>amqp://admin:admin@192.168.0.19:5672/sleuth --STORAGE_TYPE<span style="color:#f92672">=</span>elasticsearch --ES_HOSTS<span style="color:#f92672">=</span>192.168.0.116:9200 --ES_HTTP_LOGGING<span style="color:#f92672">=</span>BASIC
+</span></span></code></pre></div><ul>
+<li>for kafka</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -jar zipkin-server-2.12.9-exec.jar --KAFKA_BOOTSTRAP_SERVERS<span style="color:#f92672">=</span>192.168.188.107:9092,192.168.188.108:9092,192.168.188.109:9092 --STORAGE_TYPE<span style="color:#f92672">=</span>elasticsearch --ES_HOSTS<span style="color:#f92672">=</span>http://localhost:9200 --ES_HTTP_LOGGING<span style="color:#f92672">=</span>BASIC
+</span></span></code></pre></div><h4 id="es7x">es7.x</h4>
+<ul>
+<li>for Rabbit</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -jar zipkin-server-2.23.16-exec.jar --RABBIT_URI<span style="color:#f92672">=</span>amqp://admin:admin@192.168.3.50:5672/sleuth --STORAGE_TYPE<span style="color:#f92672">=</span>elasticsearch --ES_HOSTS<span style="color:#f92672">=</span>192.168.3.128:9200 --ES_HTTP_LOGGING<span style="color:#f92672">=</span>BASIC
+</span></span></code></pre></div><ul>
+<li>for kafka</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -jar zipkin-server-2.23.16-exec.jar --KAFKA_BOOTSTRAP_SERVERS<span style="color:#f92672">=</span>192.168.3.107:9092,192.168.3.108:9092,192.168.3.109:9092 --STORAGE_TYPE<span style="color:#f92672">=</span>elasticsearch --ES_HOSTS<span style="color:#f92672">=</span>http://localhost:9200 --ES_HTTP_LOGGING<span style="color:#f92672">=</span>BASIC
+</span></span></code></pre></div><h1 id="iii-mq">III. MQ</h1>
+<h2 id="1-rabbitmq">1. RabbitMQ</h2>
+<h3 id="0-pom">0) pom</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.cloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;artifactId&gt;</span>spring-cloud-stream-binder-rabbit<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><h3 id="1-config">1) config</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spring</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">rabbitmq</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">addresses</span>: <span style="color:#ae81ff">127.0.0.1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">port</span>: <span style="color:#ae81ff">5672</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">username</span>: <span style="color:#ae81ff">admin</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">password</span>: <span style="color:#ae81ff">admin</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">virtual-host</span>: <span style="color:#ae81ff">sleuth</span>
+</span></span></code></pre></div><h3 id="2-virtual-hosts">2) virtual hosts</h3>
+<p>切换到Admin选项卡，点击右侧的virtual hosts
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20190702001931753.png" alt="RabbitMQ info"></p>
+<p>Add a new virtual host:</p>
+<pre tabindex="0"><code>name: sleuth
+``
+
+## 2. Kafka
+### 0) pom
+```xml
+&lt;dependency&gt;
+  &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+  &lt;artifactId&gt;spring-cloud-stream-binder-kafka&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre><h3 id="1-config-1">1) config</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">spring</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">kafka</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">bootstrap-servers</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">192.168.3.127</span>:<span style="color:#ae81ff">9092</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">192.168.3.128</span>:<span style="color:#ae81ff">9092</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">192.168.3.129</span>:<span style="color:#ae81ff">9092</span>
+</span></span></code></pre></div><h1 id="iv-effect-diagram">IV. Effect Diagram</h1>
+<h2 id="0-gateway">0. gateway</h2>
+<p>http://localhost:8311/user/listPage
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20181203030036197.png" alt="browser info1"></p>
+<h2 id="1-zipkin-server-1">1. zipkin server</h2>
+<p>http://localhost:9411
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20181203021235698.png" alt="browser info2"></p>
+<h2 id="2-rabbitmq">2. RabbitMQ</h2>
+<blockquote>
+<p>连接了4个服务：zipkin server</p>
+<blockquote>
+<p>gateway-&gt;user-service-&gt;userDetails</p></blockquote></blockquote>
+<p>http://192.168.3.19:15672/#/connections
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20190703112507593.png" alt="browser info3"></p>
+<h2 id="3-es24x">3. ES2.4.x</h2>
+<p>http://localhost:9200/_plugin/elasticsearch-head
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20190318221631051.png" alt="browser info4"></p>
+<h1 id="reference">Reference</h1>
+<ul>
+<li><a href="https://www.paradigmadigital.com/dev/trazabilidad-distribuida-spring-cloud-sleuth-zipkin/">Trazabilidad Distribuida con Spring Cloud: Sleuth y Zipkin</a></li>
+<li><a href="https://toomuchcoding.com/articles/2021/01/04/spring-cloud-sleuth-3-0-0-released/">Spring Cloud Sleuth 3.0.0 released</a></li>
+<li><a href="https://stackoverflow.com/questions/68927591/why-need-spring-sleuth-when-spring-cloud-starter-zipkin-uses-zipkin-brave">why need Spring sleuth when spring-cloud-starter-zipkin uses zipkin.brave?</a></li>
+</ul>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Distributed%20traceability%20with%20Spring%20Cloud%3a%20Sleuth%20and%20Zipkin&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2ftrace-zipkin-config%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2ftrace-zipkin-config%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2ftrace-zipkin-config%2f&amp;description=Distributed%20traceability%20with%20Spring%20Cloud%3a%20Sleuth%20and%20Zipkin"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2ftrace-zipkin-config%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/cnblogs2/post/es24-install/">
+          <section class="post">
+              <h2>Elasticsearch 2.4 安装</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs2/post/mq-kafka-config/">
+          <section class="post">
+              <h2>Install and Configure Apache Kafka</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/index.js"></script>
+    
+</body>
+</html>
+

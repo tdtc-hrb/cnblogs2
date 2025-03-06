@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="SQLite在.net core的demo"/>
+<meta name="twitter:description" content="使用sqlite-net-sqlcipher"/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="SQLite在.net core的demo &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs2/post/sqlite.net.core/" />
+
+    
+        
+    
+
+    
+    <meta property="og:description" content="使用sqlite-net-sqlcipher" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2021-11-19T19:18:08&#43;08:00" />
+
+    
+    
+
+    <title>SQLite在.net core的demo &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="使用sqlite-net-sqlcipher" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs2/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs2/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs2/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.145.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs2/post/sqlite.net.core/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null 
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "SQLite在.net core的demo",
+    "name": "SQLite在.net core的demo",
+    "wordCount":  283 ,
+    "timeRequired": "PT2M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs2/post/sqlite.net.core/",
+    "datePublished": "2021-11-19T19:18Z",
+    "dateModified": "2021-11-19T19:18Z",
+    
+    
+    "description": "使用sqlite-net-sqlcipher",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs2/post/sqlite.net.core/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs2/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="/cnblogs2/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">SQLite在.net core的demo</h1>
+        <small>使用sqlite-net-sqlcipher</small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2021-11-19T19:18:08&#43;08:00">
+            Nov 19, 2021
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>IDE: VS2022 <br>
+语言: C#</p>
+<p>简介：
+本示例使用SQLite的密码、外键功能。</p>
+<h1 id="一工程设置">一、工程设置</h1>
+<h2 id="1-nuget">1. NuGet</h2>
+<blockquote>
+<p>Tools -&gt; NuGet Package Manager -&gt; Package Manager Console
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016115835.png" alt="sqlite-net-pcl"></p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Install-Package sqlite-net-pcl -Version 1.8.116
+</span></span></code></pre></div><p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016121731.png" alt="sqlite-net-sqlcipher"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Install-Package sqlite-net-sqlcipher -Version 1.8.116
+</span></span></code></pre></div><p>完整的窗体：
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016122849.png" alt="program ui"></p>
+<h2 id="2-控件">2. 控件</h2>
+<p>拖拽4个TextBox、4个Button、1个DataGridView</p>
+<h1 id="二功能实现">二、功能实现</h1>
+<p>使用Synchronous API来实现连接、factoryCar表的查询、插入等操作。</p>
+<h2 id="0-entity-class">0. Entity class</h2>
+<blockquote>
+<p>注意：主键和外键</p></blockquote>
+<p>建立两个实体类：<a href="https://gitee.com/xiaobin80/test-sqlite-net-sqlcipher/blob/master/FactoryCar.cs">FactoryCar</a>和<a href="https://gitee.com/xiaobin80/test-sqlite-net-sqlcipher/blob/master/MarqueCar.cs">MarqueCar</a></p>
+<h2 id="1-连接">1. 连接</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>asyncConn <span style="color:#f92672">=</span> new SQLite.<span style="color:#a6e22e">SQLiteAsyncConnection</span>(options);
+</span></span></code></pre></div><p>其中，options是SQLiteConnectionString实例化的字符串。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>var options <span style="color:#f92672">=</span> new <span style="color:#a6e22e">SQLiteConnectionString</span>(edtDB.Text, true,
+</span></span><span style="display:flex;"><span>                                key: edtPwd.Text,
+</span></span><span style="display:flex;"><span>                                preKeyAction: db <span style="color:#f92672">=&gt;</span> db.<span style="color:#a6e22e">Execute</span>(<span style="color:#e6db74">&#34;PRAGMA cipher_default_use_hmac = OFF;&#34;</span>),
+</span></span><span style="display:flex;"><span>                                postKeyAction: db <span style="color:#f92672">=&gt;</span> db.<span style="color:#a6e22e">Execute</span>(<span style="color:#e6db74">&#34;PRAGMA kdf_iter = 128000;&#34;</span>));
+</span></span></code></pre></div><h2 id="2-查询">2. 查询</h2>
+<h3 id="异步查询">异步查询</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>var factoryCars <span style="color:#f92672">=</span> asyncConn.Table<span style="color:#f92672">&lt;</span>FactoryCar<span style="color:#f92672">&gt;</span>().<span style="color:#a6e22e">Where</span>(fc <span style="color:#f92672">=&gt;</span> fc.Name.<span style="color:#a6e22e">Contains</span>(edtStmt.Text));
+</span></span></code></pre></div><p>转换为List类型。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>var result <span style="color:#f92672">=</span> await factoryCars.<span style="color:#a6e22e">ToListAsync</span>();
+</span></span></code></pre></div><h3 id="建立数据表">建立数据表</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>  table <span style="color:#f92672">=</span> new System.Data.<span style="color:#a6e22e">DataTable</span>(<span style="color:#e6db74">&#34;factoryCar&#34;</span>);
+</span></span></code></pre></div><h3 id="指定数据源">指定数据源</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>  dataGridView1.DataSource <span style="color:#f92672">=</span> table;
+</span></span></code></pre></div><h2 id="3-插入">3. 插入</h2>
+<p>也可以执行Update、Delete等DML语句。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>asyncConn.ExecuteScalarAsync<span style="color:#f92672">&lt;</span>FactoryCar<span style="color:#f92672">&gt;</span>(edtSql.Text);
+</span></span></code></pre></div><h1 id="源代码">源代码</h1>
+<h2 id="form1cs">Form1.cs</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>using System;
+</span></span><span style="display:flex;"><span>using System.Windows.Forms;
+</span></span><span style="display:flex;"><span>using SQLite;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>namespace test_sqlite_net_sqlcipher
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    public partial class Form1 : Form
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        private SQLite.SQLiteAsyncConnection asyncConn;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        private System.Data.DataTable table;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        public <span style="color:#a6e22e">Form1</span>()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">InitializeComponent</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        private <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">btnGen_Click</span>(object sender, EventArgs e)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            asyncConn.CreateTableAsync<span style="color:#f92672">&lt;</span>FactoryCar<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>            asyncConn.CreateTableAsync<span style="color:#f92672">&lt;</span>MarqueCar<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        private <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">btnConn_Click</span>(object sender, EventArgs e)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            var options <span style="color:#f92672">=</span> new <span style="color:#a6e22e">SQLiteConnectionString</span>(edtDB.Text, true,
+</span></span><span style="display:flex;"><span>                                key: edtPwd.Text,
+</span></span><span style="display:flex;"><span>                                preKeyAction: db <span style="color:#f92672">=&gt;</span> db.<span style="color:#a6e22e">Execute</span>(<span style="color:#e6db74">&#34;PRAGMA cipher_default_use_hmac = OFF;&#34;</span>),
+</span></span><span style="display:flex;"><span>                                postKeyAction: db <span style="color:#f92672">=&gt;</span> db.<span style="color:#a6e22e">Execute</span>(<span style="color:#e6db74">&#34;PRAGMA kdf_iter = 128000;&#34;</span>));
+</span></span><span style="display:flex;"><span>            asyncConn <span style="color:#f92672">=</span> new SQLite.<span style="color:#a6e22e">SQLiteAsyncConnection</span>(options);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        private async <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">btnSearch_Click</span>(object sender, EventArgs e)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            var factoryCars <span style="color:#f92672">=</span> asyncConn.Table<span style="color:#f92672">&lt;</span>FactoryCar<span style="color:#f92672">&gt;</span>().<span style="color:#a6e22e">Where</span>(fc <span style="color:#f92672">=&gt;</span> fc.Name.<span style="color:#a6e22e">Contains</span>(edtStmt.Text));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            var result <span style="color:#f92672">=</span> await factoryCars.<span style="color:#a6e22e">ToListAsync</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            table <span style="color:#f92672">=</span> new System.Data.<span style="color:#a6e22e">DataTable</span>(<span style="color:#e6db74">&#34;factoryCar&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            table.Columns.<span style="color:#a6e22e">Add</span>(<span style="color:#e6db74">&#34;sn&#34;</span>, System.Type.<span style="color:#a6e22e">GetType</span>(<span style="color:#e6db74">&#34;System.Int32&#34;</span>));
+</span></span><span style="display:flex;"><span>            table.Columns.<span style="color:#a6e22e">Add</span>(<span style="color:#e6db74">&#34;name&#34;</span>, System.Type.<span style="color:#a6e22e">GetType</span>(<span style="color:#e6db74">&#34;System.String&#34;</span>));
+</span></span><span style="display:flex;"><span>            table.Columns.<span style="color:#a6e22e">Add</span>(<span style="color:#e6db74">&#34;acronym&#34;</span>, System.Type.<span style="color:#a6e22e">GetType</span>(<span style="color:#e6db74">&#34;System.String&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">foreach</span> (var factoryCar in result)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">long</span> sn <span style="color:#f92672">=</span> (<span style="color:#66d9ef">long</span>)factoryCar.Sn;
+</span></span><span style="display:flex;"><span>                string strName <span style="color:#f92672">=</span> (string)factoryCar.Name;
+</span></span><span style="display:flex;"><span>                string strAcronym <span style="color:#f92672">=</span> (string)factoryCar.Acronym;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                table.Rows.<span style="color:#a6e22e">Add</span>(sn, strName, strAcronym);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            dataGridView1.DataSource <span style="color:#f92672">=</span> table;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        private <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">btnExec_Click</span>(object sender, EventArgs e)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            asyncConn.ExecuteScalarAsync<span style="color:#f92672">&lt;</span>FactoryCar<span style="color:#f92672">&gt;</span>(edtSql.Text);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><a href="https://gitee.com/xiaobin80/test-sqlite-net-sqlcipher.git">gitee testSqlite-core</a></p>
+<h1 id="sqlite-net-sqlcipher"><a href="https://github.com/praeclarum/sqlite-net">sqlite-net-sqlcipher</a></h1>
+<p>以PCL为基础的一套组件。</p>
+<h2 id="pclportable-class-library">PCL(Portable Class Library)</h2>
+<p>是过时的!现在的.NET Standard已经包括了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PCL-&gt;.net standard-&gt;.net 5.0+
+</span></span></code></pre></div><p><a href="https://docs.microsoft.com/zh-cn/dotnet/standard/net-standard#pcl-compatibility">PCL兼容性</a></p>
+<h2 id="visual-studio-vs-net-framework"><a href="https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/versions-and-dependencies#version-information">Visual Studio vs .net framework</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>VS</th>
+          <th>.net framework</th>
+          <th>Windows</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>2019</td>
+          <td>4.7.2</td>
+          <td>10(1803/1809)</td>
+      </tr>
+      <tr>
+          <td>2017</td>
+          <td>4.6.1</td>
+          <td>10(1511)</td>
+      </tr>
+      <tr>
+          <td>2015</td>
+          <td>4.6</td>
+          <td>10</td>
+      </tr>
+      <tr>
+          <td>2013</td>
+          <td>4.5.1</td>
+          <td>8.1</td>
+      </tr>
+      <tr>
+          <td>2012</td>
+          <td>4.5</td>
+          <td>8</td>
+      </tr>
+      <tr>
+          <td>2010</td>
+          <td>4.0</td>
+          <td>N/A</td>
+      </tr>
+      <tr>
+          <td>2008</td>
+          <td>3.5</td>
+          <td>7</td>
+      </tr>
+      <tr>
+          <td>2005</td>
+          <td>2.0</td>
+          <td>N/A</td>
+      </tr>
+      <tr>
+          <td>2003</td>
+          <td>1.1</td>
+          <td>N/A</td>
+      </tr>
+  </tbody>
+</table>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=SQLite%e5%9c%a8.net%20core%e7%9a%84demo&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fsqlite.net.core%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fsqlite.net.core%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fsqlite.net.core%2f&amp;description=SQLite%e5%9c%a8.net%20core%e7%9a%84demo"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fsqlite.net.core%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/cnblogs2/post/mq-rabbitmq-config/">
+          <section class="post">
+              <h2>Install and Configure RabbitMQ</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs2/post/asp.net6-restful/">
+          <section class="post">
+              <h2>ASP.net Core 的RESTful应用</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/index.js"></script>
+    
+</body>
+</html>
+

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="安装Ruby On Rails"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="安装Ruby On Rails &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs2/post/ror_installation/" />
+
+    
+        
+    
+
+    
+    <meta property="og:description" content="" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2024-09-29T08:08:08&#43;08:00" />
+
+    
+    
+
+    <title>安装Ruby On Rails &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.fastruby.io/blog/ruby/rails/versions/compatibility-table.html&#34;&gt;Ruby &amp;amp; Rails Compatibility Table&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+  &lt;thea" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs2/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs2/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs2/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.145.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs2/post/ror_installation/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null 
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "安装Ruby On Rails",
+    "name": "安装Ruby On Rails",
+    "wordCount":  335 ,
+    "timeRequired": "PT2M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs2/post/ror_installation/",
+    "datePublished": "2024-09-29T08:08Z",
+    "dateModified": "2024-09-29T08:08Z",
+    
+    
+    "description": "",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs2/post/ror_installation/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs2/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="/cnblogs2/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">安装Ruby On Rails</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2024-09-29T08:08:08&#43;08:00">
+            Sep 29, 2024
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <ul>
+<li><a href="https://www.fastruby.io/blog/ruby/rails/versions/compatibility-table.html">Ruby &amp; Rails Compatibility Table</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Rails Version</th>
+          <th>Required Ruby Version</th>
+          <th>Recommended Ruby Version</th>
+          <th>Required Rubygems Version</th>
+          <th>Status</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>7.2.Z</td>
+          <td>&gt;= 3.1.0</td>
+          <td>3.3</td>
+          <td>&gt;= 1.8.11</td>
+          <td>Maintained</td>
+      </tr>
+      <tr>
+          <td>7.1.Z</td>
+          <td>&gt;= 2.7.0</td>
+          <td>3.2.Z</td>
+          <td>&gt;= 1.8.11</td>
+          <td>Maintained</td>
+      </tr>
+      <tr>
+          <td>7.0.Z</td>
+          <td>&gt;= 2.7.0</td>
+          <td>3.1.Z</td>
+          <td>&gt;= 1.8.11</td>
+          <td>Maintained</td>
+      </tr>
+  </tbody>
+</table>
+<h1 id="rbenv">RbEnv</h1>
+<p>Install ruby using rbenv.</p>
+<h2 id="dependencies">Dependencies</h2>
+<ul>
+<li>Debian</li>
+</ul>
+<blockquote>
+<p>v12
+After enabling <a href="https://tdtc-hrb.github.io/csdn/post/apt-oper-ubuntu/">sudo</a>,
+the operation is the same as Ubuntu.</p></blockquote>
+<ul>
+<li>Ubuntu <br>
+Ubuntu 20.04 default Ruby version is v2.7</li>
+</ul>
+<pre tabindex="0"><code>sudo apt install git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential \
+ libyaml-dev libncurses5-dev libffi-dev libgdbm-dev
+</code></pre><ul>
+<li>RHEL <br>
+RHEL8(Alma / Rocky) default Ruby version is v2.5.5</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf -y install git make gcc curl openssl-devel zlib-devel libffi-devel readline-devel sqlite-devel
+</span></span></code></pre></div><p>install tar:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum install tar
+</span></span></code></pre></div><h2 id="install">install</h2>
+<p>first install RbEnv Dependencies; <br>
+Later, upload rbenv-installer shell script.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>D:\programs\putty079<span style="color:#75715e">&gt;PSCP.EXE d:\rbenv-installer tdtc@192.168.3.99:/home/tdtc/</span>
+</span></span></code></pre></div><p>or</p>
+<pre tabindex="0"><code>export http_proxy=http://tdtc:qaz1xsw2@192.168.3.128:8580/
+export https_proxy=http://tdtc:qaz1xsw2@192.168.3.128:8580/
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
+</code></pre><p>set path:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;export PATH=&#34;$HOME/.rbenv/bin:$PATH&#34;&#39;</span> &gt;&gt; ~/.bashrc
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;eval &#34;$(rbenv init -)&#34;&#39;</span> &gt;&gt; ~/.bashrc
+</span></span><span style="display:flex;"><span>source ~/.bashrc
+</span></span></code></pre></div><p>test:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ rbenv -v
+</span></span><span style="display:flex;"><span>rbenv 1.3.0-4-gc335ab8
+</span></span></code></pre></div><p>show list:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rbenv install -l
+</span></span></code></pre></div><h3 id="installation">installation</h3>
+<ul>
+<li>online</li>
+</ul>
+<pre tabindex="0"><code>rbenv install 3.3.5
+</code></pre><ul>
+<li>offline <br>
+down:</li>
+</ul>
+<pre tabindex="0"><code>curl -O https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.5.tar.gz
+</code></pre><pre tabindex="0"><code>1. Move the downloaded file to `~/.rbenv/cache/`
+2. Run `rbenv install x.y.z` (ex. rbenv install 3.3.5`)
+</code></pre><h3 id="set-and-test">set and test</h3>
+<ul>
+<li>set global</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rbenv global 3.3.5
+</span></span></code></pre></div><ul>
+<li>test</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ruby --version
+</span></span><span style="display:flex;"><span>ruby 3.3.5 <span style="color:#f92672">(</span>2024-09-03 revision ef084cc8f4<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>x86_64-linux<span style="color:#f92672">]</span>
+</span></span></code></pre></div><h1 id="rails">Rails</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gem install rails
+</span></span></code></pre></div><p>info(40 gems installed)</p>
+<pre tabindex="0"><code>Fetching zeitwerk-2.6.18.gem
+Fetching thor-1.3.2.gem
+Fetching webrick-1.8.2.gem
+Fetching rack-3.1.7.gem
+Fetching rackup-2.1.0.gem
+Fetching concurrent-ruby-1.3.4.gem
+Fetching tzinfo-2.0.6.gem
+Fetching i18n-1.14.6.gem
+Fetching connection_pool-2.4.1.gem
+Fetching activesupport-7.2.1.gem
+Fetching useragent-0.16.10.gem
+Fetching nokogiri-1.16.7-x86_64-linux.gem
+Fetching crass-1.0.6.gem
+Fetching loofah-2.22.0.gem
+Fetching rails-html-sanitizer-1.6.0.gem
+Fetching rails-dom-testing-2.2.0.gem
+Fetching rack-test-2.1.0.gem
+Fetching rack-session-2.0.0.gem
+Fetching erubi-1.13.0.gem
+Fetching builder-3.3.0.gem
+Fetching actionview-7.2.1.gem
+Fetching actionpack-7.2.1.gem
+Fetching railties-7.2.1.gem
+Fetching marcel-1.0.4.gem
+Fetching activemodel-7.2.1.gem
+Fetching activerecord-7.2.1.gem
+Fetching globalid-1.2.1.gem
+Fetching activejob-7.2.1.gem
+Fetching activestorage-7.2.1.gem
+Fetching actiontext-7.2.1.gem
+Fetching mini_mime-1.1.5.gem
+Fetching mail-2.8.1.gem
+Fetching rails-7.2.1.gem
+Fetching actionmailer-7.2.1.gem
+Fetching actionmailbox-7.2.1.gem
+Fetching websocket-extensions-0.1.5.gem
+Fetching websocket-driver-0.7.6.gem
+Fetching nio4r-2.7.3.gem
+Fetching actioncable-7.2.1.gem
+</code></pre><p>test:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ rails -v
+</span></span><span style="display:flex;"><span>Rails 7.2.1
+</span></span></code></pre></div><h2 id="exec-list">exec list</h2>
+<pre tabindex="0"><code>rails db:create
+rails db:migrate
+rake assets:clean
+rake assets:clobber
+rake tmp:clear
+rake assets:precompile
+./bin/dev
+</code></pre><h1 id="ref">Ref</h1>
+<ul>
+<li><a href="https://computingforgeeks.com/install-ruby-on-rhel-centos-rocky-linux/">Install Ruby 3 on RHEL 8|CentOS 8|Rocky Linux 8</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-20-04">How To Install Ruby on Rails with rbenv on Ubuntu 20.04</a></li>
+<li><a href="https://stackoverflow.com/a/62421065">Install ruby using rbenv&rsquo;s downloaded file</a></li>
+</ul>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=%e5%ae%89%e8%a3%85Ruby%20On%20Rails&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fror_installation%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fror_installation%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fror_installation%2f&amp;description=%e5%ae%89%e8%a3%85Ruby%20On%20Rails"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fror_installation%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/cnblogs2/post/ror_getstarted/">
+          <section class="post">
+              <h2>开始Ruby On Rails</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs2/post/java-jni-gcc/">
+          <section class="post">
+              <h2>jni - gcc</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/index.js"></script>
+    
+</body>
+</html>
+

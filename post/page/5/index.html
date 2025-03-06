@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs2/post/" />
+
+    
+        
+    
+
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="" />
+    
+
+    <title>Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs2/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs2/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs2/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+        <link href='/cnblogs2/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+    
+    <meta name="generator" content="Hugo 0.145.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs2/post/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs2/",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs2/"
+    },
+    "description":  null 
+}
+  </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs2/post/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+	<header class="main-header tag-head no-cover">
+
+    <nav class="main-nav overlay clearfix">
+      
+      
+        
+          <a class="menu-button icon-feed" href='/cnblogs2/post/index.xml'>&nbsp;&nbsp;Subscribe</a>
+        
+      
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Posts</h1>
+            <h2 class="page-description">
+                
+            </h2>
+        </div>
+    </div>
+</header>
+
+<main class="content" role="main">
+    
+
+	<div class="extra-pagination inner">
+    <nav class="pagination" role="navigation">
+	
+	    <a class="newer-posts" href="/cnblogs2/post/page/4/">&larr; Newer Posts</a>
+	
+	<span class="page-number">Page 5 of 6</span>
+	
+	    <a class="older-posts" href="/cnblogs2/post/page/6/">Older Posts &rarr;</a>
+	
+</nav>
+
+	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/qt-sqlite3/">在qt6使用sqlite3</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h1 id="lib">lib</h1>
+<p>导入静态库</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#pragma comment(lib, &#34;Qt6Sql.lib&#34;)
+</span></span></span></code></pre></div><h1 id="query-data">query data</h1>
+<blockquote>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtSql/QSqlDatabase&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtSql/QSqlQueryModel&gt;</span><span style="color:#75715e">
+</span></span></span></code></pre></div><p>首先，设置数据库类型；然后，打开数据库；最后，关联TableView。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QSqlDatabase db <span style="color:#f92672">=</span> QSqlDatabase<span style="color:#f92672">::</span>addDatabase(<span style="color:#e6db74">&#34;QSQLITE&#34;</span>);
+</span></span></code></pre></div><h2 id="open-db">open db</h2>
+<p>先设置数据库名，再打开db。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>db.setDatabaseName(<span style="color:#e6db74">&#34;SerialComm.db&#34;</span>);
+</span></span><span style="display:flex;"><span>db.open();
+</span></span></code></pre></div><h2 id="model-view">model-view</h2>
+<p>先建立Query对象，再设置Sql语句。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QSqlQueryModel <span style="color:#f92672">*</span>model <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QSqlQueryModel;
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">-&gt;</span>setQuery(<span style="color:#e6db74">&#34;SELECT * FROM com1&#34;</span>);
+</span></span></code></pre></div><p>最后，设置关联。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>ui.tableView<span style="color:#f92672">-&gt;</span>setModel(model);
+</span></span></code></pre></div><p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20210620233610.png" alt="qt6 sqlite3 demo"></p>
+<h1 id="src">src</h1>
+<h2 id="qtsqlite3demoui">QtSqlite3Demo.ui</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;ui</span> <span style="color:#a6e22e">version=</span><span style="color:#e6db74">&#34;4.0&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;class&gt;</span>QtSqlite3DemoClass<span style="color:#f92672">&lt;/class&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;widget</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;QMainWindow&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;QtSqlite3DemoClass&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;geometry&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;rect&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;x&gt;</span>0<span style="color:#f92672">&lt;/x&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;y&gt;</span>0<span style="color:#f92672">&lt;/y&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;width&gt;</span>600<span style="color:#f92672">&lt;/width&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;height&gt;</span>400<span style="color:#f92672">&lt;/height&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;/rect&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;windowTitle&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;string&gt;</span>QtSqlite3Demo<span style="color:#f92672">&lt;/string&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;widget</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;QWidget&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;centralWidget&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;widget</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;QPushButton&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;btnSearch&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;geometry&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;rect&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;x&gt;</span>290<span style="color:#f92672">&lt;/x&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;y&gt;</span>30<span style="color:#f92672">&lt;/y&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;width&gt;</span>75<span style="color:#f92672">&lt;/width&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;height&gt;</span>24<span style="color:#f92672">&lt;/height&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;/rect&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;text&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;string&gt;</span>Search<span style="color:#f92672">&lt;/string&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;/widget&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;widget</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;QLineEdit&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;lineEdit&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;geometry&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;rect&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;x&gt;</span>20<span style="color:#f92672">&lt;/x&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;y&gt;</span>30<span style="color:#f92672">&lt;/y&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;width&gt;</span>251<span style="color:#f92672">&lt;/width&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;height&gt;</span>22<span style="color:#f92672">&lt;/height&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;/rect&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;/widget&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;widget</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;QTableView&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;tableView&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;geometry&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;rect&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;x&gt;</span>20<span style="color:#f92672">&lt;/x&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;y&gt;</span>81<span style="color:#f92672">&lt;/y&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;width&gt;</span>561<span style="color:#f92672">&lt;/width&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;height&gt;</span>241<span style="color:#f92672">&lt;/height&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;/rect&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;/widget&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/widget&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;widget</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;QMenuBar&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;menuBar&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;geometry&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;rect&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;x&gt;</span>0<span style="color:#f92672">&lt;/x&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;y&gt;</span>0<span style="color:#f92672">&lt;/y&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;width&gt;</span>600<span style="color:#f92672">&lt;/width&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;height&gt;</span>22<span style="color:#f92672">&lt;/height&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/rect&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/widget&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;widget</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;QToolBar&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;mainToolBar&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;attribute</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;toolBarArea&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;enum&gt;</span>TopToolBarArea<span style="color:#f92672">&lt;/enum&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;/attribute&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;attribute</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;toolBarBreak&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bool&gt;</span>false<span style="color:#f92672">&lt;/bool&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;/attribute&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/widget&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;widget</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;QStatusBar&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;statusBar&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;/widget&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;layoutdefault</span> <span style="color:#a6e22e">spacing=</span><span style="color:#e6db74">&#34;6&#34;</span> <span style="color:#a6e22e">margin=</span><span style="color:#e6db74">&#34;11&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;resources&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;include</span> <span style="color:#a6e22e">location=</span><span style="color:#e6db74">&#34;QtSqlite3Demo.qrc&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;/resources&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;connections/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/ui&gt;</span>
+</span></span></code></pre></div><h2 id="qtsqlite3demoh">QtSqlite3Demo.h</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#pragma once
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtWidgets/QMainWindow&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;ui_QtSqlite3Demo.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtWidgets/QMessageBox&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QtSqlite3Demo</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> QMainWindow
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Q_OBJECT
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    QtSqlite3Demo(QWidget <span style="color:#f92672">*</span>parent <span style="color:#f92672">=</span> Q_NULLPTR);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> slots:
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> sqlite_search();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    Ui<span style="color:#f92672">::</span>QtSqlite3DemoClass ui;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="qtsqlite3democpp">QtSqlite3Demo.cpp</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;QtSqlite3Demo.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtSql/QSqlDatabase&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtSql/QSqlQueryModel&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#pragma comment(lib, &#34;Qt6Sql.lib&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>QtSqlite3Demo<span style="color:#f92672">::</span>QtSqlite3Demo(QWidget<span style="color:#f92672">*</span> parent)
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">:</span> QMainWindow(parent)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	ui.setupUi(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	connect(ui.btnSearch, SIGNAL(clicked()), <span style="color:#66d9ef">this</span>, SLOT(sqlite_search()));
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> QtSqlite3Demo<span style="color:#f92672">::</span>sqlite_search()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	QString strDbName <span style="color:#f92672">=</span> ui.lineEdit<span style="color:#f92672">-&gt;</span>text();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	QSqlDatabase db <span style="color:#f92672">=</span> QSqlDatabase<span style="color:#f92672">::</span>addDatabase(<span style="color:#e6db74">&#34;QSQLITE&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	QString dbPath <span style="color:#f92672">=</span> qApp<span style="color:#f92672">-&gt;</span>applicationDirPath() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/&#34;</span> <span style="color:#f92672">+</span> strDbName;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	db.setDatabaseName(dbPath);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>db.open()) {
+</span></span><span style="display:flex;"><span>		QMessageBox<span style="color:#f92672">::</span>critical(<span style="color:#66d9ef">nullptr</span>, QObject<span style="color:#f92672">::</span>tr(<span style="color:#e6db74">&#34;Cannot open database&#34;</span>),
+</span></span><span style="display:flex;"><span>			QObject<span style="color:#f92672">::</span>tr(<span style="color:#e6db74">&#34;Unable to establish a database connection.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#e6db74">&#34;Click Cancel to exit.&#34;</span>), QMessageBox<span style="color:#f92672">::</span>Cancel);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	QSqlQueryModel<span style="color:#f92672">*</span> model <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QSqlQueryModel;
+</span></span><span style="display:flex;"><span>	model<span style="color:#f92672">-&gt;</span>setQuery(<span style="color:#e6db74">&#34;SELECT * FROM com1&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	ui.tableView<span style="color:#f92672">-&gt;</span>setModel(model);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="reference">Reference</h1>
+<ul>
+<li><a href="https://doc.qt.io/qt-6/qsqlquerymodel.html#details">Detailed Description</a> - QT Offical</li>
+<li><a href="https://blog.csdn.net/lms1008611/article/details/81271712">QT读写Sqlite数据库的三种方式</a></li>
+<li><a href="https://forum.qt.io/topic/74806/open-file-path">Relative paths</a></li>
+</ul> <a class="read-more" href="/cnblogs2/post/qt-sqlite3/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2021-06-18T00:08:08&#43;08:00">
+            18 Jun 2021
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/php-mysqli-tutorial/">使用mysqli和mysql查询数据库</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h1 id="导入数据">导入数据</h1>
+<p>导入MySQL示例数据库<a href="https://github.com/datacharmer/test_db/releases/tag/v1.0.7">employees</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ownloads<span style="color:#ae81ff">\t</span>est_db&gt;%MYSQL57_HOME%<span style="color:#ae81ff">\b</span>in<span style="color:#ae81ff">\m</span>ysql &lt; employees.sql -u DBAdmin -p
+</span></span><span style="display:flex;"><span>Enter password: *******
+</span></span><span style="display:flex;"><span>INFO
+</span></span><span style="display:flex;"><span>CREATING DATABASE STRUCTURE
+</span></span><span style="display:flex;"><span>INFO
+</span></span><span style="display:flex;"><span>storage engine: InnoDB
+</span></span><span style="display:flex;"><span>INFO
+</span></span><span style="display:flex;"><span>LOADING departments
+</span></span><span style="display:flex;"><span>INFO
+</span></span><span style="display:flex;"><span>LOADING employees
+</span></span><span style="display:flex;"><span>INFO
+</span></span><span style="display:flex;"><span>LOADING dept_emp
+</span></span><span style="display:flex;"><span>INFO
+</span></span><span style="display:flex;"><span>LOADING dept_manager
+</span></span><span style="display:flex;"><span>INFO
+</span></span><span style="display:flex;"><span>LOADING titles
+</span></span><span style="display:flex;"><span>INFO
+</span></span><span style="display:flex;"><span>LOADING salaries
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ownloads<span style="color:#ae81ff">\t</span>est_db&gt;
+</span></span></code></pre></div><h1 id="查询数据">查询数据</h1>
+<p>查询固定员工ID的姓名，所属部门，职务</p>
+<blockquote>
+<p>以下为创建SQL的过程。</p></blockquote>
+<h2 id="1-查询姓名">1. 查询姓名</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> concat(first_name, <span style="color:#e6db74">&#39; &#39;</span> , last_name) <span style="color:#66d9ef">as</span> name <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>employees<span style="color:#f92672">`</span> <span style="color:#66d9ef">WHERE</span> emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>
+</span></span></code></pre></div><h2 id="2-查询部门id">2. 查询部门ID</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> dept_no <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>dept_emp<span style="color:#f92672">`</span> <span style="color:#66d9ef">WHERE</span> emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>
+</span></span></code></pre></div><h2 id="3-查询所在部门名称">3. 查询所在部门名称</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> dept_name
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>departments<span style="color:#f92672">`</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">WHERE</span> dept_no <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>		(<span style="color:#66d9ef">SELECT</span> dept_no <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>dept_emp<span style="color:#f92672">`</span> <span style="color:#66d9ef">WHERE</span> emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>)
+</span></span></code></pre></div><h2 id="4-查询员工姓名以及部门名称">4. 查询员工姓名以及部门名称</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>concat(e.first_name, <span style="color:#e6db74">&#39; &#39;</span> , e.last_name) <span style="color:#66d9ef">as</span> name,
+</span></span><span style="display:flex;"><span>d.dept_name
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>employees<span style="color:#f92672">`</span> e, <span style="color:#f92672">`</span>departments<span style="color:#f92672">`</span> d
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">WHERE</span> d.dept_no <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>		(<span style="color:#66d9ef">SELECT</span> dept_no <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>dept_emp<span style="color:#f92672">`</span> <span style="color:#66d9ef">WHERE</span> emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>)
+</span></span><span style="display:flex;"><span>		 <span style="color:#66d9ef">and</span>
+</span></span><span style="display:flex;"><span>		e.emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>
+</span></span></code></pre></div><h2 id="5-整合sql">5. 整合SQL</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>concat(e.first_name, <span style="color:#e6db74">&#39; &#39;</span> , e.last_name) <span style="color:#66d9ef">as</span> name,
+</span></span><span style="display:flex;"><span>d.dept_name,
+</span></span><span style="display:flex;"><span>t.title
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">FROM</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">`</span>employees<span style="color:#f92672">`</span> e,
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">`</span>departments<span style="color:#f92672">`</span> d,
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">`</span>titles<span style="color:#f92672">`</span> t
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">WHERE</span> d.dept_no <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>		(<span style="color:#66d9ef">SELECT</span> dept_no <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>dept_emp<span style="color:#f92672">`</span> <span style="color:#66d9ef">WHERE</span> emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>)
+</span></span><span style="display:flex;"><span>		 <span style="color:#66d9ef">and</span>
+</span></span><span style="display:flex;"><span>		e.emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#66d9ef">and</span>
+</span></span><span style="display:flex;"><span>		t.emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>
+</span></span></code></pre></div><h1 id="mysql">mysql</h1>
+<h2 id="1-连接">1. 连接</h2>
+<blockquote>
+<p><a href="http://php.net/manual/en/function.mysql-connect.php">mysql_connect</a> <br>
+( <br>
+server, // 服务器地址 <br>
+username,  // 用户名 <br>
+password // 密码 <br>
+)</p> <a class="read-more" href="/cnblogs2/post/php-mysqli-tutorial/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2021-04-20T20:26:39&#43;08:00">
+            20 Apr 2021
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/asp.net5-grpc/">ASP.net Core 的gRPC Service应用</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>Server 在Ubuntu V20.04; Client 在Windows CMD运行。</p></blockquote>
+<ul>
+<li>PowerShell v5.1</li>
+<li>IDE: VS2019 Community(v16.9)/VS Code(<a href="https://code.visualstudio.com/docs/containers/overview#_installation">docker extension</a>)</li>
+<li>VM: VBox(v6.1)</li>
+</ul>
+<h1 id="接口文件说明">接口文件说明</h1>
+<blockquote>
+<p>Protos/greet.proto</p>
+<blockquote>
+<p>现版本(v16.9)已可以自动生成</p></blockquote></blockquote>
+<h2 id="定义service">定义service</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>service Greeter <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  // Sends a greeting
+</span></span><span style="display:flex;"><span>  rpc SayHello <span style="color:#f92672">(</span>HelloRequest<span style="color:#f92672">)</span> returns <span style="color:#f92672">(</span>HelloReply<span style="color:#f92672">)</span> <span style="color:#f92672">{}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h2 id="定义message">定义message</h2>
+<ul>
+<li>request</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>message HelloRequest <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  string name <span style="color:#f92672">=</span> 1;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>response</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>message HelloReply <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  string message <span style="color:#f92672">=</span> 1;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h1 id="server">server</h1>
+<h2 class="tabset" id="create">Create</h2>
+<h3 id="vs2019">VS2019</h3>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201122182726.png" alt="VS2019 pre1">
+注意：服务器需要docker支持！
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201122183151.png" alt="VS2019 pre2"></p>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201122184828.png" alt="VS2019 pre3"></p>
+<h3 id="vs-code">VS code</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet new grpc -o GreeterServer
+</span></span></code></pre></div><h4 id="add-docke-file">add docke file</h4>
+<ul>
+<li>View -&gt; Command Palette(Ctrl+Shift+P)</li>
+</ul>
+<ul>
+<li>Enter: Docker fi</li>
+<li>choice1: Add Docker Files to Workspace&hellip;</li>
+<li>choice2: .NET: ASP.NET Core</li>
+<li>choice3: Linux</li>
+<li>Enter: 80</li>
+<li>choice4: No(Include compose file)</li>
+</ul>
+<h4 id="修改dockerfile">修改Dockerfile</h4>
+<ul>
+<li>移出Ubuntu版本信息(-focal)</li>
+</ul>
+<blockquote>
+<p>focal: Ubuntu 20.04</p> <a class="read-more" href="/cnblogs2/post/asp.net5-grpc/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2021-03-16T08:08:08&#43;08:00">
+            16 Mar 2021
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/e-avr8-blink/">arduino 开发环境</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>使用跑马灯来验证.</p>
+<h1 id="pre-ide">Pre IDE</h1>
+<ul>
+<li><a href="https://www.arduino.cc/en/software">Arduino CC(.zip文件)</a></li>
+<li><a href="https://www.microchip.com/en-us/development-tools-tools-and-software/microchip-studio-for-avr-and-sam-devices">Atmel Studio 7</a></li>
+</ul>
+<h1 id="编码">编码</h1>
+<p>我们使用使用AS7是为了使用它的智能提示和方便查看函数原型.</p>
+<h2 id="建立工程---arduino">建立工程 - Arduino</h2>
+<p>文件-&gt;示例-&gt;01.Basics-&gt;Blink</p>
+<h2 id="建立工程---as7">建立工程 - AS7</h2>
+<p>New-&gt;Project <br>
+&ldquo;Create Project from Arduino Sketch&rdquo;
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20210306045329.png" alt="Create Project from Arduino Sketch">
+设置Arduino sketch属性: Sketch File、Arduino IDE、Board、Device
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20210306045520.png" alt="设置Arduino sketch"></p>
+<h1 id="烧写">烧写</h1>
+<p>把代码copy回arduino ide</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Blink
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Turns on an LED on for one second, then off for one second, repeatedly.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Most Arduinos have an on-board LED you can control. On the UNO, MEGA and ZERO
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  it is attached to digital pin 13, on MKR1000 on pin 6. LED_BUILTIN takes care
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  of use the correct LED pin whatever is the board used.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  If you want to know what pin the on-board LED is connected to on your Arduino model, check
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  the Technical Specs of your board  at https://www.arduino.cc/en/Main/Products
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  This example code is in the public domain.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  modified 8 May 2014
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  by Scott Fitzgerald
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  modified 2 Sep 2016
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  by Arturo Guadalupi
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  modified 6 Mar 2021
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  by tdtc
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> led1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>; <span style="color:#75715e">// pin2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> led2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>; <span style="color:#75715e">// pin3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> led3 <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>; <span style="color:#75715e">// pin4
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// the setup function runs once when you press reset or power the board
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setup</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// initialize digital pin LED_BUILTIN as an output.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">pinMode</span>(led1, OUTPUT);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pinMode</span>(led2, OUTPUT);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pinMode</span>(led3, OUTPUT);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// the loop function runs over and over again forever
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">loop</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">digitalWrite</span>(led1, HIGH);   <span style="color:#75715e">// turn the LED on (HIGH is the voltage level)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">1000</span>);                       <span style="color:#75715e">// wait for a second
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">digitalWrite</span>(led1, LOW);    <span style="color:#75715e">// turn the LED off by making the voltage LOW
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">1000</span>);                       <span style="color:#75715e">// wait for a second
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">digitalWrite</span>(led2, HIGH);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">digitalWrite</span>(led2, LOW);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">digitalWrite</span>(led3, HIGH);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">digitalWrite</span>(led3, LOW);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">delay</span>(<span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>step 1: 项目-&gt;验证/编译 <br>
+step 2: 项目-&gt;上传 <br>
+在上传前,一定要查看&quot;工具&quot;中&quot;端口&quot;信息是否正确!</p> <a class="read-more" href="/cnblogs2/post/e-avr8-blink/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2021-03-06T05:08:08&#43;08:00">
+            6 Mar 2021
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/docker_ce-ubuntu-config/">docker(ce) on Ubuntu</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>Note:</p>
+<blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># - requires given linux commands to be executed with root privileges either directly as a root user or by use of sudo command</span>
+</span></span><span style="display:flex;"><span>$ - requires given linux commands to be executed as a regular non-privileged user
+</span></span></code></pre></div></blockquote></blockquote>
+<h1 id="docker-ce">Docker CE</h1>
+<h2 id="1-install">1. install</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo apt install docker.io
+</span></span></code></pre></div><h2 id="2-enable">2. enable</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo systemctl start docker
+</span></span><span style="display:flex;"><span>$ sudo systemctl enable docker
+</span></span></code></pre></div><p>test:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker --version
+</span></span></code></pre></div><h1 id="docker-compose">Docker compose</h1>
+<h2 id="1-down">1. down</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo curl -L <span style="color:#e6db74">&#34;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-</span><span style="color:#66d9ef">$(</span>uname -s<span style="color:#66d9ef">)</span><span style="color:#e6db74">-</span><span style="color:#66d9ef">$(</span>uname -m<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> -o /usr/local/bin/docker-compose
+</span></span></code></pre></div><h2 id="2-exec">2. exec</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x /usr/local/bin/docker-compose
+</span></span></code></pre></div><p>test:</p> <a class="read-more" href="/cnblogs2/post/docker_ce-ubuntu-config/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-10-13T08:08:08&#43;08:00">
+            13 Oct 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/e-lwip-ethernet/">lwIP移植笔记 - ethernet篇</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>ethernet的移植工作，主要是“填空”ethernetif.c的过程！ <br>
+（PS. 再一次感谢Adam Dunkels大侠的无私工作！以及对他的敬意！）</p>
+<h1 id="头文件">头文件</h1>
+<blockquote>
+<p>ethernetif.h</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#ifndef ETHERNETIF_H_INCLUDED
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define ETHERNETIF_H_INCLUDED
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;lwip/netif.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;lwip/ip_addr.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;lwip/err.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;netif/etharp.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">err_t</span> <span style="color:#a6e22e">ethernetif_init</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ethernetif_input</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif </span><span style="color:#75715e">/* ETHERNETIF_H_INCLUDED */</span><span style="color:#75715e">
+</span></span></span></code></pre></div><h1 id="ethernet-interface">ethernet interface</h1>
+<blockquote>
+<p>ethernetif.c位置: ../src/netif</p></blockquote>
+<ul>
+<li>初始化（低级）</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">low_level_init</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif)
+</span></span></code></pre></div><ul>
+<li>发送（低级）</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">err_t</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">low_level_output</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif, <span style="color:#66d9ef">struct</span> pbuf<span style="color:#f92672">*</span> p)
+</span></span></code></pre></div><ul>
+<li>接收（低级）</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">struct</span> pbuf<span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">low_level_input</span>(<span style="color:#66d9ef">struct</span> netif<span style="color:#f92672">*</span> netif)
+</span></span></code></pre></div><h2 id="0-define-hardware">0. define hardware</h2>
+<p>根据硬件的不同！</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;enc28j60.h&#34;</span><span style="color:#75715e">
+</span></span></span></code></pre></div><p>##　1. 初始化（低级）</p>
+<h3 id="1-初始化mac地址">（1） 初始化MAC地址</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x00</span>;
+</span></span><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x04</span>;
+</span></span><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x25</span>;
+</span></span><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x1C</span>;
+</span></span><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0xA0</span>;
+</span></span><span style="display:flex;"><span>netif<span style="color:#f92672">-&gt;</span>hwaddr[<span style="color:#ae81ff">5</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x02</span>;
+</span></span></code></pre></div><h3 id="2-初始化网卡">（2） 初始化网卡</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">enc28j60Init</span>(netif<span style="color:#f92672">-&gt;</span>hwaddr);
+</span></span></code></pre></div><h3 id="3中断使能">（3）中断使能</h3>
+<p>如果使用RTOS，则设置MCU的SPI中断使能； <br>
+例如在CM0/3/4中：</p> <a class="read-more" href="/cnblogs2/post/e-lwip-ethernet/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-07-25T10:08:08&#43;08:00">
+            25 Jul 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/e-freertos-port_sam4s/">freeRTOS移植-sam</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>freeRTOS v7.0.0</p></blockquote>
+<p>移植编译器（IAR）,以及头文件和hook。</p>
+<h1 id="头文件">头文件</h1>
+<blockquote>
+<p>asf.h</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// From module: FreeRTOS mini Real-Time Kernel
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;FreeRTOS.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;task.h&gt;</span><span style="color:#75715e">
+</span></span></span></code></pre></div><h2 id="freertos-config">freeRTOS config</h2>
+<blockquote>
+<p>FreeRTOSConfig.h</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#ifndef FREERTOS_CONFIG_H
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define FREERTOS_CONFIG_H
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//#define configUSE_PREEMPTION                     1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define configUSE_PREEMPTION                       0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_IDLE_HOOK                        1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_TICK_HOOK                        1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configCPU_CLOCK_HZ                         (sysclk_get_cpu_hz())
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configTICK_RATE_HZ                         ((portTickType) 1000)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMINIMAL_STACK_SIZE                   ((unsigned short) 70)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">//#define configTOTAL_HEAP_SIZE                    ((size_t) ( 0x2C00-600 ))
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define configMAX_TASK_NAME_LEN                    ( 16 )
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_TRACE_FACILITY                   1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_16_BIT_TICKS                     0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configIDLE_SHOULD_YIELD                    0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_CO_ROUTINES                      0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_MUTEXES                          1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configUSE_RECURSIVE_MUTEXES                0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configCHECK_FOR_STACK_OVERFLOW             2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configGENERATE_RUN_TIME_STATS              0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configENABLE_BACKWARD_COMPATIBILITY        1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMAX_PRIORITIES                       ((unsigned portBASE_TYPE) 5)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMAX_CO_ROUTINE_PRIORITIES            (2)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configQUEUE_REGISTRY_SIZE                  10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskPrioritySet                   1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_uxTaskPriorityGet                  0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskDelete                        0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskCleanUpResources              0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskSuspend                       1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskDelayUntil                    0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_vTaskDelay                         1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INCLUDE_uxTaskGetStackHighWaterMark        1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define configKERNEL_INTERRUPT_PRIORITY            (0x0f &lt;&lt; 4)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define configMAX_SYSCALL_INTERRUPT_PRIORITY       (0x05 &lt;&lt; 4)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span></code></pre></div><h1 id="hook">hook</h1>
+<blockquote>
+<p>必须实现3个callback函数</p> <a class="read-more" href="/cnblogs2/post/e-freertos-port_sam4s/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-07-08T08:08:08&#43;08:00">
+            8 Jul 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/e-freertos-port_win32/">freeRTOS移植</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>freeRTOS v6.1.1</p></blockquote>
+<h1 id="portableh">portable.h</h1>
+<h2 id="memory">memory</h2>
+<h3 id="tcb">TCB</h3>
+<p>Ln167~Ln187(port.c)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>pxPortInitialiseStack
+</span></span></code></pre></div><h3 id="memory-management">memory management</h3>
+<p>在heap_n.c中实现</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">pvPortMalloc</span>( <span style="color:#66d9ef">size_t</span> xSize ) PRIVILEGED_FUNCTION;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortFree</span>( <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>pv ) PRIVILEGED_FUNCTION;
+</span></span></code></pre></div><p>如果MPU可用，则使用Ln105~106(mpu_wrappers.h)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortInitialiseBlocks</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">size_t</span> <span style="color:#a6e22e">xPortGetFreeHeapSize</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
+</span></span></code></pre></div><h2 id="task">task</h2>
+<p>此实现在Ln189<del>Ln262、Ln401</del>Ln406(port.c)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>portBASE_TYPE <span style="color:#a6e22e">xPortStartScheduler</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortEndScheduler</span>( <span style="color:#66d9ef">void</span> ) PRIVILEGED_FUNCTION;
+</span></span></code></pre></div><blockquote>
+<p>注意：在windows系统下end是调用了TerminateProcess（WinBase.h Ln3398）</p></blockquote>
+<h1 id="portmacroh">portmacro.h</h1>
+<h2 id="critical">Critical</h2>
+<p>此实现在Ln452~Ln513(port.c)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortEnterCritical</span>( <span style="color:#66d9ef">void</span> );
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortExitCritical</span>( <span style="color:#66d9ef">void</span> );
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define portENTER_CRITICAL()		vPortEnterCritical()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define portEXIT_CRITICAL()			vPortExitCritical()
+</span></span></span></code></pre></div><h2 id="interrupt">Interrupt</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define portDISABLE_INTERRUPTS()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define portENABLE_INTERRUPTS()
+</span></span></span></code></pre></div><p>此实现在Ln408~Ln450(port.c)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortGenerateSimulatedInterrupt</span>( <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> ulInterruptNumber );
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vPortSetInterruptHandler</span>( <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> ulInterruptNumber, <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> (<span style="color:#f92672">*</span>pvHandler)( <span style="color:#66d9ef">void</span> ) );
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define portYIELD()					vPortGenerateSimulatedInterrupt( portINTERRUPT_YIELD )
+</span></span></span></code></pre></div><h1 id="other">other</h1>
+<h2 id="thread">thread</h2>
+<p>在portmacro.h定义，在Ln377~Ln399(port.c)实现</p> <a class="read-more" href="/cnblogs2/post/e-freertos-port_win32/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-07-06T08:08:08&#43;08:00">
+            6 Jul 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/e-freertos-base/">freeRTOS基础</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>freeRTOS v6.1.1</p></blockquote>
+<h1 id="约定">约定</h1>
+<h2 id="变量名">变量名</h2>
+<p>u: unsigned
+c: char
+s: int16_t(short)
+l: int32_t(long)<br>
+x: BaseType_t 和其他所有</p>
+<h2 id="函数名">函数名</h2>
+<blockquote>
+<p>前面的小写字母表示返回值；
+紧随其后的是文件名。</p></blockquote>
+<p>p: pointer
+v: void
+x: xQueueReceive() returns a variable of type BaseType_t and is defined within queue.c.</p>
+<h1 id="必须使用">必须使用</h1>
+<ul>
+<li>task.c</li>
+<li>list.c</li>
+<li>queue.c <br>
+task-to-task, task-to-interrupt, interrupt-to-task.</li>
+</ul>
+<h2 id="移植必须">移植必须</h2>
+<blockquote>
+<p>实现 portable.h</p></blockquote>
+<ul>
+<li>heap_1.c or heap_2.c or heap_3.c</li>
+<li>port.c</li>
+</ul>
+<h3 id="header">header</h3>
+<ul>
+<li>portmacro.h</li>
+</ul>
+<h1 id="最小化系统">最小化系统</h1>
+<p>main.c</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;FreeRTOS.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">vTaskStartScheduler</span>();
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="header-1">header</h2>
+<blockquote>
+<p>vc <br>
+Configuration Properties -&gt; c/c++ -&gt; Additional include Directories</p> <a class="read-more" href="/cnblogs2/post/e-freertos-base/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-07-04T08:08:08&#43;08:00">
+            4 Jul 2020
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/e-iar-project-setup/">iar 工程基本设置</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>IAR7.50</p>
+<blockquote>
+<p>J-Link 5.10m</p></blockquote></blockquote>
+<p>建立一个c工程： <br>
+project -&gt; Create new project <br>
+“Project Templates”选择empty project <br>
+选择工程目录下的prj（可自定义，主要是放IAR生成的相关文件）</p>
+<blockquote>
+<p>注意：没有更改的项，使用缺省设置！</p></blockquote>
+<h1 id="general-options">General Options</h1>
+<p>主要设置：目标芯片, CMSIS库, 打印和输入函数</p>
+<h2 id="设备">设备</h2>
+<blockquote>
+<p>Target</p>
+<blockquote>
+<p>Device</p></blockquote></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Atmel SAM4SD32C
+</span></span></code></pre></div><h2 id="cmsis">CMSIS</h2>
+<blockquote>
+<p>Library Configuration</p></blockquote>
+<p>✔ Verify DownloadUse CMSIS <br>
+✔ DSP library</p>
+<h2 id="不使用低级库">不使用低级库</h2>
+<blockquote>
+<p>Library Configuration</p></blockquote>
+<p>Library low-level interface implementation</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>None
+</span></span></code></pre></div><h2 id="打印和输入">打印和输入</h2>
+<blockquote>
+<p>Library Options</p></blockquote>
+<p>Printf formatter</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Large
+</span></span></code></pre></div><p>Scanf formatter</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>small
+</span></span></code></pre></div><hr>
+<h1 id="runtime-checking">Runtime Checking</h1>
+<blockquote>
+<p>Note：一定要设置Preprocessor（C/C++和Assembler）！！！</p></blockquote>
+<p>在C/C++ Complie和Linker中开启诊断程序：</p>
+<blockquote>
+<p>Diagnostics <br>
+✔ Enable remarks</p></blockquote>
+<h2 id="cc-complie">C/C++ Complie</h2>
+<p>设置方言和程序的大小</p> <a class="read-more" href="/cnblogs2/post/e-iar-project-setup/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2020-07-02T08:08:08&#43;08:00">
+            2 Jul 2020
+        </time>
+    </footer>
+</article>
+
+	
+
+	<nav class="pagination" role="navigation">
+	
+	    <a class="newer-posts" href="/cnblogs2/post/page/4/">&larr; Newer Posts</a>
+	
+	<span class="page-number">Page 5 of 6</span>
+	
+	    <a class="older-posts" href="/cnblogs2/post/page/6/">Older Posts &rarr;</a>
+	
+</nav>
+
+</main>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/index.js"></script>
+    
+</body>
+</html>

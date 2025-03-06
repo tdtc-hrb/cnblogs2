@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs2/post/" />
+
+    
+        
+    
+
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="" />
+    
+
+    <title>Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs2/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs2/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs2/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+        <link href='/cnblogs2/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+    
+    <meta name="generator" content="Hugo 0.145.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs2/post/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs2/",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs2/"
+    },
+    "description":  null 
+}
+  </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs2/post/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+	<header class="main-header tag-head no-cover">
+
+    <nav class="main-nav overlay clearfix">
+      
+      
+        
+          <a class="menu-button icon-feed" href='/cnblogs2/post/index.xml'>&nbsp;&nbsp;Subscribe</a>
+        
+      
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Posts</h1>
+            <h2 class="page-description">
+                
+            </h2>
+        </div>
+    </div>
+</header>
+
+<main class="content" role="main">
+    
+
+	<div class="extra-pagination inner">
+    <nav class="pagination" role="navigation">
+	
+	    <a class="newer-posts" href="/cnblogs2/post/">&larr; Newer Posts</a>
+	
+	<span class="page-number">Page 2 of 6</span>
+	
+	    <a class="older-posts" href="/cnblogs2/post/page/3/">Older Posts &rarr;</a>
+	
+</nav>
+
+	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/vc-sqlite3lib/">Windows的SQLite静态库</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>Num(Current Version): 3470000</p>
+<h1 id="debug版">Debug版</h1>
+<p>&ldquo;Source Code&rdquo; -&gt; <a href="https://sqlite.org/download.html">sqlite-amalgamation-Num.zip</a></p>
+<h2 id="新建dll工程">新建DLL工程</h2>
+<p>project name: sqlite3（使用这个名字主要是在生成lib的时候不用更改输出名了）</p>
+<!-- vs2013: https://github.com/tdtc-hrb/cnblogs/raw/main/images/sqlite3-1-0prj(vs2013).png -->
+<!-- vs2013: https://github.com/tdtc-hrb/cnblogs/raw/main/images/sqlite3-1-1prj(vs2013).png -->
+<!-- vs2019: https://github.com/tdtc-hrb/cnblogs/raw/main/images/sqlite3-1prj.png -->
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/sqlite3-1prj(vs2022).png" alt="VS2022 prj1"></p>
+<h3 id="添加sqlite源文件">添加SQLite源文件</h3>
+<p>拷贝以下文件到工程根目录:</p>
+<ul>
+<li>sqlite3.h</li>
+<li>sqlite3ext.h</li>
+<li>sqlite3.c</li>
+</ul>
+<!-- vs2013: https://github.com/tdtc-hrb/cnblogs/raw/main/images/sqlite3-2prj(vs2013).png -->
+<!-- vs2019: https://github.com/tdtc-hrb/cnblogs/raw/main/images/sqlite3-2prj.png -->
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/sqlite3-2prj(vs2022).png" alt="VS2022 prj2"></p>
+<!-- vs2013: https://github.com/tdtc-hrb/cnblogs/raw/main/images/sqlite3-3prj(vs2013).png -->
+<!-- vs2019: https://github.com/tdtc-hrb/cnblogs/raw/main/images/sqlite3-3prj.png -->
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/sqlite3-3prj(vs2022).png" alt="VS2022 prj21"></p>
+<h2 id="编译工程">编译工程</h2>
+<p>Project ==&gt; Properties ==&gt; General</p>
+<pre tabindex="0"><code>Configureation Type : Static library(.lib)
+</code></pre><p>编译即可</p>
+<pre tabindex="0"><code>Build -&gt; Rebuild sqlite3
+</code></pre><h3 id="预编译头文件">预编译头文件</h3>
+<p>Project ==&gt; Properties ==&gt; C/C++ ==&gt; Precompiled Header</p> <a class="read-more" href="/cnblogs2/post/vc-sqlite3lib/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-11-19T21:08:08&#43;08:00">
+            19 Nov 2024
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/asp-ws2/">WebSockets over HTTP/2</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p><a href="https://github.com/dotnet/AspNetCore.Docs/commit/75ce89b25e9ba61f9687ce36a41cd3c50aec1e3c">NET 7 introduces Websockets over HTTP/2 support for Kestrel, the SignalR JavaScript client, and SignalR with Blazor WebAssembly.</a></p>
+<h3 id="http2">HTTP2</h3>
+<ul>
+<li>Multiplexing
+<img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*lY05UTuA-dWCXU-q.png" alt="Request multiplexing"></li>
+<li>Server push
+<img src="https://miro.medium.com/v2/resize:fit:640/format:webp/0*ZJLgVdXq_06hcF1o.png" alt="cacheable information"></li>
+<li>Header compression
+<img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*5r8-MbhEseP6lEQg.png" alt="HPACK"></li>
+</ul>
+<p>ref site:</p>
+<ul>
+<li><a href="https://www.cloudflare.com/learning/performance/http2-vs-http1.1/">HTTP/2 vs. HTTP/1.1: How do they affect web performance?</a></li>
+<li><a href="https://factoryhr.medium.com/http-2-the-difference-between-http-1-1-benefits-and-how-to-use-it-38094fa0e95b">HTTP/2: the difference between HTTP/1.1, benefits and how to use it</a></li>
+</ul>
+<h4 id="os-and-browsers-support">os and browsers support</h4>
+<ul>
+<li>Windows 10 1607+</li>
+<li>TLS 1.2+</li>
+<li><a href="https://caniuse.com/http2">browsers</a></li>
+</ul>
+<p>Note: recommended to use Chrome/FireFox</p>
+<h2 id="websockets">WebSockets</h2>
+<ul>
+<li>Accept a WebSocket connection as an asynchronous operation <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.httplistenercontext.acceptwebsocketasync">HttpListenerContext.AcceptWebSocketAsync()</a></li>
+<li>Receives data from the WebSocket connection asynchronously <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocket.receiveasync">WebSocket.ReceiveAsync()</a></li>
+<li>Sends data over the WebSocket connection asynchronously <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocket.sendasync">WebSocket.SendAsync()</a></li>
+<li>Closes the WebSocket connection as an asynchronous operation <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocket.closeasync">CloseAsync</a></li>
+</ul>
+<h3 id="enable-websocket">Enable WebSocket</h3>
+<ul>
+<li>default</li>
+</ul>
+<pre tabindex="0"><code>app.UseWebSockets()
+</code></pre><ul>
+<li>options</li>
+</ul>
+<pre tabindex="0"><code>var webSocketOptions = new WebSocketOptions
+{
+    KeepAliveInterval = TimeSpan.FromMinutes(2)
+};
+
+app.UseWebSockets(webSocketOptions);
+</code></pre><h3 id="accept-websocket-requests">Accept WebSocket requests</h3>
+<pre tabindex="0"><code>if (HttpContext.WebSockets.IsWebSocketRequest)
+{
+    using var webSocket = await HttpContext.WebSockets.AcceptWebSocketAsync();
+}
+</code></pre><h3 id="receive-messages">receive messages</h3>
+<pre tabindex="0"><code>var buffer = new byte[1024 * 4];
+
+var receiveResult = await webSocket.ReceiveAsync(
+    new ArraySegment&lt;byte&gt;(buffer), CancellationToken.None);
+</code></pre><h4 id="arraysegment"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.arraysegment-1">ArraySegment</a></h4>
+<p>Array version of substring()</p> <a class="read-more" href="/cnblogs2/post/asp-ws2/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-10-18T20:38:18&#43;08:00">
+            18 Oct 2024
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/asp-base/">3小时搞定asp.net 9.0</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>IDE: Visual Studio 2022 -<a href="https://visualstudio.microsoft.com/vs/preview/#download-preview">community</a></li>
+<li>DB：MySQL5.7+</li>
+</ul>
+<p>下载<a href="https://dotnet.microsoft.com/download/dotnet/9.0">V9.0</a>:</p>
+<ul>
+<li>32位 :<a href="https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-9.0.100-rc.2-windows-x86-installer">x86</a></li>
+<li>64位 :<a href="https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-9.0.100-rc.2-windows-x64-installer">x64</a></li>
+</ul>
+<h1 id="建立工程">建立工程</h1>
+<blockquote>
+<p>File-》New-》Project</p>
+<blockquote>
+<p>ASP.NET Core Web Application(Model-View-Controller)</p></blockquote></blockquote>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011124537.png" alt="vs2022 preview"></p>
+<h2 id="简单修改主页">简单修改主页</h2>
+<blockquote>
+<p>Solution Explorer</p>
+<blockquote>
+<p>Views-》Home-》Index.cshtml</p></blockquote></blockquote>
+<p>增加如下代码：</p>
+<pre tabindex="0"><code class="language-asp.net" data-lang="asp.net">&lt;p&gt;这是我的第1个ASP.NET程序！&lt;/p&gt;
+</code></pre><p>选择使用何种Web Server 运行：</p>
+<ul>
+<li>http</li>
+<li>https</li>
+<li>IIS Express</li>
+</ul>
+<blockquote>
+<p>default: https</p></blockquote>
+<p>点击“IIS Express”运行（如果弹出证书安装选“是”即可）。
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011134118.png" alt="iis cert - hint">
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011134337.png" alt="windows - hint"></p>
+<h1 id="增加数据库">增加数据库</h1>
+<h2 id="ef-core">EF Core</h2>
+<blockquote>
+<p>Project-》Manage NuGet Packages
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20241011135217.png" alt="Microsoft EF Core"></p></blockquote>
+<h2 id="entity-class">entity class</h2>
+<p>我们建立一个与数据表相对应的Entity类</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.ComponentModel.DataAnnotations;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> veic_web.Models
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Product</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [Key]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Param_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Statu_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Lang_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Img_id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string?</span> Name { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string?</span> Description { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="db-class">DB Class</h2>
+<blockquote>
+<p>Solution Explorer</p> <a class="read-more" href="/cnblogs2/post/asp-base/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-10-12T09:08:08&#43;08:00">
+            12 Oct 2024
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/ror_getstarted/">开始Ruby On Rails</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h1 id="prepare">Prepare</h1>
+<ul>
+<li>
+<p><a href="https://tdtc-hrb.github.io/csdn/post/nodejs-ubuntu/">nodejs</a></p>
+</li>
+<li>
+<p>foreman</p>
+</li>
+</ul>
+<pre tabindex="0"><code>gem install foreman
+</code></pre><h2 id="mysql-dev">mysql-dev</h2>
+<ul>
+<li>ubuntu</li>
+</ul>
+<pre tabindex="0"><code>sudo apt install mysql-client libmysqlclient-dev
+gem install mysql2
+</code></pre><h3 id="debian"><a href="https://stackoverflow.com/a/34384709">Debian</a></h3>
+<ul>
+<li>mariadb</li>
+</ul>
+<pre tabindex="0"><code>sudo apt-get install mariadb-server
+</code></pre><ul>
+<li><a href="https://github.com/ansible-community/ara-collection/issues/8">mariadbclient-dev</a></li>
+</ul>
+<pre tabindex="0"><code>sudo apt-get install libmariadb-dev-compat libmariadb-dev
+</code></pre><ul>
+<li><a href="https://stackoverflow.com/questions/72000977/how-do-i-install-libmysqlclient21-on-debianbuster-slim-based-docker-image">client</a></li>
+</ul>
+<pre tabindex="0"><code>sudo apt-get install mariadb-client mysql-common default-mysql-client
+</code></pre><ul>
+<li>mysql2</li>
+</ul>
+<pre tabindex="0"><code>gem install mysql2
+</code></pre><h2 id="yarn">Yarn</h2>
+<p>upload <a href="https://github.com/yarnpkg/yarn/releases/download/v1.22.22/yarn_1.22.22_all.deb">yarn_1.22.22_all.deb</a> to ubuntu:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>scp d:\yarn_1.22.22_all.deb tdtc@192.168.3.99:/home/tdtc/
+</span></span></code></pre></div><p>install:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x yarn_1.22.22_all.deb
+</span></span><span style="display:flex;"><span>sudo dpkg -i yarn_1.22.22_all.deb
+</span></span></code></pre></div><h1 id="creating-a-new-rails-project">Creating a New Rails Project</h1>
+<p>new:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rails new veic_web-r2 -j esbuild --css bulma -d mysql
+</span></span></code></pre></div><h2 id="upload-images">upload images</h2>
+<p>windows 10:</p> <a class="read-more" href="/cnblogs2/post/ror_getstarted/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-09-30T08:08:08&#43;08:00">
+            30 Sep 2024
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/ror_installation/">安装Ruby On Rails</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://www.fastruby.io/blog/ruby/rails/versions/compatibility-table.html">Ruby &amp; Rails Compatibility Table</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Rails Version</th>
+          <th>Required Ruby Version</th>
+          <th>Recommended Ruby Version</th>
+          <th>Required Rubygems Version</th>
+          <th>Status</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>7.2.Z</td>
+          <td>&gt;= 3.1.0</td>
+          <td>3.3</td>
+          <td>&gt;= 1.8.11</td>
+          <td>Maintained</td>
+      </tr>
+      <tr>
+          <td>7.1.Z</td>
+          <td>&gt;= 2.7.0</td>
+          <td>3.2.Z</td>
+          <td>&gt;= 1.8.11</td>
+          <td>Maintained</td>
+      </tr>
+      <tr>
+          <td>7.0.Z</td>
+          <td>&gt;= 2.7.0</td>
+          <td>3.1.Z</td>
+          <td>&gt;= 1.8.11</td>
+          <td>Maintained</td>
+      </tr>
+  </tbody>
+</table>
+<h1 id="rbenv">RbEnv</h1>
+<p>Install ruby using rbenv.</p>
+<h2 id="dependencies">Dependencies</h2>
+<ul>
+<li>Debian</li>
+</ul>
+<blockquote>
+<p>v12
+After enabling <a href="https://tdtc-hrb.github.io/csdn/post/apt-oper-ubuntu/">sudo</a>,
+the operation is the same as Ubuntu.</p></blockquote>
+<ul>
+<li>Ubuntu <br>
+Ubuntu 20.04 default Ruby version is v2.7</li>
+</ul>
+<pre tabindex="0"><code>sudo apt install git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential \
+ libyaml-dev libncurses5-dev libffi-dev libgdbm-dev
+</code></pre><ul>
+<li>RHEL <br>
+RHEL8(Alma / Rocky) default Ruby version is v2.5.5</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dnf -y install git make gcc curl openssl-devel zlib-devel libffi-devel readline-devel sqlite-devel
+</span></span></code></pre></div><p>install tar:</p> <a class="read-more" href="/cnblogs2/post/ror_installation/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-09-29T08:08:08&#43;08:00">
+            29 Sep 2024
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/java-jni-gcc/">jni - gcc</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>xbfLibR.dll generated by Delphi, Error in Ubuntu:</p>
+<pre tabindex="0"><code>java.lang.UnsatisfiedLinkError: /tmp/xbfLibR1872218867548961332.dll: /tmp/xbfLibR1872218867548961332.dll: 
+invalid ELF header (Possible cause: endianness mismatch)
+</code></pre><ul>
+<li>JNI Header</li>
+<li>C++</li>
+</ul>
+<h2 id="jni-header">JNI Header</h2>
+<ul>
+<li>Write a Java Class ReadXbf.java that uses C/C++ Codes</li>
+</ul>
+<pre tabindex="0"><code>package com.cartionsoft.xbf;
+
+public class ReadXbf {
+    static {
+      System.loadLibrary(&#34;XbfLibR1&#34;);  // Load native library XbfLibR1.dll (Windows) or libXbfLibR1.so (Unixes)
+                                   //  at runtime
+                                   // This library contains a native method called sayHello()
+    }
+    // Declare an instance native method sayHello() which receives no parameter and returns void
+    private native String sayHello(int num, String text);
+
+    // Test Driver
+    public static void main(String[] args) {
+      ReadXbf rf = new ReadXbf();
+      String text = rf.sayHello(1, &#34;world&#34;); // Create an instance and invoke the native method
+      System.out.println(text);
+    }
+}
+</code></pre><ul>
+<li>Generate the JNI Header File</li>
+</ul>
+<pre tabindex="0"><code>javac -h . ReadXbf.java
+</code></pre><h2 id="jni-with-c">JNI with C++</h2>
+<p>XbfLibR1.cpp:</p> <a class="read-more" href="/cnblogs2/post/java-jni-gcc/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-01-09T08:08:08&#43;08:00">
+            9 Jan 2024
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/java-servlet_versions/">servlet version choose</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://en.wikipedia.org/wiki/Jakarta_Servlet#History">Servlet API history</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Servlet API version</th>
+          <th>Released</th>
+          <th>Specification</th>
+          <th>Platform</th>
+          <th>Important Changes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Jakarta Servlet 6.0</td>
+          <td>May 31, 2022</td>
+          <td>6.0</td>
+          <td>Jakarta EE 10</td>
+          <td>remove deprecated features and implement requested enhancements</td>
+      </tr>
+      <tr>
+          <td>Jakarta Servlet 5.0</td>
+          <td>Oct 9, 2020</td>
+          <td>5.0</td>
+          <td>Jakarta EE 9</td>
+          <td>API moved from package javax.servlet to jakarta.servlet</td>
+      </tr>
+      <tr>
+          <td>Jakarta Servlet 4.0.3</td>
+          <td>Sep 10, 2019</td>
+          <td>4.0</td>
+          <td>Jakarta EE 8</td>
+          <td>Renamed from &ldquo;Java&rdquo; trademark</td>
+      </tr>
+      <tr>
+          <td>Java Servlet 4.0</td>
+          <td>Sep 2017</td>
+          <td>JSR 369</td>
+          <td>Java EE 8</td>
+          <td>HTTP/2</td>
+      </tr>
+      <tr>
+          <td>Java Servlet 3.1</td>
+          <td>May 2013</td>
+          <td>JSR 340</td>
+          <td>Java EE 7</td>
+          <td>Non-blocking I/O, HTTP protocol upgrade mechanism (WebSocket)</td>
+      </tr>
+      <tr>
+          <td>Java Servlet 3.0</td>
+          <td>December 2009</td>
+          <td>JSR 315</td>
+          <td>Java EE 6, Java SE 6</td>
+          <td>Pluggability, Ease of development, Async Servlet, Security, File Uploading</td>
+      </tr>
+      <tr>
+          <td>Java Servlet 2.5</td>
+          <td>September 2005</td>
+          <td>JSR 154</td>
+          <td>Java EE 5, Java SE 5</td>
+          <td>Requires Java SE 5, supports annotation</td>
+      </tr>
+      <tr>
+          <td>Java Servlet 2.4</td>
+          <td>November 2003</td>
+          <td>JSR 154</td>
+          <td>J2EE 1.4, J2SE 1.3</td>
+          <td>web.xml uses XML Schema</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="spring">Spring</h2>
+<ul>
+<li>
+<p>v6.1 <br>
+6.1.x is the upcoming feature branch (<a href="https://calendar.spring.io/">November 2023</a>).</p> <a class="read-more" href="/cnblogs2/post/java-servlet_versions/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2023-09-18T08:08:08&#43;08:00">
+            18 Sep 2023
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/php-build-win/">Build your own PHP on Windows</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>Visual C++ 14.0 (Visual Studio 2015) for PHP 7.0 or PHP 7.1.</li>
+<li>Visual C++ 15.0 (Visual Studio 2017) for PHP 7.2, PHP 7.3 or PHP 7.4.</li>
+<li>Visual C++ 16.0 (Visual Studio 2019) for master.</li>
+</ul>
+<ol>
+<li>Enter build</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/Microsoft/php-sdk-binary-tools
+</span></span><span style="display:flex;"><span>cd php-sdk-binary-tools
+</span></span><span style="display:flex;"><span>phpsdk-vs16-x64.bat
+</span></span></code></pre></div><ol start="2">
+<li>Gen deps directory</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>phpsdk_buildtree phpdev
+</span></span></code></pre></div><ol start="3">
+<li>git php src</li>
+</ol>
+<pre tabindex="0"><code>cd d:\progFiles\phpdev\vs16\x64
+git clone -b PHP-8.0.* https://github.com/php/php-src.git
+</code></pre><p>*: version number</p>
+<ol start="4">
+<li>deps updates</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>phpsdk_deps --update
+</span></span></code></pre></div><ol start="5">
+<li>build</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>buildconf <span style="color:#f92672">&amp;&amp;</span> configure <span style="color:#f92672">&amp;&amp;</span> nmake
+</span></span></code></pre></div><ul>
+<li><a href="https://wiki.php.net/internals/windows/stepbystepbuild_sdk_2">Build your own PHP on Windows</a></li>
+</ul> <a class="read-more" href="/cnblogs2/post/php-build-win/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2023-08-20T10:08:08&#43;08:00">
+            20 Aug 2023
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/e-pic16f_blink7/">PIC blinked</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>With a few changes, code for 877A can be easily transferred to 887 (as for any PIC, datasheet reading is necessary).
+887 has internal oscillator, it is cheaper than 877A, &hellip;</p>
+<ul>
+<li>MPASM <br>
+<a href="https://ww1.microchip.com/downloads/en/DeviceDoc/MPLABX-v5.30-windows-installer.exe">MPLAB X v5.30(x86) - 2019.10.29</a></li>
+<li>Proteus <a href="https://www.jb51.net/softs/854769.html">v8.15</a></li>
+</ul>
+<h1 id="blinking-led">Blinking LED</h1>
+<p>First, use the compiler to generate hex; <br>
+Then, use protelus to draw &ldquo;Schematic Capture&rdquo;; <br>
+Finally, import the hex file into the MCU component.</p>
+<h2 id="16f887">16F887</h2>
+<p>We are using Proteus simulator for simulating our code but if you are testing the code in real world test bench all you need is,</p> <a class="read-more" href="/cnblogs2/post/e-pic16f_blink7/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2023-05-18T08:08:08&#43;08:00">
+            18 May 2023
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/e-pic16f_instruction-set/">8位单片机PIC汇编语言</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>TABLE 1-1: OPCODE FIELD DESCRIPTIONS</p>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>f</td>
+          <td>Register file address (0x00 to 0x7F)</td>
+      </tr>
+      <tr>
+          <td>W</td>
+          <td>Working register (accumulator)</td>
+      </tr>
+      <tr>
+          <td>d</td>
+          <td>Destination select;</td>
+      </tr>
+      <tr>
+          <td>b</td>
+          <td>Bit address within an 8-bit file register</td>
+      </tr>
+      <tr>
+          <td>k</td>
+          <td>Literal field, constant data or label</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>d value</th>
+          <th>where the results are placed</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>d = 0</td>
+          <td>W(orking) register</td>
+      </tr>
+      <tr>
+          <td>d = 1</td>
+          <td>file register; Default is d = 1.</td>
+      </tr>
+  </tbody>
+</table>
+<p>TABLE 1-2: ABBREVIATION DESCRIPTIONS</p>
+<p>|Field| Description|
+| PC | Program Counter|
+| TO | Time-Out bit|
+| C  | Carry bit|
+| DC | Digit Carry bit|
+| Z  | Zero bit|
+| PD | Power-Down bit|</p> <a class="read-more" href="/cnblogs2/post/e-pic16f_instruction-set/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2023-05-17T10:08:08&#43;08:00">
+            17 May 2023
+        </time>
+    </footer>
+</article>
+
+	
+
+	<nav class="pagination" role="navigation">
+	
+	    <a class="newer-posts" href="/cnblogs2/post/">&larr; Newer Posts</a>
+	
+	<span class="page-number">Page 2 of 6</span>
+	
+	    <a class="older-posts" href="/cnblogs2/post/page/3/">Older Posts &rarr;</a>
+	
+</nav>
+
+</main>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/index.js"></script>
+    
+</body>
+</html>

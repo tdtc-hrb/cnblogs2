@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs2/post/" />
+
+    
+        
+    
+
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="" />
+    
+
+    <title>Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs2/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs2/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs2/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+        <link href='/cnblogs2/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+    
+    <meta name="generator" content="Hugo 0.145.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs2/post/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs2/",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs2/"
+    },
+    "description":  null 
+}
+  </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs2/post/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+	<header class="main-header tag-head no-cover">
+
+    <nav class="main-nav overlay clearfix">
+      
+      
+        
+          <a class="menu-button icon-feed" href='/cnblogs2/post/index.xml'>&nbsp;&nbsp;Subscribe</a>
+        
+      
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Posts</h1>
+            <h2 class="page-description">
+                
+            </h2>
+        </div>
+    </div>
+</header>
+
+<main class="content" role="main">
+    
+
+	<div class="extra-pagination inner">
+    <nav class="pagination" role="navigation">
+	
+	<span class="page-number">Page 1 of 6</span>
+	
+	    <a class="older-posts" href="/cnblogs2/post/page/2/">Older Posts &rarr;</a>
+	
+</nav>
+
+	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/mysql.net/">MySQL Connector/Net 的简单使用</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><table>
+  <thead>
+      <tr>
+          <th>Connector/NET Version</th>
+          <th>ADO.NET Version</th>
+          <th>.NET Version Required</th>
+          <th>MySQL Server</th>
+          <th>IDE</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>6.9</td>
+          <td>2.x+</td>
+          <td>3.5+ for VS 2008, 4.x+ for VS 2010 / 2012 / 2013, WinRT for VS 2012 / 2013</td>
+          <td>5.7, 5.6, 5.5</td>
+          <td>Visual Studio 2010</td>
+      </tr>
+      <tr>
+          <td>6.1</td>
+          <td>2.x+</td>
+          <td>2.x+</td>
+          <td>5.6, 5.5, 5.1, 5.0, 4.1</td>
+          <td>Visual Studio 2008</td>
+      </tr>
+  </tbody>
+</table>
+<p>连接器(For .net)：</p>
+<ul>
+<li>vs2008/2010 <br>
+<a href="https://cdn.mysql.com/archives/mysql-connector-net-6.1/mysql-connector-net-6.1.6.msi">V6.1.6</a></li>
+<li><a href="https://stackoverflow.com/a/40750607">vs2015</a> <br>
+<a href="https://cdn.mysql.com/archives/mysql-connector-net-6.9/mysql-connector-net-6.9.8.msi">v6.9.8</a></li>
+<li><a href="https://dev.mysql.com/doc/connector-net/en/connector-net-versions.html">dotnet and mysql connector - vs2019</a> <br>
+<a href="https://cdn.mysql.com/archives/mysql-connector-net-8.0/mysql-connector-net-8.0.32.msi">v8.0.32</a></li>
+</ul>
+<h3 id="新建工程---windows-application">新建工程 - Windows Application</h3>
+<ul>
+<li>vs2008
+<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20200609110346.png" alt="vs2008 ui"></li>
+<li>vs2019
+<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20250301074031.png" alt="vs2019 ui"></li>
+</ul>
+<h3 id="增加引用mysqldata">增加引用(MySql.Data)</h3>
+<ul>
+<li>vs2008
+<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20200609110557.png" alt="vs2008 ui"></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20200609111014.png" alt="vs2008 ui"></p> <a class="read-more" href="/cnblogs2/post/mysql.net/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-03-02T00:08:08&#43;08:00">
+            2 Mar 2025
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/qt-serialport_v2/">使用qt6的qml编写Serial Port</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>Qt Environment</li>
+<li>Qt Singleton</li>
+<li>Qt Update Issue</li>
+</ul>
+<h2 id="qt-environment">Qt Environment</h2>
+<ul>
+<li><a href="https://download.qt.io/official_releases/online_installers">Qt online installer</a></li>
+<li><a href="https://tdtc-hrb.github.io/cnblogs/post/ops_win_faq2">Visual Studio 2019/2022</a></li>
+</ul>
+<h3 id="installer">installer</h3>
+<p>default:</p>
+<ul>
+<li>qt creator <br>
+<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt-online-creator.png" alt="qt-online-creator"></li>
+<li>Build tools <br>
+<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt-online-cmake.png" alt="qt-online-cmake"></li>
+</ul>
+<h4 id="msvc">MSVC</h4>
+<ul>
+<li>vs2019(qt5.15) <br>
+<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt-online-msvc2019.png" alt="qt5.15 msvc2019"></li>
+<li>vs2019 <br>
+<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt6-online-msvc2019.png" alt="qt6.5 msvc2019"></li>
+<li>vs2022 <br>
+<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt-online-msvc2022.png" alt="qt6.8 msvc2022"></li>
+</ul>
+<h4 id="additional-libraries">Additional Libraries</h4>
+<ul>
+<li>Qt5</li>
+</ul>
+<blockquote>
+<p>Included in the integration module</p></blockquote>
+<p>No need to select additional</p>
+<ul>
+<li>Qt6 <br>
+<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/qt6-online-serial_port.png" alt="Qt Serial Port"></li>
+</ul>
+<h3 id="cmake-in-qt-creator">CMake in Qt Creator</h3>
+<p>程序设置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-GNinja
+</span></span><span style="display:flex;"><span>-DCMAKE_BUILD_TYPE:STRING<span style="color:#f92672">=</span>Release
+</span></span><span style="display:flex;"><span>-DCMAKE_PROJECT_INCLUDE_BEFORE:PATH<span style="color:#f92672">=</span>%<span style="color:#f92672">{</span>IDE:ResourcePath<span style="color:#f92672">}</span>/package-manager/auto-setup.cmake
+</span></span><span style="display:flex;"><span>-DQT_QMAKE_EXECUTABLE:STRING<span style="color:#f92672">=</span>%<span style="color:#f92672">{</span>Qt:qmakeExecutable<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>-DCMAKE_PREFIX_PATH:STRING<span style="color:#f92672">=</span>%<span style="color:#f92672">{</span>Qt:QT_INSTALL_PREFIX<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>-DCMAKE_C_COMPILER:STRING<span style="color:#f92672">=</span>%<span style="color:#f92672">{</span>Compiler:Executable:C<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>-DCMAKE_CXX_COMPILER:STRING<span style="color:#f92672">=</span>%<span style="color:#f92672">{</span>Compiler:Executable:Cxx<span style="color:#f92672">}</span>
+</span></span></code></pre></div><h3 id="deploy">Deploy</h3>
+<ul>
+<li>v5.15</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\Q</span>t<span style="color:#ae81ff">\5</span>.15.2<span style="color:#ae81ff">\m</span>svc2019_64<span style="color:#ae81ff">\b</span>in<span style="color:#ae81ff">\w</span>indeployqt --qmldir C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\Q</span>tRaspberry C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom_qml<span style="color:#ae81ff">\s</span>erialCom.exe
+</span></span></code></pre></div><ul>
+<li>v6.5</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\Q</span>t<span style="color:#ae81ff">\6</span>.5.3<span style="color:#ae81ff">\m</span>svc2019_64<span style="color:#ae81ff">\b</span>in<span style="color:#ae81ff">\w</span>indeployqt --qmldir C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\Q</span>tRaspberry C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom_qml<span style="color:#ae81ff">\s</span>erialCom.exe
+</span></span></code></pre></div><ul>
+<li>v6.8</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\Q</span>t<span style="color:#ae81ff">\6</span>.8.2<span style="color:#ae81ff">\m</span>svc2022_64<span style="color:#ae81ff">\b</span>in<span style="color:#ae81ff">\w</span>indeployqt --qmldir C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\S</span>erialCom<span style="color:#ae81ff">\Q</span>tRaspberry C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\S</span>erialCom_qml<span style="color:#ae81ff">\s</span>erialCom.exe
+</span></span></code></pre></div><h2 id="qt-singleton">Qt Singleton</h2>
+<p>The version that fully supports singletons is <a href="https://doc.qt.io/qt-5/qqmlengine.html#qmlRegisterSingletonType-2">v5.14+</a></p> <a class="read-more" href="/cnblogs2/post/qt-serialport_v2/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-02-26T08:18:08&#43;08:00">
+            26 Feb 2025
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/qt-serialport/">使用qt5编写Serial Port</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p><img src="https://www.eltima.com/images/upload/products/spm/articles/howto/178.jpg" alt="RS-232 Testing Guide"></p>
+<h1 id="thread">thread</h1>
+<blockquote>
+<p>线程相关</p></blockquote>
+<h2 id="asynchronously">asynchronously</h2>
+<p><a href="https://doc.qt.io/qt-5/qobject.html#connect">connect方法</a> 已实现异步。</p>
+<h2 id="synchronously">synchronously</h2>
+<p><a href="https://doc.qt.io/qt-5/qmutexlocker.html">qmutexlocker</a></p>
+<h3 id="创建信号锁">创建信号锁</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>m_mutex.lock();
+</span></span></code></pre></div><h2 id="信号">信号</h2>
+<p>为便于调用者获得线程的内部信息，我们需要提供信号。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>signals:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> error(<span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span>s);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">timeout</span>(<span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span>s);
+</span></span></code></pre></div><p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20200627152341.png" alt="program ui"></p>
+<h1 id="worker-method">Worker method</h1>
+<h2 id="init-port">Init Port</h2>
+<p>设置私有成员变量</p>
+<blockquote>
+<p>部分代码</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>m_waitTimeout <span style="color:#f92672">=</span> waitTimeout;
+</span></span></code></pre></div><h2 id="receive-data">Receive data</h2>
+<p>打开串口</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>m_serialPort<span style="color:#f92672">-&gt;</span>open(QIODevice<span style="color:#f92672">::</span>ReadWrite)) {
+</span></span><span style="display:flex;"><span>		qDebug() <span style="color:#f92672">&lt;&lt;</span> tr(<span style="color:#e6db74">&#34;Can&#39;t open %1, error code %2&#34;</span>)
+</span></span><span style="display:flex;"><span>			.arg(m_portName).arg(m_serialPort<span style="color:#f92672">-&gt;</span>error());
+</span></span><span style="display:flex;"><span>		m_serialPort<span style="color:#f92672">-&gt;</span>close();
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>	}
+</span></span></code></pre></div><p>接收数据</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (m_serialPort<span style="color:#f92672">-&gt;</span>waitForReadyRead(<span style="color:#ae81ff">500</span>))
+</span></span><span style="display:flex;"><span>            responseData <span style="color:#f92672">+=</span> m_serialPort<span style="color:#f92672">-&gt;</span>read(<span style="color:#ae81ff">1024</span>);
+</span></span></code></pre></div><h1 id="deploy-for-windows">Deploy for windows</h1>
+<p>copy exe to target directory.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>copy C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\P</span>rojects<span style="color:#ae81ff">\s</span>erialCommQt<span style="color:#ae81ff">\R</span>elease<span style="color:#ae81ff">\s</span>erialCommQt.exe C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ocuments<span style="color:#ae81ff">\s</span>erialCommQt_qmake<span style="color:#ae81ff">\
+</span></span></span></code></pre></div><p>exec windeployqt:</p> <a class="read-more" href="/cnblogs2/post/qt-serialport/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-02-23T08:18:08&#43;08:00">
+            23 Feb 2025
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/php-devenv-win/">Windows搭建PHP环境</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://www.apachelounge.com/download/">Apache Lounge Downloads</a></li>
+<li><a href="https://slproweb.com/products/Win32OpenSSL.html">windows openssl</a></li>
+</ul>
+<h1 id="apache配置">Apache配置</h1>
+<p>test config:</p>
+<pre tabindex="0"><code>httpd -t
+</code></pre><ul>
+<li>ServerName</li>
+</ul>
+<pre tabindex="0"><code>ServerName localhost:80
+</code></pre><ul>
+<li>网站根目录
+替换“htdocs”为 &ldquo;wwwroot&rdquo;</li>
+</ul>
+<h2 id="php-apache">php-apache</h2>
+<pre tabindex="0"><code>Non Thread Safe(NTS) 和 Thread Safe(TS)： &#34;NTS&#34;，没有&#34;php(5/7/8)apache2_4.dll&#34;
+</code></pre><ul>
+<li>PHP 8</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PHPIniDir <span style="color:#e6db74">&#34;C:/Users/tdtc/php-8.3&#34;</span>
+</span></span><span style="display:flex;"><span>LoadModule php_module <span style="color:#e6db74">&#34;C:/Users/tdtc/php-8.3/php8apache2_4.dll&#34;</span>
+</span></span></code></pre></div><ul>
+<li>PHP 7</li>
+</ul>
+<blockquote>
+<p>Php7.2+ 已移除 mcrypt.</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PHPIniDir <span style="color:#e6db74">&#34;C:/Users/tdtc/php7.1&#34;</span>
+</span></span><span style="display:flex;"><span>LoadModule php7_module <span style="color:#e6db74">&#34;C:/Users/tdtc/php7.1/php7apache2_4.dll&#34;</span>
+</span></span></code></pre></div><ul>
+<li>Php 5</li>
+</ul>
+<pre tabindex="0"><code>PHPIniDir &#34;C:/Users/tdtc/php-5.6&#34;
+LoadModule php5_module &#34;C:/Users/tdtc/php-5.6/php5apache2_4.dll&#34;
+</code></pre><p>在配置文件(conf/httpd.conf)最后增加:</p>
+<pre tabindex="0"><code>AddType application/x-httpd-php .php
+</code></pre><h3 id="directory-index">Directory Index</h3>
+<p>sets the file that Apache will serve if a directory is requested.</p>
+<ul>
+<li>append</li>
+</ul>
+<pre tabindex="0"><code>index.php
+</code></pre><h2 id="重写">重写</h2>
+<ul>
+<li>a.打开模块</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>LoadModule rewrite_module modules/mod_rewrite.so
+</span></span></code></pre></div><ul>
+<li>b.允许重写</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>AllowOverride All
+</span></span></code></pre></div><h2 id="ssl">SSL</h2>
+<ul>
+<li>open module</li>
+</ul>
+<pre tabindex="0"><code>LoadModule ssl_module modules/mod_ssl.so
+</code></pre><ul>
+<li>at httpd.conf:</li>
+</ul>
+<pre tabindex="0"><code>Include conf/extra/httpd-ssl.conf
+## apache haus httpd-2.4.55-o111s-x64-vs16.zip
+##Include conf/extra/httpd-ahssl.conf
+</code></pre><h3 id="basic-conf"><a href="https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html">basic conf</a></h3>
+<p>httpd-ssl.conf:</p> <a class="read-more" href="/cnblogs2/post/php-devenv-win/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-02-14T08:08:08&#43;08:00">
+            14 Feb 2025
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/qt-hello/">Widgets简单demo</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://tdtc-hrb.github.io/cnblogs/post/ops_win_faq2">VC++</a></li>
+<li>Qt Design Studio</li>
+</ul>
+<h3 id="qt-visual-studio-tools"><a href="https://marketplace.visualstudio.com/items?itemName=TheQtCompany.QtVisualStudioTools2022">Qt Visual Studio Tools</a></h3>
+<p>Find &ldquo;Qt&rdquo; in &ldquo;Tools-&gt;Options&rdquo; of Visual Studio and set the qmake path
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123104033.png" alt="Versions - vs2022"></p>
+<h1 id="widget工程">Widget工程</h1>
+<ul>
+<li>QtHello
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123111036.png" alt="vs2022 info1"></li>
+</ul>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123130638.png" alt="Build config"></p>
+<p><img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123130026.png" alt="set class name">
+&ldquo;User Interface(.ui)file&rdquo; is only available if you install the QtDesignStudio</p>
+<h2 id="ui">UI</h2>
+<ul>
+<li>Open the UI file using QT
+<img src="https://github.com/tdtc-hrb/cnblogs/raw/main/images/20250123131837.png" alt="QtDesignStudio"></li>
+</ul>
+<h3 id="push-button">Push Button</h3>
+<p>拖拽“Push Button”，并修改属性：</p>
+<ul>
+<li>ObjectName</li>
+</ul>
+<pre tabindex="0"><code>btnHello
+</code></pre><ul>
+<li>Text</li>
+</ul>
+<pre tabindex="0"><code>Click Me
+</code></pre><h1 id="code-implementation">Code Implementation</h1>
+<ul>
+<li>QtHello.h</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#pragma once
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtWidgets/QMainWindow&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;ui_QtHello.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QtHello</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> QMainWindow
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Q_OBJECT
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    QtHello(QWidget <span style="color:#f92672">*</span>parent <span style="color:#f92672">=</span> Q_NULLPTR);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    Ui<span style="color:#f92672">::</span>QtHelloClass ui;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// add code // Declarative methods
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">private</span> slots:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> helloQT();
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>QtHello.cpp</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;QtHello.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtWidgets/QMessageBox&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>QtHello<span style="color:#f92672">::</span>QtHello(QWidget <span style="color:#f92672">*</span>parent)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">:</span> QMainWindow(parent)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    ui.setupUi(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// add code // Association 3-Elements: Ui-Event-Method
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    connect(ui.btnHello, <span style="color:#f92672">&amp;</span>QPushButton<span style="color:#f92672">::</span>clicked, <span style="color:#66d9ef">this</span>, <span style="color:#f92672">&amp;</span>QtHello<span style="color:#f92672">::</span>helloQT);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// The other way to connect a signal to a slot is to use QObject::connect() and the SIGNAL and SLOT macros. 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// connect(ui.btnHello, SIGNAL(clicked()), this, SLOT(helloQT()));
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// add code // Implementation
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> QtHello<span style="color:#f92672">::</span>helloQT()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    QMessageBox msgBox;
+</span></span><span style="display:flex;"><span>    msgBox.setText(<span style="color:#e6db74">&#34;Hello Qt!&#34;</span>);
+</span></span><span style="display:flex;"><span>    msgBox.exec();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="signals-and-slots"><a href="https://doc.qt.io/qt-6/signalsandslots.html">Signals and Slots</a></h2>
+<p><img src="https://doc.qt.io/qt-6/images/abstract-connections.png" alt="qt6 offical"></p> <a class="read-more" href="/cnblogs2/post/qt-hello/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-01-25T19:08:08&#43;08:00">
+            25 Jan 2025
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/qt-thread/">QT5简单thread</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h1 id="project">Project</h1>
+<p>使用Qt Visual Studio Tools创建, 以下简称qt tools。</p>
+<p>also see: <a href="https://tdtc-hrb.github.io/cnblogs/post/qt-hello/">QT VS Tools的设置</a></p>
+<h2 id="install-qt-tools">install qt tools</h2>
+<p>Tools -&gt; Extensions and Updates <br>
+选择Online, 输入&quot;Qt Visual Studio Tools&quot;</p>
+<h2 id="create-qt-project">Create Qt Project</h2>
+<p>File -&gt; New -&gt; Project <br>
+Qt Console Application</p>
+<h2 id="add-class">Add class</h2>
+<p>点击“工程名”右键, Add -&gt; Class <br>
+Class name: Controller <br>
+Base Class: QObject</p>
+<p>初始状态的Controller类: <br>
+Controller.h</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#pragma once
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;qobject.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Controller</span> <span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> QObject
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>Controller.cpp</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Controller.h&#34;</span><span style="color:#75715e">
+</span></span></span></code></pre></div><h1 id="worker">Worker</h1>
+<p>此Worker使用的“easy worker”的案例.</p>
+<h2 id="header">Header</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QObject&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Worker</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> QObject {
+</span></span><span style="display:flex;"><span>	Q_OBJECT
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	Worker();
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">~</span>Worker();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> slots:
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> process();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>signals:
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> finished();
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">error</span>(QString err);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// add your variables here
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span></code></pre></div><h2 id="class">Class</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Worker.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --- CONSTRUCTOR ---
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Worker<span style="color:#f92672">::</span>Worker() {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// you could copy data from constructor arguments to internal variables here.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --- DECONSTRUCTOR ---
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Worker<span style="color:#f92672">::~</span>Worker() {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// free resources
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --- PROCESS ---
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Start processing data.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> Worker<span style="color:#f92672">::</span>process() {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// allocate resources using new here
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	qDebug(<span style="color:#e6db74">&#34;Hello World!&#34;</span>);
+</span></span><span style="display:flex;"><span>	emit <span style="color:#a6e22e">finished</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="controller">Controller</h1>
+<h2 id="header-1">Header</h2>
+<p>申明errorString槽, 以对接Worker的信号“error”;
+申明operate信号, 以供操作Controller。</p> <a class="read-more" href="/cnblogs2/post/qt-thread/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-01-23T22:08:08&#43;08:00">
+            23 Jan 2025
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/c2plus-overflow1-gcc/">signed warning</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>For development environment settings, see: <a href="https://blog.csdn.net/xiaobin_HLJ80/article/details/19500207#t0">pictures</a>
+and <a href="https://tdtc-hrb.github.io/csdn/post/c-console_app">run application</a></p>
+<h2 id="shellsort">shellsort</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> Comparable<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> shellsort(vector<span style="color:#f92672">&lt;</span>Comparable<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>a)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> gap <span style="color:#f92672">=</span> a.size() <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>; gap <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>; gap <span style="color:#f92672">/=</span> <span style="color:#ae81ff">2</span>){
+</span></span><span style="display:flex;"><span>    	<span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> gap; i <span style="color:#f92672">&lt;</span> a.size(); <span style="color:#f92672">++</span>i)
+</span></span><span style="display:flex;"><span>    	{
+</span></span><span style="display:flex;"><span>    		Comparable tmp <span style="color:#f92672">=</span> move(a[i]);
+</span></span><span style="display:flex;"><span>    		<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    		<span style="color:#66d9ef">for</span> (; j <span style="color:#f92672">&gt;=</span> gap <span style="color:#f92672">&amp;&amp;</span> tmp <span style="color:#f92672">&lt;</span> a[j <span style="color:#f92672">-</span> gap]; j <span style="color:#f92672">-=</span> gap)
+</span></span><span style="display:flex;"><span>    		{
+</span></span><span style="display:flex;"><span>    			a[j] <span style="color:#f92672">=</span> move(a[j <span style="color:#f92672">-</span> gap]);
+</span></span><span style="display:flex;"><span>    		}
+</span></span><span style="display:flex;"><span>    		a[j] <span style="color:#f92672">=</span> move(tmp);
+</span></span><span style="display:flex;"><span>    	}
+</span></span><span style="display:flex;"><span>    	cout<span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> gap <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> n : a)
+</span></span><span style="display:flex;"><span>    		cout <span style="color:#f92672">&lt;&lt;</span> n <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39; &#39;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> a <span style="color:#f92672">=</span> { <span style="color:#ae81ff">81</span>, <span style="color:#ae81ff">94</span>, <span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">96</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">35</span>, <span style="color:#ae81ff">17</span>, <span style="color:#ae81ff">95</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">58</span>, <span style="color:#ae81ff">41</span>, <span style="color:#ae81ff">75</span>, <span style="color:#ae81ff">15</span>};
+</span></span><span style="display:flex;"><span>    shellsort(a);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>Warn info</li>
+</ul>
+<pre tabindex="0"><code>warning: comparison of integer expressions of different signedness: 
+&#39;int&#39; and &#39;std::vector&lt;int&gt;::size_type&#39; {aka &#39;long long unsigned int&#39;} [-Wsign-compare]
+   10 |         for(int i = gap; i &lt; a.size(); ++i)
+</code></pre><h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://stackoverflow.com/a/3660928">A warning - comparison between signed and unsigned integer expressions</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/container/vector">std::vector</a></li>
+<li><a href="http://users.cis.fiu.edu/~weiss/dsaa_c++4/code/Sort.h">Data Structures and Algorithm Analysis in C++ (Fourth Edition)</a></li>
+</ul> <a class="read-more" href="/cnblogs2/post/c2plus-overflow1-gcc/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2025-01-11T11:08:08&#43;08:00">
+            11 Jan 2025
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/ops_openssl/">install and usage with OpenSSL</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>RHEL Community Version <br>
+Alma Linux / Rocky Linux</li>
+</ul>
+<h1 id="prepare">Prepare</h1>
+<p>Install development tool:</p>
+<pre tabindex="0"><code># dnf group install &#39;Development Tools&#39;
+</code></pre><p>Install dependencies:</p>
+<pre tabindex="0"><code># dnf install perl-core zlib-devel -y
+</code></pre><h2 id="down-latest-openssl">down latest OpenSSL</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$mkdir openssl-1.1.1
+</span></span><span style="display:flex;"><span>$curl --progress https://www.openssl.org/source/openssl-1.1.1w.tar.gz | tar xz -C ./openssl-1.1.1 --strip-components <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><h1 id="setup">setup</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$cd openssl-1.1.1
+</span></span></code></pre></div><ul>
+<li>RHEL8</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./config --prefix<span style="color:#f92672">=</span>/usr/local/ssl --openssldir<span style="color:#f92672">=</span>/usr/local/ssl shared zlib
+</span></span></code></pre></div><ul>
+<li>RHEL7</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./config --prefix<span style="color:#f92672">=</span>/usr --shared
+</span></span></code></pre></div><h2 id="make--install">make &amp;&amp; install</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$make
+</span></span></code></pre></div><p>Root permission Required:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo make install
+</span></span></code></pre></div><h2 id="rhel8">RHEL8</h2>
+<pre tabindex="0"><code># mv /bin/openssl /bin/openssl.backup
+# cp /usr/local/ssl/bin/openssl /bin/openssl
+</code></pre><p>test:</p> <a class="read-more" href="/cnblogs2/post/ops_openssl/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-12-29T08:38:08&#43;08:00">
+            29 Dec 2024
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/qt-webview/">qtwebview minibrowser example</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li><a href="https://developer.android.google.cn/studio">Android Studio</a> <br>
+安装完, 先不要进入设置！</li>
+<li><a href="https://download.qt.io/static/mirrorlist/mirmon/">mirror - online installer</a></li>
+</ul>
+<pre tabindex="0"><code>qt-online-installer-windows-x64-x.x.x.exe --mirror Y
+</code></pre><h2 id="create-qt-project">Create Qt Project</h2>
+<p>File -&gt; New Project</p>
+<ul>
+<li>v6.x <br>
+Qt Quick Application</li>
+<li>v5.15 <br>
+Qt Quick Application(compat)</li>
+</ul>
+<h3 id="project-setting">project setting</h3>
+<ul>
+<li>project name</li>
+</ul>
+<pre tabindex="0"><code>my_browser
+</code></pre><ul>
+<li>Define Build System</li>
+</ul>
+<pre tabindex="0"><code>CMake
+</code></pre><ul>
+<li>Define Project Details <br>
+Mini Qt version:</li>
+</ul>
+<pre tabindex="0"><code>Qt 5.15/6.5
+</code></pre><ul>
+<li>Kit Selection</li>
+</ul>
+<pre tabindex="0"><code>Android Qt x.x.x Clang x86_64
+</code></pre><h3 id="using-qt-webview"><a href="https://doc.qt.io/qt-6.8/qtwebview-index.html">Using Qt WebView</a></h3>
+<ul>
+<li>QML API</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-qml" data-lang="qml"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">QtWebView</span>
+</span></span></code></pre></div><ul>
+<li>C++ API</li>
+</ul>
+<pre tabindex="0"><code>#include &lt;QtWebView/QtWebView&gt;
+</code></pre><h4 id="building-with-cmake">Building with CMake</h4>
+<ul>
+<li>package</li>
+</ul>
+<pre tabindex="0"><code>find_package(Qt6 REQUIRED COMPONENTS Quick WebView)
+</code></pre><ul>
+<li>target</li>
+</ul>
+<pre tabindex="0"><code>target_link_libraries(appmy_browser
+    PRIVATE Qt6::Quick Qt6::WebView
+)
+</code></pre><h4 id="initial">initial</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// first line
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>QtWebView<span style="color:#f92672">::</span>initialize();
+</span></span></code></pre></div><h3 id="icon">Icon</h3>
+<p>copy &ldquo;Examples\Qt-6.x.x\webview\minibrowser\images&rdquo; to project folder</p> <a class="read-more" href="/cnblogs2/post/qt-webview/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-12-03T23:38:08&#43;08:00">
+            3 Dec 2024
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/qt-android_started/">Qt6 for android</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>ndk</li>
+<li>avd(Android Virtual Device)</li>
+</ul>
+<h1 id="preparation">Preparation</h1>
+<ul>
+<li>Environment</li>
+<li>cmdline</li>
+</ul>
+<h2 id="environment-variables">Environment variables</h2>
+<p>:warning: <br>
+After installing <a href="https://developer.android.google.cn/studio">Android Studio</a>, don&rsquo;t go into settings yet!</p>
+<h3 id="java-home">Java Home</h3>
+<ul>
+<li>Qt6.8/6.5 <br>
+set <a href="https://adoptium.net/temurin/archive/?variant=openjdk11&amp;version=17">JDK17</a></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\j</span>ava<span style="color:#ae81ff">\j</span>dk-7.0.12+7
+</span></span></code></pre></div><h3 id="android-home"><a href="https://developer.android.com/tools/variables#envar">Android Home</a></h3>
+<p>Sets the path to the SDK installation directory.
+Once set, the value does not typically change and can be shared by multiple users on the same machine.
+ANDROID_SDK_ROOT, which also points to the SDK installation directory, is deprecated.
+If you continue to use it, Android Studio and the Android Gradle plugin will check that the old and new variables are consistent.</p> <a class="read-more" href="/cnblogs2/post/qt-android_started/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2024-12-03T12:38:08&#43;08:00">
+            3 Dec 2024
+        </time>
+    </footer>
+</article>
+
+	
+
+	<nav class="pagination" role="navigation">
+	
+	<span class="page-number">Page 1 of 6</span>
+	
+	    <a class="older-posts" href="/cnblogs2/post/page/2/">Older Posts &rarr;</a>
+	
+</nav>
+
+</main>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/index.js"></script>
+    
+</body>
+</html>

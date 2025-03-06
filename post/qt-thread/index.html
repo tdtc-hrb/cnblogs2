@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="QT5简单thread"/>
+<meta name="twitter:description" content="qt console"/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="QT5简单thread &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs2/post/qt-thread/" />
+
+    
+        
+    
+
+    
+    <meta property="og:description" content="qt console" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2025-01-23T22:08:08&#43;08:00" />
+
+    
+    
+
+    <title>QT5简单thread &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="qt console" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs2/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs2/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs2/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.145.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs2/post/qt-thread/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null 
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "QT5简单thread",
+    "name": "QT5简单thread",
+    "wordCount":  270 ,
+    "timeRequired": "PT2M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs2/post/qt-thread/",
+    "datePublished": "2025-01-23T22:08Z",
+    "dateModified": "2025-01-23T22:08Z",
+    
+    
+    "description": "qt console",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs2/post/qt-thread/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs2/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="/cnblogs2/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">QT5简单thread</h1>
+        <small>qt console</small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2025-01-23T22:08:08&#43;08:00">
+            Jan 23, 2025
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <h1 id="project">Project</h1>
+<p>使用Qt Visual Studio Tools创建, 以下简称qt tools。</p>
+<p>also see: <a href="https://tdtc-hrb.github.io/cnblogs/post/qt-hello/">QT VS Tools的设置</a></p>
+<h2 id="install-qt-tools">install qt tools</h2>
+<p>Tools -&gt; Extensions and Updates <br>
+选择Online, 输入&quot;Qt Visual Studio Tools&quot;</p>
+<h2 id="create-qt-project">Create Qt Project</h2>
+<p>File -&gt; New -&gt; Project <br>
+Qt Console Application</p>
+<h2 id="add-class">Add class</h2>
+<p>点击“工程名”右键, Add -&gt; Class <br>
+Class name: Controller <br>
+Base Class: QObject</p>
+<p>初始状态的Controller类: <br>
+Controller.h</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#pragma once
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;qobject.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Controller</span> <span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> QObject
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>Controller.cpp</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Controller.h&#34;</span><span style="color:#75715e">
+</span></span></span></code></pre></div><h1 id="worker">Worker</h1>
+<p>此Worker使用的“easy worker”的案例.</p>
+<h2 id="header">Header</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QObject&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Worker</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> QObject {
+</span></span><span style="display:flex;"><span>	Q_OBJECT
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	Worker();
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">~</span>Worker();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> slots:
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> process();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>signals:
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> finished();
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">error</span>(QString err);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// add your variables here
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span></code></pre></div><h2 id="class">Class</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Worker.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --- CONSTRUCTOR ---
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Worker<span style="color:#f92672">::</span>Worker() {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// you could copy data from constructor arguments to internal variables here.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --- DECONSTRUCTOR ---
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Worker<span style="color:#f92672">::~</span>Worker() {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// free resources
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --- PROCESS ---
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Start processing data.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> Worker<span style="color:#f92672">::</span>process() {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// allocate resources using new here
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	qDebug(<span style="color:#e6db74">&#34;Hello World!&#34;</span>);
+</span></span><span style="display:flex;"><span>	emit <span style="color:#a6e22e">finished</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="controller">Controller</h1>
+<h2 id="header-1">Header</h2>
+<p>申明errorString槽, 以对接Worker的信号“error”;
+申明operate信号, 以供操作Controller。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#pragma once
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QObject&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Controller</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> QObject
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	Q_OBJECT
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	QThread<span style="color:#f92672">*</span> <span style="color:#66d9ef">thread</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	Controller(QObject <span style="color:#f92672">*</span>parent);
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">~</span>Controller();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> slots:
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> errorString(QString err);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>signals:
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> operate(<span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span>s);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="class-1">Class</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Controller.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QThread&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Worker.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>Controller<span style="color:#f92672">::</span>Controller(QObject <span style="color:#f92672">*</span>parent)
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">:</span> QObject(parent)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">thread</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QThread;
+</span></span><span style="display:flex;"><span>	Worker<span style="color:#f92672">*</span> worker <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Worker();
+</span></span><span style="display:flex;"><span>	worker<span style="color:#f92672">-&gt;</span>moveToThread(<span style="color:#66d9ef">thread</span>);
+</span></span><span style="display:flex;"><span>	connect(worker, SIGNAL(error(QString)), <span style="color:#66d9ef">this</span>, SLOT(errorString(QString)));
+</span></span><span style="display:flex;"><span>	connect(<span style="color:#66d9ef">thread</span>, SIGNAL(started()), worker, SLOT(process()));
+</span></span><span style="display:flex;"><span>	connect(worker, SIGNAL(finished()), <span style="color:#66d9ef">thread</span>, SLOT(quit()));
+</span></span><span style="display:flex;"><span>	connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
+</span></span><span style="display:flex;"><span>	connect(<span style="color:#66d9ef">thread</span>, SIGNAL(finished()), <span style="color:#66d9ef">thread</span>, SLOT(deleteLater()));
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">thread</span><span style="color:#f92672">-&gt;</span>start();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Controller<span style="color:#f92672">::~</span>Controller()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">thread</span><span style="color:#f92672">-&gt;</span>quit();
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">thread</span><span style="color:#f92672">-&gt;</span>wait();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> Controller<span style="color:#f92672">::</span>errorString(QString err)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="main">main</h1>
+<p>main.cpp:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtCore/QCoreApplication&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Controller.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>argv[])
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    QCoreApplication a(argc, argv);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	QObject<span style="color:#f92672">*</span> obj <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QObject;
+</span></span><span style="display:flex;"><span>	Controller<span style="color:#f92672">*</span> controller <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Controller(obj);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a.exec();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="reference">Reference</h1>
+<ul>
+<li><a href="https://mayaposch.wordpress.com/2011/11/01/how-to-really-truly-use-qthreads-the-full-explanation/">easy worker</a></li>
+</ul>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=QT5%e7%ae%80%e5%8d%95thread&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fqt-thread%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fqt-thread%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fqt-thread%2f&amp;description=QT5%e7%ae%80%e5%8d%95thread"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fqt-thread%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/cnblogs2/post/qt-hello/">
+          <section class="post">
+              <h2>Widgets简单demo</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs2/post/c2plus-overflow1-gcc/">
+          <section class="post">
+              <h2>signed warning</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/index.js"></script>
+    
+</body>
+</html>
+

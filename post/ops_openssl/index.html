@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="install and usage with OpenSSL"/>
+<meta name="twitter:description" content="update openssl"/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="install and usage with OpenSSL &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs2/post/ops_openssl/" />
+
+    
+        
+    
+
+    
+    <meta property="og:description" content="update openssl" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2024-12-29T08:38:08&#43;08:00" />
+
+    
+    
+
+    <title>install and usage with OpenSSL &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="update openssl" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs2/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs2/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs2/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.145.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs2/post/ops_openssl/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null 
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "install and usage with OpenSSL",
+    "name": "install and usage with OpenSSL",
+    "wordCount":  302 ,
+    "timeRequired": "PT2M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs2/post/ops_openssl/",
+    "datePublished": "2024-12-29T08:38Z",
+    "dateModified": "2024-12-29T08:38Z",
+    
+    
+    "description": "update openssl",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs2/post/ops_openssl/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs2/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="/cnblogs2/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">install and usage with OpenSSL</h1>
+        <small>update openssl</small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2024-12-29T08:38:08&#43;08:00">
+            Dec 29, 2024
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <ul>
+<li>RHEL Community Version <br>
+Alma Linux / Rocky Linux</li>
+</ul>
+<h1 id="prepare">Prepare</h1>
+<p>Install development tool:</p>
+<pre tabindex="0"><code># dnf group install &#39;Development Tools&#39;
+</code></pre><p>Install dependencies:</p>
+<pre tabindex="0"><code># dnf install perl-core zlib-devel -y
+</code></pre><h2 id="down-latest-openssl">down latest OpenSSL</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$mkdir openssl-1.1.1
+</span></span><span style="display:flex;"><span>$curl --progress https://www.openssl.org/source/openssl-1.1.1w.tar.gz | tar xz -C ./openssl-1.1.1 --strip-components <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><h1 id="setup">setup</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$cd openssl-1.1.1
+</span></span></code></pre></div><ul>
+<li>RHEL8</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./config --prefix<span style="color:#f92672">=</span>/usr/local/ssl --openssldir<span style="color:#f92672">=</span>/usr/local/ssl shared zlib
+</span></span></code></pre></div><ul>
+<li>RHEL7</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./config --prefix<span style="color:#f92672">=</span>/usr --shared
+</span></span></code></pre></div><h2 id="make--install">make &amp;&amp; install</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$make
+</span></span></code></pre></div><p>Root permission Required:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo make install
+</span></span></code></pre></div><h2 id="rhel8">RHEL8</h2>
+<pre tabindex="0"><code># mv /bin/openssl /bin/openssl.backup
+# cp /usr/local/ssl/bin/openssl /bin/openssl
+</code></pre><p>test:</p>
+<pre tabindex="0"><code># which openssl
+# openssl version -a
+</code></pre><h1 id="usage">Usage</h1>
+<ul>
+<li>Apache Httpd</li>
+</ul>
+<h2 id="generate-self-signed-certificate">Generate Self-Signed Certificate</h2>
+<ul>
+<li>Verifying and testing your self-signed certificate:</li>
+</ul>
+<pre tabindex="0"><code>openssl x509 -in dev.crt -text -noout
+</code></pre><ul>
+<li>at non-interactive:</li>
+</ul>
+<pre tabindex="0"><code>In the certificate, created with the single-line command, 
+you see a section &#34;X509v3 extensions:&#34; with &#34;X509v3 Basic Constraints: critical CA:TRUE&#34;. 
+
+This is exactly the Apache warning message.
+Instead, if you create the certificate with the three steps, 
+the &#34;X509v3 extensions:&#34; section is not included into the certificate.
+</code></pre><h3 id="interactive">interactive</h3>
+<p>CSR Information:</p>
+<ul>
+<li>Country Name: <a href="https://www.digicert.com/kb/ssl-certificate-country-codes.htm">CN</a></li>
+<li>State or Province Name: Neimenggu</li>
+<li>Locality Name: HM</li>
+<li>Organization Name: TDTC</li>
+<li>Organizational Unit Name: soft</li>
+<li>Common Name: localhost</li>
+<li>A challenge password:(Enter)</li>
+<li>An optional company name:(Enter)</li>
+</ul>
+<p>subject:</p>
+<pre tabindex="0"><code>subject=C = CN, ST = Neimenggu, L = HM, O = TDTC,
+OU = soft, CN = localhost, emailAddress = veic_2005@163.com
+</code></pre><h4 id="generating-a-private-key">Generating a Private Key</h4>
+<p>RSA Private Key:</p>
+<pre tabindex="0"><code>openssl genrsa -out dev.key 4096
+</code></pre><h4 id="creating-a-certificate-signing-request-csr">Creating a certificate signing request (CSR)</h4>
+<pre tabindex="0"><code>openssl req -new -sha256 -key dev.key -out dev.csr
+</code></pre><h4 id="generating-a-self-signed-certificate-crt">Generating a self-signed certificate (CRT)</h4>
+<pre tabindex="0"><code>openssl x509 -req -days 1095 -in dev.csr -signkey dev.key -out dev.crt -outform PEM
+</code></pre><h3 id="non-interactive">non-interactive</h3>
+<pre tabindex="0"><code># 3 years expiration(365 * 3 + 3 = 1098)
+openssl req -x509 -newkey rsa:4096 -keyout dev.key -out dev.crt -sha256 -days 1098 -nodes -subj &#34;/CN=localhost&#34; \ 
+-addext &#34;subjectAltName=DNS:localhost,DNS:*.localhost,IP:127.0.0.1&#34;
+</code></pre><h1 id="ref">Ref</h1>
+<ul>
+<li><a href="https://www.hostnextra.com/kb/how-to-install-openssl-1-1-1i-in-centos-8/">How To Install OpenSSL 1.1.1i in CentOS 8</a></li>
+<li><a href="https://stackoverflow.com/questions/10175812/how-to-generate-a-self-signed-ssl-certificate-using-openssl">How to generate a self-signed SSL certificate using OpenSSL?</a></li>
+<li><a href="https://stackoverflow.com/a/53601588">Apache warns that my self-signed certificate is a CA certificate</a></li>
+</ul>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=install%20and%20usage%20with%20OpenSSL&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fops_openssl%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fops_openssl%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fops_openssl%2f&amp;description=install%20and%20usage%20with%20OpenSSL"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fops_openssl%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/cnblogs2/post/c2plus-overflow1-gcc/">
+          <section class="post">
+              <h2>signed warning</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs2/post/qt-webview/">
+          <section class="post">
+              <h2>qtwebview minibrowser example</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/index.js"></script>
+    
+</body>
+</html>
+

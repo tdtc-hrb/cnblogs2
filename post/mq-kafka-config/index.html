@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="Install and Configure Apache Kafka"/>
+<meta name="twitter:description" content="Message Queue2篇：Kafka、RabbitMQ"/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="Install and Configure Apache Kafka &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs2/post/mq-kafka-config/" />
+
+    
+        
+    
+
+    
+    <meta property="og:description" content="Message Queue2篇：Kafka、RabbitMQ" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2022-05-16T18:08:08&#43;08:00" />
+
+    
+    
+
+    <title>Install and Configure Apache Kafka &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="Message Queue2篇：Kafka、RabbitMQ" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs2/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs2/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs2/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.145.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs2/post/mq-kafka-config/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null 
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "Install and Configure Apache Kafka",
+    "name": "Install and Configure Apache Kafka",
+    "wordCount":  326 ,
+    "timeRequired": "PT2M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs2/post/mq-kafka-config/",
+    "datePublished": "2022-05-16T18:08Z",
+    "dateModified": "2022-05-16T18:08Z",
+    
+    
+    "description": "Message Queue2篇：Kafka、RabbitMQ",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs2/post/mq-kafka-config/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs2/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="/cnblogs2/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Install and Configure Apache Kafka</h1>
+        <small>Message Queue2篇：Kafka、RabbitMQ</small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2022-05-16T18:08:08&#43;08:00">
+            May 16, 2022
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <h1 id="i-installation">I. Installation</h1>
+<p>The installation environment must have JDK, verify that you enter:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -version
+</span></span></code></pre></div><h2 id="1-down">1. down</h2>
+<p>Install server-side versions based on the jar downloaded by maven,
+such as my &ldquo;C:\Users\tdtc.m2\repository\org\apache\kafka\kafka-clients\3.0.1&rdquo;</p>
+<p>And choose Scala version based on pom,
+such as my &ldquo;C:\Users\tdtc.m2\repository\org\springframework\cloud\spring-cloud-stream-binder-kafka\3.2.4\spring-cloud-stream-binder-kafka-3.2.4.pom&rdquo;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://archive.apache.org/dist/kafka/3.0.1/kafka_2.13-3.0.1.tgz
+</span></span></code></pre></div><h2 id="2-unzip">2. unzip</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$tar zxvf kafka_2.13-3.0.1.tgz
+</span></span></code></pre></div><h1 id="ii-configuration">II. Configuration</h1>
+<blockquote>
+<p>server.properties</p></blockquote>
+<h2 id="1-necessary-settings">1. Necessary settings</h2>
+<h3 id="1-basic">1) basic</h3>
+<h4 id="listener">listener</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>listeners<span style="color:#f92672">=</span>PLAINTEXT://your_IP:9092
+</span></span></code></pre></div><h4 id="logs">logs</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$mkdir HOME/kafka_2.13-3.0.1/logs
+</span></span></code></pre></div><h3 id="2-cluster">2) cluster</h3>
+<p>Sets the natural number of the broker ID to non-zero. <br>
+Host1:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>broker.id<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><p>Host2:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>broker.id<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
+</span></span></code></pre></div><p>Host3:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>broker.id<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>
+</span></span></code></pre></div><h2 id="2-optional-settings">2. Optional settings</h2>
+<h3 id="1-zookeeper">1) Zookeeper</h3>
+<p>default</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">## Zookeeper ##</span>
+</span></span><span style="display:flex;"><span>zookeeper.connect: The ZooKeeper address <span style="color:#f92672">(</span>can list multiple addresses comma-separated <span style="color:#66d9ef">for</span> the ZooKeeper cluster<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>zookeeper.connection.timeout.ms: Time to wait before going down <span style="color:#66d9ef">if</span>, <span style="color:#66d9ef">for</span> some reason, the broker is not able to connect.
+</span></span></code></pre></div><h3 id="2-socket-server-settings">2) Socket Server Settings</h3>
+<p>default</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">## Socket Server Settings ##</span>
+</span></span><span style="display:flex;"><span>socket.send.buffer.bytes: The send buffer used by the socket server.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>socket.receive.buffer.bytes: The socket server receives a buffer <span style="color:#66d9ef">for</span> network requests.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>socket.request.max.bytes: The maximum request size the server will allow. This prevents the server from running out of memory.
+</span></span></code></pre></div><h3 id="3-log-flush-policy">3) Log Flush Policy</h3>
+<p>default</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">## Log Flush Policy ##</span>
+</span></span><span style="display:flex;"><span>log.flush.interval.messages: Threshold <span style="color:#66d9ef">for</span> message count that is once reached all messages are flushed to the disk.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>log.flush.interval.ms: Periodic time interval after which all messages will be flushed into the disk.
+</span></span></code></pre></div><h3 id="4-log-retention-policy">4) Log Retention Policy</h3>
+<p>default</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">## Log Retention Policy ##</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>log.retention.hours: The minimum age of the segment file to be eligible <span style="color:#66d9ef">for</span> deletion due to age.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>log.retention.bytes: A size-based retention policy <span style="color:#66d9ef">for</span> logs. Segments are pruned from the log unless the remaining segments drop below log.retention.bytes.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>log.segment.bytes: Size of the segment after which a new segment will be created.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>log.retention.check.interval.ms: Periodic time interval after which log segments are checked <span style="color:#66d9ef">for</span> deletion as per the retention policy. If both retention policies are set, <span style="color:#66d9ef">then</span> segments are deleted when either criterion is met.
+</span></span></code></pre></div><h1 id="iii-run">III. Run</h1>
+<p>Set Kafka Home:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo vi /etc/bashrc
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export KA_HOME<span style="color:#f92672">=</span>/home/tdtc/app/kafka_2.13-3.0.1
+</span></span><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span>$PATH:$KA_HOME/bin
+</span></span></code></pre></div><h2 id="launch">launch</h2>
+<ol>
+<li>start</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kafka-server-start.sh $KA_HOME/config/server.properties
+</span></span></code></pre></div><ol start="2">
+<li>stop</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kafka-server-stop.sh
+</span></span></code></pre></div><h1 id="reference">Reference</h1>
+<ul>
+<li><a href="https://dzone.com/articles/kafka-setup">How to Set Up Kafka</a></li>
+<li><a href="https://dzone.com/articles/how-to-setup-kafka-cluster">How to Setup Kafka Cluster</a></li>
+</ul>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Install%20and%20Configure%20Apache%20Kafka&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fmq-kafka-config%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fmq-kafka-config%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fmq-kafka-config%2f&amp;description=Install%20and%20Configure%20Apache%20Kafka"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fmq-kafka-config%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/cnblogs2/post/trace-zipkin-config/">
+          <section class="post">
+              <h2>Distributed traceability with Spring Cloud: Sleuth and Zipkin</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs2/post/mq-rabbitmq-config/">
+          <section class="post">
+              <h2>Install and Configure RabbitMQ</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/index.js"></script>
+    
+</body>
+</html>
+

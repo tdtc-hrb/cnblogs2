@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="MySQL Connector/Net 的简单使用"/>
+<meta name="twitter:description" content="组件方式"/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="MySQL Connector/Net 的简单使用 &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs2/post/mysql.net/" />
+
+    
+        
+    
+
+    
+    <meta property="og:description" content="组件方式" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2025-03-02T00:08:08&#43;08:00" />
+
+    
+    
+
+    <title>MySQL Connector/Net 的简单使用 &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="组件方式" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs2/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs2/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs2/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.145.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs2/post/mysql.net/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null 
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "MySQL Connector/Net 的简单使用",
+    "name": "MySQL Connector/Net 的简单使用",
+    "wordCount":  496 ,
+    "timeRequired": "PT3M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs2/post/mysql.net/",
+    "datePublished": "2025-03-02T00:08Z",
+    "dateModified": "2025-03-02T00:08Z",
+    
+    
+    "description": "组件方式",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs2/post/mysql.net/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs2/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="/cnblogs2/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">MySQL Connector/Net 的简单使用</h1>
+        <small>组件方式</small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2025-03-02T00:08:08&#43;08:00">
+            Mar 2, 2025
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <table>
+  <thead>
+      <tr>
+          <th>Connector/NET Version</th>
+          <th>ADO.NET Version</th>
+          <th>.NET Version Required</th>
+          <th>MySQL Server</th>
+          <th>IDE</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>6.9</td>
+          <td>2.x+</td>
+          <td>3.5+ for VS 2008, 4.x+ for VS 2010 / 2012 / 2013, WinRT for VS 2012 / 2013</td>
+          <td>5.7, 5.6, 5.5</td>
+          <td>Visual Studio 2010</td>
+      </tr>
+      <tr>
+          <td>6.1</td>
+          <td>2.x+</td>
+          <td>2.x+</td>
+          <td>5.6, 5.5, 5.1, 5.0, 4.1</td>
+          <td>Visual Studio 2008</td>
+      </tr>
+  </tbody>
+</table>
+<p>连接器(For .net)：</p>
+<ul>
+<li>vs2008/2010 <br>
+<a href="https://cdn.mysql.com/archives/mysql-connector-net-6.1/mysql-connector-net-6.1.6.msi">V6.1.6</a></li>
+<li><a href="https://stackoverflow.com/a/40750607">vs2015</a> <br>
+<a href="https://cdn.mysql.com/archives/mysql-connector-net-6.9/mysql-connector-net-6.9.8.msi">v6.9.8</a></li>
+<li><a href="https://dev.mysql.com/doc/connector-net/en/connector-net-versions.html">dotnet and mysql connector - vs2019</a> <br>
+<a href="https://cdn.mysql.com/archives/mysql-connector-net-8.0/mysql-connector-net-8.0.32.msi">v8.0.32</a></li>
+</ul>
+<h3 id="新建工程---windows-application">新建工程 - Windows Application</h3>
+<ul>
+<li>vs2008
+<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20200609110346.png" alt="vs2008 ui"></li>
+<li>vs2019
+<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20250301074031.png" alt="vs2019 ui"></li>
+</ul>
+<h3 id="增加引用mysqldata">增加引用(MySql.Data)</h3>
+<ul>
+<li>vs2008
+<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20200609110557.png" alt="vs2008 ui"></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20200609111014.png" alt="vs2008 ui"></p>
+<ul>
+<li>vs2019
+<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20250301074737.png" alt="vs2019 ui"></li>
+</ul>
+<h3 id="放置控件">放置控件</h3>
+<p>3个TextBox，2个ComboBox(cBoxDBs和cBoxTables)， 1个DataGridView等等
+<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20200609124240.png" alt="vs2008 ui"></p>
+<p><img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20200402142537984.png" alt="vs2010 ui">
+密码框设置</p>
+<p><img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20200402142805972.png" alt="vs2010 ui">
+下拉框设置（cBoxDBs：数据库，cBoxTables：数据表）</p>
+<p><img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20200402142924594.png" alt="vs2010 ui">
+数据格设置</p>
+<h2 id="代码">代码</h2>
+<p>连接按钮：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">string</span> connStr = <span style="color:#66d9ef">string</span>.Format(<span style="color:#e6db74">&#34;server={0};user id={1}; password={2}; database=mysql; pooling=false&#34;</span>,
+</span></span><span style="display:flex;"><span>    edtSrv.Text, edtUser.Text, edtPwd.Text);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    conn = <span style="color:#66d9ef">new</span> MySqlConnection(connStr);
+</span></span><span style="display:flex;"><span>    conn.Open();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 获得数据库列表</span>
+</span></span><span style="display:flex;"><span>    List&lt;<span style="color:#66d9ef">string</span>&gt; cmd = <span style="color:#66d9ef">new</span> List&lt;<span style="color:#66d9ef">string</span>&gt;();
+</span></span><span style="display:flex;"><span>    cmd.Add(<span style="color:#e6db74">&#34;SHOW DATABASES&#34;</span>);
+</span></span><span style="display:flex;"><span>    List&lt;<span style="color:#66d9ef">string</span>&gt; list = getDataList(cmd);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 清空下拉框</span>
+</span></span><span style="display:flex;"><span>    cBoxDBs.Items.Clear();
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 增加下拉框列表</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">string</span> str <span style="color:#66d9ef">in</span> list)
+</span></span><span style="display:flex;"><span>        cBoxDBs.Items.Add(str);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">catch</span>(MySqlException ex)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    MessageBox.Show(<span style="color:#e6db74">&#34;没有找到数据库: &#34;</span> + ex.Message);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>下拉框（数据库列表）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">// 获得数据库列表</span>
+</span></span><span style="display:flex;"><span>List&lt;<span style="color:#66d9ef">string</span>&gt; cmdList = <span style="color:#66d9ef">new</span> List&lt;<span style="color:#66d9ef">string</span>&gt;();
+</span></span><span style="display:flex;"><span>cmdList.Add(<span style="color:#e6db74">&#34;USE &#34;</span> + cBoxDBs.SelectedItem.ToString());
+</span></span><span style="display:flex;"><span>cmdList.Add(<span style="color:#e6db74">&#34;SHOW TABLES&#34;</span>);
+</span></span><span style="display:flex;"><span>List&lt;<span style="color:#66d9ef">string</span>&gt; list = getDataList(cmdList);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 清空下拉框</span>
+</span></span><span style="display:flex;"><span>cBoxTables.Items.Clear();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 增加下拉框列表</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">string</span> str <span style="color:#66d9ef">in</span> list)
+</span></span><span style="display:flex;"><span>    cBoxTables.Items.Add(str);
+</span></span></code></pre></div><p>下拉框（数据表列表）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">// 获得数据表名称</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">string</span> tableName = cBoxTables.SelectedItem.ToString();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 设置数据桥</span>
+</span></span><span style="display:flex;"><span>dataAdapter = <span style="color:#66d9ef">new</span> MySqlDataAdapter(<span style="color:#e6db74">&#34;Select * from &#34;</span> + tableName, conn);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// DataSet</span>
+</span></span><span style="display:flex;"><span>sqlCmdBuilder = <span style="color:#66d9ef">new</span> MySqlCommandBuilder(dataAdapter);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 建立数据表</span>
+</span></span><span style="display:flex;"><span>table = <span style="color:#66d9ef">new</span> DataTable(tableName);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 填充数据表到数据桥</span>
+</span></span><span style="display:flex;"><span>dataAdapter.Fill(table);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 指定数据源</span>
+</span></span><span style="display:flex;"><span>dataGridView1.DataSource = table;
+</span></span></code></pre></div><p>运行效果：
+<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20200609123745.png" alt="vs2008 ui"></p>
+<p>Form1.cs</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Collections.Generic;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.ComponentModel;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Data;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Drawing;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Linq;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Text;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Windows.Forms;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> MySql.Data.MySqlClient;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> testMySQL
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">partial</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">frmain</span> : Form
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> MySqlConnection conn;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> DataTable table;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> MySqlDataAdapter dataAdapter;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> MySqlCommandBuilder sqlCmdBuilder;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> frmain()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            InitializeComponent();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> btnConn_Click(<span style="color:#66d9ef">object</span> sender, EventArgs e)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">string</span> connStr = <span style="color:#66d9ef">string</span>.Format(
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;server={0}; user id={1}; password={2}; database=mysql; pooling=false&#34;</span>,
+</span></span><span style="display:flex;"><span>                edtSrv.Text, edtUser.Text, edtPwd.Text);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span>
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                conn = <span style="color:#66d9ef">new</span> MySqlConnection(connStr);
+</span></span><span style="display:flex;"><span>                conn.Open();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 获得数据库列表</span>
+</span></span><span style="display:flex;"><span>                List&lt;<span style="color:#66d9ef">string</span>&gt; cmd = <span style="color:#66d9ef">new</span> List&lt;<span style="color:#66d9ef">string</span>&gt;();
+</span></span><span style="display:flex;"><span>                cmd.Add(<span style="color:#e6db74">&#34;SHOW DATABASES&#34;</span>);
+</span></span><span style="display:flex;"><span>                List&lt;<span style="color:#66d9ef">string</span>&gt; list = getDataList(cmd);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 清空下拉框</span>
+</span></span><span style="display:flex;"><span>                cBoxDBs.Items.Clear();
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 增加下拉框列表</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">string</span> str <span style="color:#66d9ef">in</span> list)
+</span></span><span style="display:flex;"><span>                    cBoxDBs.Items.Add(str);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">catch</span>(MySqlException ex)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                MessageBox.Show(<span style="color:#e6db74">&#34;没有找到数据库: &#34;</span> + ex.Message);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> List&lt;<span style="color:#66d9ef">string</span>&gt; getDataList(List&lt;<span style="color:#66d9ef">string</span>&gt; cmdList)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            List&lt;<span style="color:#66d9ef">string</span>&gt; result = <span style="color:#66d9ef">new</span> List&lt;<span style="color:#66d9ef">string</span>&gt;();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// SQL数据读取器</span>
+</span></span><span style="display:flex;"><span>            MySqlDataReader dataReader = <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// SQL命令执行器</span>
+</span></span><span style="display:flex;"><span>            MySqlCommand sqlCmd = <span style="color:#66d9ef">new</span> MySqlCommand();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 设置SQL命令执行器的连接</span>
+</span></span><span style="display:flex;"><span>            sqlCmd.Connection = conn;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span>
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 执行的SQL命令</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">string</span> cmd <span style="color:#66d9ef">in</span> cmdList)
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    sqlCmd.CommandText = cmd;
+</span></span><span style="display:flex;"><span>                    sqlCmd.ExecuteNonQuery();
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">//   </span>
+</span></span><span style="display:flex;"><span>                dataReader = sqlCmd.ExecuteReader();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">while</span>(dataReader.Read())
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">string</span> strDbName = dataReader.GetString(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    result.Add(strDbName);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">catch</span> (MySqlException ex)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                MessageBox.Show(<span style="color:#e6db74">&#34;读取数据失败: &#34;</span> + ex.Message);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">finally</span>
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (dataReader != <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>                    dataReader.Close();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> result;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> cBoxDBs_SelectedIndexChanged(<span style="color:#66d9ef">object</span> sender, EventArgs e)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 获得数据库列表</span>
+</span></span><span style="display:flex;"><span>            List&lt;<span style="color:#66d9ef">string</span>&gt; cmdList = <span style="color:#66d9ef">new</span> List&lt;<span style="color:#66d9ef">string</span>&gt;();
+</span></span><span style="display:flex;"><span>            cmdList.Add(<span style="color:#e6db74">&#34;USE &#34;</span> + cBoxDBs.SelectedItem.ToString());
+</span></span><span style="display:flex;"><span>            cmdList.Add(<span style="color:#e6db74">&#34;SHOW TABLES&#34;</span>);
+</span></span><span style="display:flex;"><span>            List&lt;<span style="color:#66d9ef">string</span>&gt; list = getDataList(cmdList);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 清空数据表列表            </span>
+</span></span><span style="display:flex;"><span>            cBoxTables.Items.Clear();            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 增加下拉框列表            </span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">string</span> str <span style="color:#66d9ef">in</span> list)                
+</span></span><span style="display:flex;"><span>               cBoxTables.Items.Add(str);        
+</span></span><span style="display:flex;"><span>        }        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> cBoxTables_SelectedIndexChanged(<span style="color:#66d9ef">object</span> sender, EventArgs e)        
+</span></span><span style="display:flex;"><span>        {            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 获得数据表名称            </span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">string</span> tableName = cBoxTables.SelectedItem.ToString();            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 设置数据桥            </span>
+</span></span><span style="display:flex;"><span>            dataAdapter = <span style="color:#66d9ef">new</span> MySqlDataAdapter(<span style="color:#e6db74">&#34;Select * from &#34;</span> + tableName, conn);            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// DataSet            </span>
+</span></span><span style="display:flex;"><span>            sqlCmdBuilder = <span style="color:#66d9ef">new</span> MySqlCommandBuilder(dataAdapter);            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 建立数据表            </span>
+</span></span><span style="display:flex;"><span>            table = <span style="color:#66d9ef">new</span> DataTable(tableName);            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 填充数据表到数据桥            </span>
+</span></span><span style="display:flex;"><span>            dataAdapter.Fill(table);            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 指定数据源            </span>
+</span></span><span style="display:flex;"><span>            dataGridView1.DataSource = table;        
+</span></span><span style="display:flex;"><span>         }    
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="faq">FAQ</h2>
+<ol>
+<li>Unable to convert MySQL date/time value to System.DateTime</li>
+</ol>
+<blockquote>
+<p>出现原因：
+DateTime列含有“0000-00-00”（YYYY-mm-dd）或者“0000-00-00 00:00:00”（YYYY-mm-dd HH:mm:ss）数据
+<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20140314102336328.png" alt="vs2008 ui"></p></blockquote>
+<p>解决办法： 增加“Convert Zero Datetime=True”</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>server<span style="color:#f92672">=</span>{<span style="color:#ae81ff">0</span>}; user id<span style="color:#f92672">=</span>{<span style="color:#ae81ff">1</span>}; password<span style="color:#f92672">=</span>{<span style="color:#ae81ff">2</span>}; database<span style="color:#f92672">=</span>mysql; pooling<span style="color:#f92672">=</span>false; Convert Zero Datetime<span style="color:#f92672">=</span>True
+</span></span></code></pre></div><ol start="2">
+<li><a href="https://stackoverflow.com/questions/2483659/interop-type-cannot-be-embedded">Interop type cannot be embedded</a> <br>
+<img src="https://raw.githubusercontent.com/tdtc-hrb/cnblogs/main/images/20180928144823943.png" alt="vs2008 ui"></li>
+</ol>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=MySQL%20Connector%2fNet%20%e7%9a%84%e7%ae%80%e5%8d%95%e4%bd%bf%e7%94%a8&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fmysql.net%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fmysql.net%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fmysql.net%2f&amp;description=MySQL%20Connector%2fNet%20%e7%9a%84%e7%ae%80%e5%8d%95%e4%bd%bf%e7%94%a8"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fmysql.net%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs2/post/qt-serialport_v2/">
+          <section class="post">
+              <h2>使用qt6的qml编写Serial Port</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/index.js"></script>
+    
+</body>
+</html>
+

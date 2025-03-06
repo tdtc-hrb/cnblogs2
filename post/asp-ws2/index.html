@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="WebSockets over HTTP/2"/>
+<meta name="twitter:description" content="WebSockets over HTTP/2 using ASP.NET"/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="WebSockets over HTTP/2 &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs2/post/asp-ws2/" />
+
+    
+        
+    
+
+    
+    <meta property="og:description" content="WebSockets over HTTP/2 using ASP.NET" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2024-10-18T20:38:18&#43;08:00" />
+
+    
+    
+
+    <title>WebSockets over HTTP/2 &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="WebSockets over HTTP/2 using ASP.NET" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs2/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs2/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs2/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.145.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs2/post/asp-ws2/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null 
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "WebSockets over HTTP/2",
+    "name": "WebSockets over HTTP/2",
+    "wordCount":  322 ,
+    "timeRequired": "PT2M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs2/post/asp-ws2/",
+    "datePublished": "2024-10-18T20:38Z",
+    "dateModified": "2024-10-18T20:38Z",
+    
+    
+    "description": "WebSockets over HTTP/2 using ASP.NET",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs2/post/asp-ws2/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs2/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="/cnblogs2/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">WebSockets over HTTP/2</h1>
+        <small>WebSockets over HTTP/2 using ASP.NET</small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2024-10-18T20:38:18&#43;08:00">
+            Oct 18, 2024
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p><a href="https://github.com/dotnet/AspNetCore.Docs/commit/75ce89b25e9ba61f9687ce36a41cd3c50aec1e3c">NET 7 introduces Websockets over HTTP/2 support for Kestrel, the SignalR JavaScript client, and SignalR with Blazor WebAssembly.</a></p>
+<h3 id="http2">HTTP2</h3>
+<ul>
+<li>Multiplexing
+<img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*lY05UTuA-dWCXU-q.png" alt="Request multiplexing"></li>
+<li>Server push
+<img src="https://miro.medium.com/v2/resize:fit:640/format:webp/0*ZJLgVdXq_06hcF1o.png" alt="cacheable information"></li>
+<li>Header compression
+<img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*5r8-MbhEseP6lEQg.png" alt="HPACK"></li>
+</ul>
+<p>ref site:</p>
+<ul>
+<li><a href="https://www.cloudflare.com/learning/performance/http2-vs-http1.1/">HTTP/2 vs. HTTP/1.1: How do they affect web performance?</a></li>
+<li><a href="https://factoryhr.medium.com/http-2-the-difference-between-http-1-1-benefits-and-how-to-use-it-38094fa0e95b">HTTP/2: the difference between HTTP/1.1, benefits and how to use it</a></li>
+</ul>
+<h4 id="os-and-browsers-support">os and browsers support</h4>
+<ul>
+<li>Windows 10 1607+</li>
+<li>TLS 1.2+</li>
+<li><a href="https://caniuse.com/http2">browsers</a></li>
+</ul>
+<p>Note: recommended to use Chrome/FireFox</p>
+<h2 id="websockets">WebSockets</h2>
+<ul>
+<li>Accept a WebSocket connection as an asynchronous operation <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.httplistenercontext.acceptwebsocketasync">HttpListenerContext.AcceptWebSocketAsync()</a></li>
+<li>Receives data from the WebSocket connection asynchronously <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocket.receiveasync">WebSocket.ReceiveAsync()</a></li>
+<li>Sends data over the WebSocket connection asynchronously <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocket.sendasync">WebSocket.SendAsync()</a></li>
+<li>Closes the WebSocket connection as an asynchronous operation <br>
+<a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocket.closeasync">CloseAsync</a></li>
+</ul>
+<h3 id="enable-websocket">Enable WebSocket</h3>
+<ul>
+<li>default</li>
+</ul>
+<pre tabindex="0"><code>app.UseWebSockets()
+</code></pre><ul>
+<li>options</li>
+</ul>
+<pre tabindex="0"><code>var webSocketOptions = new WebSocketOptions
+{
+    KeepAliveInterval = TimeSpan.FromMinutes(2)
+};
+
+app.UseWebSockets(webSocketOptions);
+</code></pre><h3 id="accept-websocket-requests">Accept WebSocket requests</h3>
+<pre tabindex="0"><code>if (HttpContext.WebSockets.IsWebSocketRequest)
+{
+    using var webSocket = await HttpContext.WebSockets.AcceptWebSocketAsync();
+}
+</code></pre><h3 id="receive-messages">receive messages</h3>
+<pre tabindex="0"><code>var buffer = new byte[1024 * 4];
+
+var receiveResult = await webSocket.ReceiveAsync(
+    new ArraySegment&lt;byte&gt;(buffer), CancellationToken.None);
+</code></pre><h4 id="arraysegment"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.arraysegment-1">ArraySegment</a></h4>
+<p>Array version of substring()</p>
+<pre tabindex="0"><code>String[] names = { &#34;Adam&#34;, &#34;Bruce&#34;, &#34;Charles&#34;, &#34;Daniel&#34;,
+                         &#34;Ebenezer&#34;, &#34;Francis&#34;, &#34;Gilbert&#34;,
+                         &#34;Henry&#34;, &#34;Irving&#34;, &#34;John&#34;, &#34;Karl&#34;,
+                         &#34;Lucian&#34;, &#34;Michael&#34; };
+      var partNames = new ArraySegment&lt;string&gt;(names, 2, 5);
+</code></pre><p>The example displays the following output:</p>
+<pre tabindex="0"><code>//    Charles
+//    Daniel
+//    Ebenezer
+//    Francis
+//    Gilbert
+</code></pre><h3 id="send-messages">Send messages</h3>
+<pre tabindex="0"><code>var memory = new ReadOnlyMemory&lt;byte&gt;(Encoding.UTF8.GetBytes(str));
+
+await webSocket.SendAsync(
+                memory,
+                0, // text message
+                0, // none
+                CancellationToken.None);
+</code></pre><h4 id="readonlymemory"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.readonlymemory-1">ReadOnlyMemory</a></h4>
+<ul>
+<li><a href="https://stackoverflow.com/a/68306380">message</a></li>
+</ul>
+<pre tabindex="0"><code>var memory = new ReadOnlyMemory&lt;byte&gt;(Encoding.UTF8.GetBytes(str));
+</code></pre><h4 id="messagetype"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocketmessagetype">MessageType</a></h4>
+<ul>
+<li>Binary</li>
+</ul>
+<pre tabindex="0"><code>1
+</code></pre><p>The message is in binary format.</p>
+<ul>
+<li>Close</li>
+</ul>
+<pre tabindex="0"><code>2
+</code></pre><p>A receive has completed because a close message was received.</p>
+<ul>
+<li>Text</li>
+</ul>
+<pre tabindex="0"><code>0
+</code></pre><p>The message is clear text.</p>
+<h4 id="websocketmessageflags"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocketmessageflags">WebSocketMessageFlags</a></h4>
+<ul>
+<li>DisableCompression</li>
+</ul>
+<pre tabindex="0"><code>2
+</code></pre><p>Disables compression for the message if compression has been enabled for the WebSocket instance.</p>
+<ul>
+<li>EndOfMessage</li>
+</ul>
+<pre tabindex="0"><code>1
+</code></pre><p>Indicates that the data in &ldquo;buffer&rdquo; is the last part of a message.</p>
+<ul>
+<li>None</li>
+</ul>
+<pre tabindex="0"><code>0
+</code></pre><p>None</p>
+<h3 id="close">close</h3>
+<pre tabindex="0"><code>await webSocket.CloseAsync(
+            1000,  // NormalClosure
+            &#34;normal closure&#34;,
+            CancellationToken.None);
+</code></pre><h4 id="websocketclosestatus"><a href="https://learn.microsoft.com/en-us/dotnet/api/system.net.websockets.websocketclosestatus">WebSocketCloseStatus</a></h4>
+<p>Fields:</p>
+<pre tabindex="0"><code>1000, 1001, 1002, 1003, 1005, 1007, 1008, 1009, 1010, 1100
+</code></pre><h3 id="samples"><a href="https://github.com/dotnet/AspNetCore.Docs/tree/main/aspnetcore/fundamentals/websockets/samples">Samples</a></h3>
+<ul>
+<li>WebSocketController <br>
+Operation WebSocket</li>
+<li>Program.cs <br>
+Enable WebSocket</li>
+</ul>
+<h2 id="ref">Ref</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/aspnet/core/fundamentals/websockets">WebSockets support in ASP.NET Core</a></li>
+<li><a href="https://www.wallarm.com/what/a-simple-explanation-of-what-a-websocket-is">what is ws and how it work</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc6455">ws specification</a></li>
+<li><a href="https://en.wikipedia.org/wiki/WebSocket">ws - wiki</a></li>
+</ul>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=WebSockets%20over%20HTTP%2f2&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fasp-ws2%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fasp-ws2%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fasp-ws2%2f&amp;description=WebSockets%20over%20HTTP%2f2"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fasp-ws2%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/cnblogs2/post/vc-sqlite3lib/">
+          <section class="post">
+              <h2>Windows的SQLite静态库</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs2/post/asp-base/">
+          <section class="post">
+              <h2>3小时搞定asp.net 9.0</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/index.js"></script>
+    
+</body>
+</html>
+

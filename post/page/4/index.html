@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs2/post/" />
+
+    
+        
+    
+
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="" />
+    
+
+    <title>Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs2/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs2/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs2/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+        <link href='/cnblogs2/post/index.xml' rel="alternate" type="application/rss+xml" title="Posts &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+    
+    <meta name="generator" content="Hugo 0.145.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs2/post/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs2/",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs2/"
+    },
+    "description":  null 
+}
+  </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs2/post/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+	<header class="main-header tag-head no-cover">
+
+    <nav class="main-nav overlay clearfix">
+      
+      
+        
+          <a class="menu-button icon-feed" href='/cnblogs2/post/index.xml'>&nbsp;&nbsp;Subscribe</a>
+        
+      
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Posts</h1>
+            <h2 class="page-description">
+                
+            </h2>
+        </div>
+    </div>
+</header>
+
+<main class="content" role="main">
+    
+
+	<div class="extra-pagination inner">
+    <nav class="pagination" role="navigation">
+	
+	    <a class="newer-posts" href="/cnblogs2/post/page/3/">&larr; Newer Posts</a>
+	
+	<span class="page-number">Page 4 of 6</span>
+	
+	    <a class="older-posts" href="/cnblogs2/post/page/5/">Older Posts &rarr;</a>
+	
+</nav>
+
+	</div>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/vc-windbg_driver/">windbg调试sandboxie driver</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>Sandboxie builds under <a href="https://gitee.com/xiaobin80/sandboxie/blob/master/ReadMe.md">MS Visual Studio 2015</a>. <br>
+可以升级到vs2017 &amp; windows sdk8.1.</p>
+<h1 id="prepare">Prepare</h1>
+<p>Host Env:</p>
+<ul>
+<li>OS <br>
+Win1809(x64)</li>
+<li>VM <br>
+VMware(v10.0.7) / Vbox(v6.1.38)</li>
+<li><a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/other-wdk-downloads#step-2-install-the-wdk">WDK(include windbg)</a> <br>
+<a href="https://www.microsoft.com/en-us/download/details.aspx?id=11800">Windows Driver Kit Version 7.1.0 - win7</a> /
+<a href="https://go.microsoft.com/fwlink/?linkid=2128854">Windows 10, version 2004 - win8.1</a></li>
+</ul>
+<h2 id="vm-setting---serial-port">VM setting - serial port</h2>
+<blockquote>
+<p>vmware or vbox</p></blockquote>
+<pre tabindex="0"><code>\\.\pipe\com_1
+</code></pre><h3 id="vmware">vmware</h3>
+<p>i/o mode:</p>
+<pre tabindex="0"><code>yield CPU on poll
+</code></pre><h3 id="vbox">vbox</h3>
+<p>Port 2: <br>
+uncheck:</p>
+<pre tabindex="0"><code>Connect to existing pipe/socket
+</code></pre><h2 id="windbg">windbg</h2>
+<p>about version: <br>
+The operating system needs to match the same or higher version of windbg. <br>
+Otherwise the OS version will not be recognized!!</p> <a class="read-more" href="/cnblogs2/post/vc-windbg_driver/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2022-09-06T04:08:08&#43;08:00">
+            6 Sep 2022
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/css-bulma-tabs/">tabs 实现</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h1 id="html">html</h1>
+<p>Note: The header and body are wrapped with div!</p>
+<pre tabindex="0"><code>&lt;div id=&#34;tabs-with-content&#34;&gt;
+&lt;/div&gt;
+</code></pre><h2 id="header">Header</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tabs is-centered&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span>&gt;Home&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span>&gt;Tech Parameters&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><h2 id="body">Body</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tabs is-centered&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span>&gt;Home&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span>&gt;Tech Parameters&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">section</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tab-content&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">table</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;table&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">tbody</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">&lt;</span>%= image_tag &#34;#{@image.name}&#34; %&gt;
+</span></span><span style="display:flex;"><span>          &lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">&lt;</span>%= @product.description %&gt;
+</span></span><span style="display:flex;"><span>          &lt;/<span style="color:#f92672">td</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">tbody</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;/<span style="color:#f92672">table</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">section</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">section</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tab-content&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">&lt;</span>%= @parameter.ipxx %&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">section</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><h1 id="javascript">javascript</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tabsWithContent</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tabs</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#39;.tabs li&#39;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tabsContent</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#39;.tab-content&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">deactvateAllTabs</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tabs</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">tab</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tab</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">remove</span>(<span style="color:#e6db74">&#39;is-active&#39;</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">hideTabsContent</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tabsContent</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">tabContent</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tabContent</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">remove</span>(<span style="color:#e6db74">&#39;is-active&#39;</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">activateTabsContent</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">tab</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tabsContent</span>[<span style="color:#a6e22e">getIndex</span>(<span style="color:#a6e22e">tab</span>)].<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#39;is-active&#39;</span>);
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">getIndex</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">el</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [...<span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">parentElement</span>.<span style="color:#a6e22e">children</span>].<span style="color:#a6e22e">indexOf</span>(<span style="color:#a6e22e">el</span>);
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tabs</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">tab</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tab</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">deactvateAllTabs</span>();
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">hideTabsContent</span>();
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tab</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#39;is-active&#39;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">activateTabsContent</span>(<span style="color:#a6e22e">tab</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  })
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tabs</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">click</span>();
+</span></span><span style="display:flex;"><span>})();
+</span></span></code></pre></div><h1 id="ref">Ref</h1>
+<ul>
+<li><a href="https://eiji.dev/bulma-tabs-with-content.html">Bulma: Tabs with Content</a></li>
+</ul> <a class="read-more" href="/cnblogs2/post/css-bulma-tabs/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2022-07-27T00:26:39&#43;08:00">
+            27 Jul 2022
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/es24-install/">Elasticsearch 2.4 安装</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>Ubuntu 20.04.1</p></blockquote>
+<h1 id="part-i-elasticsearch">Part I. Elasticsearch</h1>
+<h2 id="1-install-jdk">1. install JDK</h2>
+<h3 id="1-down-jdk8">1) down jdk8</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u332-b09/OpenJDK8U-jdk_x64_linux_hotspot_8u332b09.tar.gz
+</span></span></code></pre></div><p>unzip:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$sudo mkdir /usr/java
+</span></span><span style="display:flex;"><span>$sudo tar zxvf OpenJDK8U-jdk_x64_linux_hotspot_8u332b09.tar.gz -C /usr/java
+</span></span></code></pre></div><h3 id="2-setup">2) setup</h3>
+<blockquote>
+<p>root:</p>
+<blockquote>
+<p>$sudo -sH</p></blockquote></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$echo <span style="color:#e6db74">&#39;export JAVA_HOME=/usr/java/jdk8u332-b09&#39;</span> &gt;&gt; /etc/bash.bashrc
+</span></span><span style="display:flex;"><span>$echo <span style="color:#e6db74">&#39;export CLASSPATH=$JAVA_HOME/lib/:.&#39;</span> &gt;&gt; /etc/bash.bashrc
+</span></span><span style="display:flex;"><span>$echo <span style="color:#e6db74">&#39;export PATH=$PATH:$JAVA_HOME/bin&#39;</span> &gt;&gt; /etc/bash.bashrc
+</span></span><span style="display:flex;"><span>$source /etc/bash.bashrc
+</span></span></code></pre></div><h3 id="3-test">3) test</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -version
+</span></span><span style="display:flex;"><span>echo $JAVA_HOME
+</span></span></code></pre></div><h2 id="2-elasticsearch-exec-pack">2. Elasticsearch exec pack</h2>
+<h3 id="1-down">1) down</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -L -O https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.4.6/elasticsearch-2.4.6.tar.gz
+</span></span></code></pre></div><p>unzip:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar -xvf elasticsearch-2.4.6.tar.gz
+</span></span></code></pre></div><h3 id="2-config">2) config</h3>
+<blockquote>
+<p>../config/elasticsearch.yml</p></blockquote>
+<h4 id="network">network</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>network.host: 0.0.0.0
+</span></span><span style="display:flex;"><span>http.port: <span style="color:#ae81ff">9200</span>
+</span></span></code></pre></div><h4 id="bootstrap">bootstrap</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bootstrap.system_call_filter: false
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>bootstrap.seccomp: false
+</span></span></code></pre></div><h4 id="max-map-count">max map count</h4>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html">/etc/sysctl.conf</a></p> <a class="read-more" href="/cnblogs2/post/es24-install/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2022-05-25T18:08:08&#43;08:00">
+            25 May 2022
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/trace-zipkin-config/">Distributed traceability with Spring Cloud: Sleuth and Zipkin</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h1 id="i-sleuth">I. Sleuth</h1>
+<h2 id="0-concept">0. Concept</h2>
+<ul>
+<li>
+<p>Trace <br>
+A set of spans that form a call tree structure, forms the trace of the request.</p>
+</li>
+<li>
+<p>Span <br>
+It is the basic unit of work, for example a call to a service.
+They are identified with a span ID and a trace ID to which span is owned.
+They have start and end, and with it you get track the response time between requests.</p>
+</li>
+<li>
+<p>Tag <br>
+Key/value pair that identifies certain information in the span.
+It doesn&rsquo;t contain timestamps, it just identifies.
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20181202033721712.png" alt="ms info">
+<strong>Annotation:</strong> Used to record the existence of an event in time.
+With <a href="https://github.com/openzipkin/brave">Brave</a> instrumentation,
+we no longer need to set special events for Zipkin to understand who the client and server are,
+where the request started, and where it ended.
+For learning purposes, however, we mark these events to highlight what kind of an action took place.</p> <a class="read-more" href="/cnblogs2/post/trace-zipkin-config/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2022-05-25T08:08:08&#43;08:00">
+            25 May 2022
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/mq-kafka-config/">Install and Configure Apache Kafka</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h1 id="i-installation">I. Installation</h1>
+<p>The installation environment must have JDK, verify that you enter:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -version
+</span></span></code></pre></div><h2 id="1-down">1. down</h2>
+<p>Install server-side versions based on the jar downloaded by maven,
+such as my &ldquo;C:\Users\tdtc.m2\repository\org\apache\kafka\kafka-clients\3.0.1&rdquo;</p>
+<p>And choose Scala version based on pom,
+such as my &ldquo;C:\Users\tdtc.m2\repository\org\springframework\cloud\spring-cloud-stream-binder-kafka\3.2.4\spring-cloud-stream-binder-kafka-3.2.4.pom&rdquo;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://archive.apache.org/dist/kafka/3.0.1/kafka_2.13-3.0.1.tgz
+</span></span></code></pre></div><h2 id="2-unzip">2. unzip</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$tar zxvf kafka_2.13-3.0.1.tgz
+</span></span></code></pre></div><h1 id="ii-configuration">II. Configuration</h1>
+<blockquote>
+<p>server.properties</p></blockquote>
+<h2 id="1-necessary-settings">1. Necessary settings</h2>
+<h3 id="1-basic">1) basic</h3>
+<h4 id="listener">listener</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>listeners<span style="color:#f92672">=</span>PLAINTEXT://your_IP:9092
+</span></span></code></pre></div><h4 id="logs">logs</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$mkdir HOME/kafka_2.13-3.0.1/logs
+</span></span></code></pre></div><h3 id="2-cluster">2) cluster</h3>
+<p>Sets the natural number of the broker ID to non-zero. <br>
+Host1:</p> <a class="read-more" href="/cnblogs2/post/mq-kafka-config/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2022-05-16T18:08:08&#43;08:00">
+            16 May 2022
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/mq-rabbitmq-config/">Install and Configure RabbitMQ</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><ul>
+<li>Ubuntu 18.04 <br>
+codename: bionic</li>
+<li>Ubuntu 20.04 <br>
+codename: focal</li>
+</ul>
+<p>Current Version(RabbitMQ):</p>
+<pre tabindex="0"><code>RabbitMQ 3.10.2 Erlang 24.3.3
+</code></pre><h1 id="installation">Installation</h1>
+<p>需要<a href="https://tdtc-hrb.github.io/csdn/post/ops_network_adapter_linux/">设置固定IP</a></p>
+<p>Replace the &ldquo;bionic&rdquo; in the <a href="https://www.rabbitmq.com/install-debian.html#apt-packagecloud">official website</a> shell with the ubuntu codename.</p>
+<p>Note: When saving, the format is Unix(LF).</p>
+<p>focal_rq.sh:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>sudo apt-get install curl gnupg apt-transport-https -y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Team RabbitMQ&#39;s main signing key</span>
+</span></span><span style="display:flex;"><span>curl -1sLf <span style="color:#e6db74">&#34;https://keys.openpgp.org/vks/v1/by-fingerprint/0A9AF2115F4687BD29803A206B73A36E6026DFCA&#34;</span> | sudo gpg --dearmor | sudo tee /usr/share/keyrings/com.rabbitmq.team.gpg &gt; /dev/null
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Launchpad PPA that provides modern Erlang releases</span>
+</span></span><span style="display:flex;"><span>curl -1sLf <span style="color:#e6db74">&#34;https://keyserver.ubuntu.com/pks/lookup?op=get&amp;search=0xf77f1eda57ebb1cc&#34;</span> | sudo gpg --dearmor | sudo tee /usr/share/keyrings/net.launchpad.ppa.rabbitmq.erlang.gpg &gt; /dev/null
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## PackageCloud RabbitMQ repository</span>
+</span></span><span style="display:flex;"><span>curl -1sLf <span style="color:#e6db74">&#34;https://packagecloud.io/rabbitmq/rabbitmq-server/gpgkey&#34;</span> | sudo gpg --dearmor | sudo tee /usr/share/keyrings/io.packagecloud.rabbitmq.gpg &gt; /dev/null
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Add apt repositories maintained by Team RabbitMQ</span>
+</span></span><span style="display:flex;"><span>sudo tee /etc/apt/sources.list.d/rabbitmq.list <span style="color:#e6db74">&lt;&lt;EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## Provides modern Erlang/OTP releases
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">##
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## &#34;focal&#34; as distribution name should work for any reasonably recent Ubuntu or Debian release.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## See the release to distribution mapping table in RabbitMQ doc guides to learn more.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">deb [signed-by=/usr/share/keyrings/net.launchpad.ppa.rabbitmq.erlang.gpg] http://ppa.launchpad.net/rabbitmq/rabbitmq-erlang/ubuntu focal main
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">deb-src [signed-by=/usr/share/keyrings/net.launchpad.ppa.rabbitmq.erlang.gpg] http://ppa.launchpad.net/rabbitmq/rabbitmq-erlang/ubuntu focal main
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## Provides RabbitMQ
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">##
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## &#34;focal&#34; as distribution name should work for any reasonably recent Ubuntu or Debian release.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## See the release to distribution mapping table in RabbitMQ doc guides to learn more.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">deb [signed-by=/usr/share/keyrings/io.packagecloud.rabbitmq.gpg] https://packagecloud.io/rabbitmq/rabbitmq-server/ubuntu/ focal main
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">deb-src [signed-by=/usr/share/keyrings/io.packagecloud.rabbitmq.gpg] https://packagecloud.io/rabbitmq/rabbitmq-server/ubuntu/ focal main
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Update package indices</span>
+</span></span><span style="display:flex;"><span>sudo apt-get update -y
+</span></span></code></pre></div><p>exec:</p> <a class="read-more" href="/cnblogs2/post/mq-rabbitmq-config/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2022-05-15T18:08:08&#43;08:00">
+            15 May 2022
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/sqlite.net.core/">SQLite在.net core的demo</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>IDE: VS2022 <br>
+语言: C#</p>
+<p>简介：
+本示例使用SQLite的密码、外键功能。</p>
+<h1 id="一工程设置">一、工程设置</h1>
+<h2 id="1-nuget">1. NuGet</h2>
+<blockquote>
+<p>Tools -&gt; NuGet Package Manager -&gt; Package Manager Console
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016115835.png" alt="sqlite-net-pcl"></p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Install-Package sqlite-net-pcl -Version 1.8.116
+</span></span></code></pre></div><p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016121731.png" alt="sqlite-net-sqlcipher"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Install-Package sqlite-net-sqlcipher -Version 1.8.116
+</span></span></code></pre></div><p>完整的窗体：
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201016122849.png" alt="program ui"></p>
+<h2 id="2-控件">2. 控件</h2>
+<p>拖拽4个TextBox、4个Button、1个DataGridView</p>
+<h1 id="二功能实现">二、功能实现</h1>
+<p>使用Synchronous API来实现连接、factoryCar表的查询、插入等操作。</p>
+<h2 id="0-entity-class">0. Entity class</h2>
+<blockquote>
+<p>注意：主键和外键</p></blockquote>
+<p>建立两个实体类：<a href="https://gitee.com/xiaobin80/test-sqlite-net-sqlcipher/blob/master/FactoryCar.cs">FactoryCar</a>和<a href="https://gitee.com/xiaobin80/test-sqlite-net-sqlcipher/blob/master/MarqueCar.cs">MarqueCar</a></p>
+<h2 id="1-连接">1. 连接</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>asyncConn <span style="color:#f92672">=</span> new SQLite.<span style="color:#a6e22e">SQLiteAsyncConnection</span>(options);
+</span></span></code></pre></div><p>其中，options是SQLiteConnectionString实例化的字符串。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>var options <span style="color:#f92672">=</span> new <span style="color:#a6e22e">SQLiteConnectionString</span>(edtDB.Text, true,
+</span></span><span style="display:flex;"><span>                                key: edtPwd.Text,
+</span></span><span style="display:flex;"><span>                                preKeyAction: db <span style="color:#f92672">=&gt;</span> db.<span style="color:#a6e22e">Execute</span>(<span style="color:#e6db74">&#34;PRAGMA cipher_default_use_hmac = OFF;&#34;</span>),
+</span></span><span style="display:flex;"><span>                                postKeyAction: db <span style="color:#f92672">=&gt;</span> db.<span style="color:#a6e22e">Execute</span>(<span style="color:#e6db74">&#34;PRAGMA kdf_iter = 128000;&#34;</span>));
+</span></span></code></pre></div><h2 id="2-查询">2. 查询</h2>
+<h3 id="异步查询">异步查询</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>var factoryCars <span style="color:#f92672">=</span> asyncConn.Table<span style="color:#f92672">&lt;</span>FactoryCar<span style="color:#f92672">&gt;</span>().<span style="color:#a6e22e">Where</span>(fc <span style="color:#f92672">=&gt;</span> fc.Name.<span style="color:#a6e22e">Contains</span>(edtStmt.Text));
+</span></span></code></pre></div><p>转换为List类型。</p> <a class="read-more" href="/cnblogs2/post/sqlite.net.core/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2021-11-19T19:18:08&#43;08:00">
+            19 Nov 2021
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/asp.net6-restful/">ASP.net Core 的RESTful应用</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>使用Scaffolder模板创建api。</p>
+<ul>
+<li>PowerShell v5.1</li>
+<li>IDE: Visual Studio Code/<a href="https://docs.microsoft.com/en-us/visualstudio/releases/2022/release-notes">Visual Studio 2022</a></li>
+<li>NuGet</li>
+</ul>
+<blockquote>
+<p>..\AppData\Roaming\NuGet\NuGet.Config</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;configuration&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;packageSources&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;api.nuget.org&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;https://api.nuget.org/v3/index.json&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/packageSources&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/configuration&gt;</span>
+</span></span></code></pre></div><h1 id="create-project">Create Project</h1>
+<p>vs code</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet new webapi -o MyWebApp --package Swashbuckle.AspNetCore:PackageVersion<span style="color:#f92672">=</span>6.2.3
+</span></span></code></pre></div><h3 id="add-nuget-package">add NuGet package</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet add package Microsoft.EntityFrameworkCore
+</span></span><span style="display:flex;"><span>dotnet add package MySql.EntityFrameworkCore
+</span></span><span style="display:flex;"><span>dotnet add package Microsoft.EntityFrameworkCore.Tools
+</span></span></code></pre></div><h3 id="option-nuget-package">Option NuGet package</h3>
+<p>Pomelo:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>CLI&gt; dotnet add package Pomelo.EntityFrameworkCore.MySql
+</span></span></code></pre></div><h2 id="test">Test</h2>
+<p><a href="https://localhost:5001/swagger/index.html">Browser</a></p>
+<h1 id="models">Models</h1>
+<p>建立Entity类：Supplier、Product、Category</p>
+<h2 id="dbcontext">DbContext</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>public class StorageBuyDbContext : DbContext
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    public StorageBuyDbContext<span style="color:#f92672">(</span>DbContextOptions&lt;StorageBuyDbContext&gt; options<span style="color:#f92672">)</span> : base<span style="color:#f92672">(</span>options<span style="color:#f92672">){}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    public DbSet&lt;Category&gt; Categories <span style="color:#f92672">{</span> get; set; <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    public DbSet&lt;Supplier&gt; Suppliers <span style="color:#f92672">{</span> get; set; <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    public DbSet&lt;Product&gt; Products <span style="color:#f92672">{</span> get; set; <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h2 id="add-service">add service</h2>
+<h3 id="add-connectiong-string">add connectiong string</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>&#34;Data&#34;: {
+</span></span><span style="display:flex;"><span>  &#34;StorageBuy&#34;: {
+</span></span><span style="display:flex;"><span>    &#34;ConnectionString&#34;: &#34;server=127.0.0.1; user id=DBAdmin; password=xbfirst; database=storagebuy; pooling=false; Convert Zero Datetime=True;&#34;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="add-mysql">add mysql</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>services.AddDbContext&lt;StorageBuyDbContext&gt;<span style="color:#f92672">(</span>options <span style="color:#f92672">=</span>&gt;
+</span></span><span style="display:flex;"><span>    options.UseMySQL<span style="color:#f92672">(</span>Configuration<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;Data:StorageBuy:ConnectionString&#34;</span><span style="color:#f92672">])</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">)</span>;
+</span></span></code></pre></div><h1 id="数据表">数据表</h1>
+<p>install ef-tool</p> <a class="read-more" href="/cnblogs2/post/asp.net6-restful/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2021-11-11T12:38:08&#43;08:00">
+            11 Nov 2021
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/asp.net6-grpc/">ASP.net Core 的gRPC Service应用</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><blockquote>
+<p>Server 在Ubuntu V20.04; Client 在Windows CMD运行。</p></blockquote>
+<ul>
+<li>PowerShell Core v7.2</li>
+<li>IDE: VS2022 Community(v17.0)/VS Code(<a href="https://code.visualstudio.com/docs/containers/overview#_installation">docker extension</a>)</li>
+<li>VM: VBox(v6.1)</li>
+</ul>
+<h1 id="接口文件说明">接口文件说明</h1>
+<blockquote>
+<p>Protos/greet.proto</p></blockquote>
+<h2 id="定义service">定义service</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>service Greeter <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  // Sends a greeting
+</span></span><span style="display:flex;"><span>  rpc SayHello <span style="color:#f92672">(</span>HelloRequest<span style="color:#f92672">)</span> returns <span style="color:#f92672">(</span>HelloReply<span style="color:#f92672">)</span> <span style="color:#f92672">{}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h2 id="定义message">定义message</h2>
+<ul>
+<li>request</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>message HelloRequest <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  string name <span style="color:#f92672">=</span> 1;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>response</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>message HelloReply <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  string message <span style="color:#f92672">=</span> 1;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h1 id="server">server</h1>
+<h2 class="tabset" id="create">Create</h2>
+<h3 id="vs2022">VS2022</h3>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20211109172442.png" alt="VS2022 pre1">
+注意：服务器需要docker支持！
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20211109173447.png" alt="VS2022 pre2"></p>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20211109174850.png" alt="VS2022 pre3"></p>
+<h3 id="vs-code">VS code</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet new grpc -o GreeterServer
+</span></span></code></pre></div><h4 id="add-docke-file">add docke file</h4>
+<ul>
+<li>View -&gt; Command Palette(Ctrl+Shift+P)</li>
+</ul>
+<ul>
+<li>Enter: Docker fi</li>
+<li>choice1: Add Docker Files to Workspace&hellip;</li>
+<li>choice2: .NET: ASP.NET Core</li>
+<li>choice3: Linux</li>
+<li>Enter: 80</li>
+<li>choice4: No(Include compose file)</li>
+</ul>
+<h2 id="实现的service">实现的service</h2>
+<blockquote>
+<p>VS2022/vs code自动生成</p> <a class="read-more" href="/cnblogs2/post/asp.net6-grpc/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2021-11-09T20:38:18&#43;08:00">
+            9 Nov 2021
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/asp.net5-restful/">ASP.net Core 的RESTful应用</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><p>在发布具有历史意义的.net 5.0的2H前，写下此博文。
+<img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201110005040.png" alt="windows msg1"></p>
+<ul>
+<li>PowerShell v5.1</li>
+<li>IDE: VS Code/VS 2019</li>
+<li>NuGet</li>
+</ul>
+<blockquote>
+<p>..\AppData\Roaming\NuGet\NuGet.Config</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;configuration&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;packageSources&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;add</span> <span style="color:#a6e22e">key=</span><span style="color:#e6db74">&#34;api.nuget.org&#34;</span> <span style="color:#a6e22e">value=</span><span style="color:#e6db74">&#34;https://api.nuget.org/v3/index.json&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/packageSources&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/configuration&gt;</span>
+</span></span></code></pre></div><h1 class="tabset" id="create-project">Create Project</h1>
+<p>Choice vs2019 or vs code.</p>
+<ul>
+<li>VS Code</li>
+<li>VS 2019</li>
+</ul>
+<h2 id="vs2019">VS2019</h2>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20201110010117.png" alt="VS2019 pre1"></p>
+<h3 id="add-nuget-packages">add NuGet packages</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Install-Package Microsoft.EntityFrameworkCore
+</span></span><span style="display:flex;"><span>Install-Package MySql.Data.EntityFrameworkCore
+</span></span><span style="display:flex;"><span>Install-Package Microsoft.EntityFrameworkCore.Tools
+</span></span></code></pre></div><h2 id="vs-code">vs code</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet new webapi -o MyWebApp --package Swashbuckle.AspNetCore:PackageVersion<span style="color:#f92672">=</span>6.2.3
+</span></span></code></pre></div><h3 id="add-nuget-package">add NuGet package</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet add package Microsoft.EntityFrameworkCore
+</span></span><span style="display:flex;"><span>dotnet add package MySql.EntityFrameworkCore
+</span></span><span style="display:flex;"><span>dotnet add package Microsoft.EntityFrameworkCore.Tools
+</span></span></code></pre></div><h2 id="test">Test</h2>
+<p><a href="https://localhost:5001/swagger/index.html">Browser</a></p>
+<h1 id="models">Models</h1>
+<p>建立Entity类：Supplier、Product、Category</p> <a class="read-more" href="/cnblogs2/post/asp.net5-restful/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2021-10-23T12:08:08&#43;08:00">
+            23 Oct 2021
+        </time>
+    </footer>
+</article>
+
+	
+
+	<nav class="pagination" role="navigation">
+	
+	    <a class="newer-posts" href="/cnblogs2/post/page/3/">&larr; Newer Posts</a>
+	
+	<span class="page-number">Page 4 of 6</span>
+	
+	    <a class="older-posts" href="/cnblogs2/post/page/5/">Older Posts &rarr;</a>
+	
+</nav>
+
+</main>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/index.js"></script>
+    
+</body>
+</html>

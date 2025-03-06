@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+        <meta name="referrer" content="no-referrer"/>
+    
+
+
+
+<meta name="twitter:title" content="cluster connector"/>
+<meta name="twitter:description" content="mysql"/>
+<meta name="twitter:site" content="@"/>
+
+
+
+  	<meta property="og:title" content="cluster connector &middot; 迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:site_name" content="迁移自(cnblogs.com/xiaobin-hlj80)" />
+  	<meta property="og:url" content="https://tdtc-hrb.github.io/cnblogs2/post/java-connector-cluster_mysql/" />
+
+    
+        
+    
+
+    
+    <meta property="og:description" content="mysql" />
+  	<meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2020-05-16T05:58:08&#43;08:00" />
+
+    
+    
+
+    <title>cluster connector &middot; 迁移自(cnblogs.com/xiaobin-hlj80)</title>
+
+    
+    <meta name="description" content="mysql" />
+    
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/cnblogs2/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="/cnblogs2/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/cnblogs2/css/nav.css" />
+
+    
+
+    
+
+    
+      
+          <link href="/cnblogs2/index.xml" rel="alternate" type="application/rss+xml" title="迁移自(cnblogs.com/xiaobin-hlj80)" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.145.0">
+
+    <link rel="canonical" href="https://tdtc-hrb.github.io/cnblogs2/post/java-connector-cluster_mysql/" />
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name":  null 
+    },
+    "author": {
+        "@type": "Person",
+        "name":  null ,
+        
+        "url":  null ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": "cluster connector",
+    "name": "cluster connector",
+    "wordCount":  58 ,
+    "timeRequired": "PT1M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "https://tdtc-hrb.github.io/cnblogs2/post/java-connector-cluster_mysql/",
+    "datePublished": "2020-05-16T05:58Z",
+    "dateModified": "2020-05-16T05:58Z",
+    
+    
+    "description": "mysql",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://tdtc-hrb.github.io/cnblogs2/post/java-connector-cluster_mysql/"
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+    </ul>
+
+    
+    <a class="subscribe-button icon-feed" href="/cnblogs2/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+  
+      <a class="menu-button icon-feed" href="/cnblogs2/index.xml" >&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">cluster connector</h1>
+        <small>mysql</small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2020-05-16T05:58:08&#43;08:00">
+            May 16, 2020
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <h1 id="elementary">Elementary</h1>
+<blockquote>
+<p>在没有出来NDB之前，都是使用这个组件。</p></blockquote>
+<p><a href="http://www.frogthinker.org/projects/sequoia">C-JDBC</a></p>
+<blockquote>
+<p><a href="http://c-jdbc.ow2.org/index.html">c-jdbc文档</a> <br>
+<a href="https://sourceforge.net/projects/sequoiadb/files/">src-Sequoia 2.10.10</a></p></blockquote>
+<p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/Sequoia_architecture.jpg" alt="Sequoia architecture"></p>
+<h1 id="ndb-cluster">NDB Cluster</h1>
+<blockquote>
+<p>关于：</p>
+<blockquote>
+<p>JPA、JDBC省略不表。
+<img src="https://dev.mysql.com/doc/ndbapi/en/images/mccj-java-to-cluster.png" alt="mysql dev"></p></blockquote></blockquote>
+<h2 id="clusterj">ClusterJ</h2>
+<blockquote>
+<p>ClusterJ requires Java 1.7 or 1.8.</p></blockquote>
+<p><img src="https://dev.mysql.com/doc/ndbapi/en/images/mccj-clusterj-user-view.png" alt="Figure 4.2 ClusterJ User View Of Application And Environment"></p>
+<p>首先使用<a href="https://dev.mysql.com/doc/ndbapi/en/mccj-clusterj-sessionfactory.html">SessionFactory</a>建立一个会话实例， <br>
+然后用<a href="https://dev.mysql.com/doc/ndbapi/en/mccj-clusterj-session.html">Session</a>提供的方法操作数据。</p>
+<h3 id="会话实例">会话实例</h3>
+<p>读取配置文件，然后建立Session实例。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>File propsFile <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File(<span style="color:#e6db74">&#34;clusterj.properties&#34;</span>);
+</span></span><span style="display:flex;"><span>InputStream inStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream(propsFile);
+</span></span><span style="display:flex;"><span>Properties props <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Properties();
+</span></span><span style="display:flex;"><span>props.<span style="color:#a6e22e">load</span>(inStream);
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>SessionFactory factory <span style="color:#f92672">=</span> ClusterJHelper.<span style="color:#a6e22e">getSessionFactory</span>(props);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Session session <span style="color:#f92672">=</span> factory.<span style="color:#a6e22e">getSession</span>();
+</span></span></code></pre></div><h4 id="配置信息">配置信息</h4>
+<blockquote>
+<p>clusterj.properties</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">com.mysql.clusterj.connectstring</span><span style="color:#f92672">=</span><span style="color:#e6db74">localhost:1186</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">com.mysql.clusterj.database</span><span style="color:#f92672">=</span><span style="color:#e6db74">mydb</span>
+</span></span></code></pre></div><h3 id="操作数据">操作数据</h3>
+<p>参考<a href="https://dev.mysql.com/doc/ndbapi/en/mccj-using-clusterj-operations.html">4.2.2.4 ClusterJ Basic Operations</a>文档。</p>
+<h1 id="reference">Reference</h1>
+<ul>
+<li><a href="https://dev.mysql.com/doc/ndbapi/en/mccj-using-clusterj.html">4.2.2 Using ClusterJ</a></li>
+</ul>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=cluster%20connector&nbsp;-&nbsp;%e8%bf%81%e7%a7%bb%e8%87%aa%28cnblogs.com%2fxiaobin-hlj80%29&amp;url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fjava-connector-cluster_mysql%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fjava-connector-cluster_mysql%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fjava-connector-cluster_mysql%2f&amp;description=cluster%20connector"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2ftdtc-hrb.github.io%2fcnblogs2%2fpost%2fjava-connector-cluster_mysql%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+
+
+
+  </footer>
+</article>
+
+</main>
+
+
+  <aside class="read-next">
+  
+      <a class="read-next-story" style="no-cover" href="/cnblogs2/post/redis-centos7-setup/">
+          <section class="post">
+              <h2>Redis Server installation FAQs</h2>
+              
+          </section>
+      </a>
+  
+  
+      <a class="read-next-story prev" style="no-cover" href="/cnblogs2/post/java-apache_cli/">
+          <section class="post">
+              <h2>Apache CLI Demo</h2>
+          </section>
+      </a>
+  
+</aside>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">迁移自(cnblogs.com/xiaobin-hlj80)</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/cnblogs2/js/index.js"></script>
+    
+</body>
+</html>
+
