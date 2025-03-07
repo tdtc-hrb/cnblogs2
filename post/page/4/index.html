@@ -164,151 +164,6 @@
 	
 	   <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs2/post/vc-windbg_driver/">windbg调试sandboxie driver</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><p>Sandboxie builds under <a href="https://gitee.com/xiaobin80/sandboxie/blob/master/ReadMe.md">MS Visual Studio 2015</a>. <br>
-可以升级到vs2017 &amp; windows sdk8.1.</p>
-<h1 id="prepare">Prepare</h1>
-<p>Host Env:</p>
-<ul>
-<li>OS <br>
-Win1809(x64)</li>
-<li>VM <br>
-VMware(v10.0.7) / Vbox(v6.1.38)</li>
-<li><a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/other-wdk-downloads#step-2-install-the-wdk">WDK(include windbg)</a> <br>
-<a href="https://www.microsoft.com/en-us/download/details.aspx?id=11800">Windows Driver Kit Version 7.1.0 - win7</a> /
-<a href="https://go.microsoft.com/fwlink/?linkid=2128854">Windows 10, version 2004 - win8.1</a></li>
-</ul>
-<h2 id="vm-setting---serial-port">VM setting - serial port</h2>
-<blockquote>
-<p>vmware or vbox</p></blockquote>
-<pre tabindex="0"><code>\\.\pipe\com_1
-</code></pre><h3 id="vmware">vmware</h3>
-<p>i/o mode:</p>
-<pre tabindex="0"><code>yield CPU on poll
-</code></pre><h3 id="vbox">vbox</h3>
-<p>Port 2: <br>
-uncheck:</p>
-<pre tabindex="0"><code>Connect to existing pipe/socket
-</code></pre><h2 id="windbg">windbg</h2>
-<p>about version: <br>
-The operating system needs to match the same or higher version of windbg. <br>
-Otherwise the OS version will not be recognized!!</p> <a class="read-more" href="/cnblogs2/post/vc-windbg_driver/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2022-09-06T04:08:08&#43;08:00">
-            6 Sep 2022
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/cnblogs2/post/css-bulma-tabs/">tabs 实现</a></h2>
-    </header>
-    <section class="post-excerpt">
-        
-            <p><h1 id="html">html</h1>
-<p>Note: The header and body are wrapped with div!</p>
-<pre tabindex="0"><code>&lt;div id=&#34;tabs-with-content&#34;&gt;
-&lt;/div&gt;
-</code></pre><h2 id="header">Header</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tabs is-centered&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">ul</span>&gt;
-</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span>&gt;Home&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
-</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span>&gt;Tech Parameters&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">ul</span>&gt;
-</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
-</span></span></code></pre></div><h2 id="body">Body</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tabs is-centered&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">ul</span>&gt;
-</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span>&gt;Home&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
-</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span>&gt;Tech Parameters&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">ul</span>&gt;
-</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
-</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">section</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tab-content&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">table</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;table&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">tbody</span>&gt;
-</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">td</span>&gt;
-</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">&lt;</span>%= image_tag &#34;#{@image.name}&#34; %&gt;
-</span></span><span style="display:flex;"><span>          &lt;/<span style="color:#f92672">td</span>&gt;
-</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">td</span>&gt;
-</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">&lt;</span>%= @product.description %&gt;
-</span></span><span style="display:flex;"><span>          &lt;/<span style="color:#f92672">td</span>&gt;
-</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">tbody</span>&gt;
-</span></span><span style="display:flex;"><span>      &lt;/<span style="color:#f92672">table</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">section</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">section</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tab-content&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>      <span style="color:#960050;background-color:#1e0010">&lt;</span>%= @parameter.ipxx %&gt;
-</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">section</span>&gt;
-</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
-</span></span></code></pre></div><h1 id="javascript">javascript</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tabsWithContent</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span> () {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tabs</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#39;.tabs li&#39;</span>);
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tabsContent</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#39;.tab-content&#39;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">deactvateAllTabs</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tabs</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">tab</span>) {
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tab</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">remove</span>(<span style="color:#e6db74">&#39;is-active&#39;</span>);
-</span></span><span style="display:flex;"><span>    });
-</span></span><span style="display:flex;"><span>  };
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">hideTabsContent</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tabsContent</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">tabContent</span>) {
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tabContent</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">remove</span>(<span style="color:#e6db74">&#39;is-active&#39;</span>);
-</span></span><span style="display:flex;"><span>    });
-</span></span><span style="display:flex;"><span>  };
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">activateTabsContent</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">tab</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tabsContent</span>[<span style="color:#a6e22e">getIndex</span>(<span style="color:#a6e22e">tab</span>)].<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#39;is-active&#39;</span>);
-</span></span><span style="display:flex;"><span>  };
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">getIndex</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">el</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [...<span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">parentElement</span>.<span style="color:#a6e22e">children</span>].<span style="color:#a6e22e">indexOf</span>(<span style="color:#a6e22e">el</span>);
-</span></span><span style="display:flex;"><span>  };
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tabs</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">tab</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tab</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#66d9ef">function</span> () {
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">deactvateAllTabs</span>();
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">hideTabsContent</span>();
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">tab</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#39;is-active&#39;</span>);
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">activateTabsContent</span>(<span style="color:#a6e22e">tab</span>);
-</span></span><span style="display:flex;"><span>    });
-</span></span><span style="display:flex;"><span>  })
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tabs</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">click</span>();
-</span></span><span style="display:flex;"><span>})();
-</span></span></code></pre></div><h1 id="ref">Ref</h1>
-<ul>
-<li><a href="https://eiji.dev/bulma-tabs-with-content.html">Bulma: Tabs with Content</a></li>
-</ul> <a class="read-more" href="/cnblogs2/post/css-bulma-tabs/">&raquo;</a></p>
-        
-    </section>
-    <footer class="post-meta">
-        
-
-        
-
-        
-        <time class="post-date" datetime="2022-07-27T00:26:39&#43;08:00">
-            27 Jul 2022
-        </time>
-    </footer>
-</article>
-
-	
-	   <article class="post post">
-    <header class="post-header">
         <h2 class="post-title"><a href="/cnblogs2/post/es24-install/">Elasticsearch 2.4 安装</a></h2>
     </header>
     <section class="post-excerpt">
@@ -771,6 +626,277 @@ codename: focal</li>
         
         <time class="post-date" datetime="2021-10-23T12:08:08&#43;08:00">
             23 Oct 2021
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/qt-sqlite3/">在qt6使用sqlite3</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h1 id="lib">lib</h1>
+<p>导入静态库</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#pragma comment(lib, &#34;Qt6Sql.lib&#34;)
+</span></span></span></code></pre></div><h1 id="query-data">query data</h1>
+<blockquote>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtSql/QSqlDatabase&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtSql/QSqlQueryModel&gt;</span><span style="color:#75715e">
+</span></span></span></code></pre></div><p>首先，设置数据库类型；然后，打开数据库；最后，关联TableView。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QSqlDatabase db <span style="color:#f92672">=</span> QSqlDatabase<span style="color:#f92672">::</span>addDatabase(<span style="color:#e6db74">&#34;QSQLITE&#34;</span>);
+</span></span></code></pre></div><h2 id="open-db">open db</h2>
+<p>先设置数据库名，再打开db。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>db.setDatabaseName(<span style="color:#e6db74">&#34;SerialComm.db&#34;</span>);
+</span></span><span style="display:flex;"><span>db.open();
+</span></span></code></pre></div><h2 id="model-view">model-view</h2>
+<p>先建立Query对象，再设置Sql语句。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QSqlQueryModel <span style="color:#f92672">*</span>model <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QSqlQueryModel;
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">-&gt;</span>setQuery(<span style="color:#e6db74">&#34;SELECT * FROM com1&#34;</span>);
+</span></span></code></pre></div><p>最后，设置关联。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>ui.tableView<span style="color:#f92672">-&gt;</span>setModel(model);
+</span></span></code></pre></div><p><img src="https://gitee.com/xiaobin80/cnblogs/raw/master/images/20210620233610.png" alt="qt6 sqlite3 demo"></p>
+<h1 id="src">src</h1>
+<h2 id="qtsqlite3demoui">QtSqlite3Demo.ui</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;ui</span> <span style="color:#a6e22e">version=</span><span style="color:#e6db74">&#34;4.0&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;class&gt;</span>QtSqlite3DemoClass<span style="color:#f92672">&lt;/class&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;widget</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;QMainWindow&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;QtSqlite3DemoClass&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;geometry&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;rect&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;x&gt;</span>0<span style="color:#f92672">&lt;/x&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;y&gt;</span>0<span style="color:#f92672">&lt;/y&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;width&gt;</span>600<span style="color:#f92672">&lt;/width&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;height&gt;</span>400<span style="color:#f92672">&lt;/height&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;/rect&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;windowTitle&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;string&gt;</span>QtSqlite3Demo<span style="color:#f92672">&lt;/string&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;widget</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;QWidget&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;centralWidget&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;widget</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;QPushButton&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;btnSearch&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;geometry&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;rect&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;x&gt;</span>290<span style="color:#f92672">&lt;/x&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;y&gt;</span>30<span style="color:#f92672">&lt;/y&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;width&gt;</span>75<span style="color:#f92672">&lt;/width&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;height&gt;</span>24<span style="color:#f92672">&lt;/height&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;/rect&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;text&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;string&gt;</span>Search<span style="color:#f92672">&lt;/string&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;/widget&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;widget</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;QLineEdit&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;lineEdit&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;geometry&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;rect&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;x&gt;</span>20<span style="color:#f92672">&lt;/x&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;y&gt;</span>30<span style="color:#f92672">&lt;/y&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;width&gt;</span>251<span style="color:#f92672">&lt;/width&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;height&gt;</span>22<span style="color:#f92672">&lt;/height&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;/rect&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;/widget&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;widget</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;QTableView&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;tableView&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;geometry&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;rect&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;x&gt;</span>20<span style="color:#f92672">&lt;/x&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;y&gt;</span>81<span style="color:#f92672">&lt;/y&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;width&gt;</span>561<span style="color:#f92672">&lt;/width&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;height&gt;</span>241<span style="color:#f92672">&lt;/height&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;/rect&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;/widget&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/widget&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;widget</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;QMenuBar&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;menuBar&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;property</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;geometry&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;rect&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;x&gt;</span>0<span style="color:#f92672">&lt;/x&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;y&gt;</span>0<span style="color:#f92672">&lt;/y&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;width&gt;</span>600<span style="color:#f92672">&lt;/width&gt;</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&lt;height&gt;</span>22<span style="color:#f92672">&lt;/height&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/rect&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;/property&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/widget&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;widget</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;QToolBar&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;mainToolBar&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;attribute</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;toolBarArea&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;enum&gt;</span>TopToolBarArea<span style="color:#f92672">&lt;/enum&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;/attribute&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;attribute</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;toolBarBreak&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;bool&gt;</span>false<span style="color:#f92672">&lt;/bool&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;/attribute&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/widget&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;widget</span> <span style="color:#a6e22e">class=</span><span style="color:#e6db74">&#34;QStatusBar&#34;</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;statusBar&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;/widget&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;layoutdefault</span> <span style="color:#a6e22e">spacing=</span><span style="color:#e6db74">&#34;6&#34;</span> <span style="color:#a6e22e">margin=</span><span style="color:#e6db74">&#34;11&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;resources&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;include</span> <span style="color:#a6e22e">location=</span><span style="color:#e6db74">&#34;QtSqlite3Demo.qrc&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;/resources&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;connections/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/ui&gt;</span>
+</span></span></code></pre></div><h2 id="qtsqlite3demoh">QtSqlite3Demo.h</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#pragma once
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtWidgets/QMainWindow&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;ui_QtSqlite3Demo.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtWidgets/QMessageBox&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QtSqlite3Demo</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> QMainWindow
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Q_OBJECT
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    QtSqlite3Demo(QWidget <span style="color:#f92672">*</span>parent <span style="color:#f92672">=</span> Q_NULLPTR);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> slots:
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> sqlite_search();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    Ui<span style="color:#f92672">::</span>QtSqlite3DemoClass ui;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h2 id="qtsqlite3democpp">QtSqlite3Demo.cpp</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;QtSqlite3Demo.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtSql/QSqlDatabase&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtSql/QSqlQueryModel&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#pragma comment(lib, &#34;Qt6Sql.lib&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>QtSqlite3Demo<span style="color:#f92672">::</span>QtSqlite3Demo(QWidget<span style="color:#f92672">*</span> parent)
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">:</span> QMainWindow(parent)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	ui.setupUi(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	connect(ui.btnSearch, SIGNAL(clicked()), <span style="color:#66d9ef">this</span>, SLOT(sqlite_search()));
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> QtSqlite3Demo<span style="color:#f92672">::</span>sqlite_search()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	QString strDbName <span style="color:#f92672">=</span> ui.lineEdit<span style="color:#f92672">-&gt;</span>text();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	QSqlDatabase db <span style="color:#f92672">=</span> QSqlDatabase<span style="color:#f92672">::</span>addDatabase(<span style="color:#e6db74">&#34;QSQLITE&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	QString dbPath <span style="color:#f92672">=</span> qApp<span style="color:#f92672">-&gt;</span>applicationDirPath() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/&#34;</span> <span style="color:#f92672">+</span> strDbName;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	db.setDatabaseName(dbPath);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>db.open()) {
+</span></span><span style="display:flex;"><span>		QMessageBox<span style="color:#f92672">::</span>critical(<span style="color:#66d9ef">nullptr</span>, QObject<span style="color:#f92672">::</span>tr(<span style="color:#e6db74">&#34;Cannot open database&#34;</span>),
+</span></span><span style="display:flex;"><span>			QObject<span style="color:#f92672">::</span>tr(<span style="color:#e6db74">&#34;Unable to establish a database connection.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#e6db74">&#34;Click Cancel to exit.&#34;</span>), QMessageBox<span style="color:#f92672">::</span>Cancel);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	QSqlQueryModel<span style="color:#f92672">*</span> model <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QSqlQueryModel;
+</span></span><span style="display:flex;"><span>	model<span style="color:#f92672">-&gt;</span>setQuery(<span style="color:#e6db74">&#34;SELECT * FROM com1&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	ui.tableView<span style="color:#f92672">-&gt;</span>setModel(model);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="reference">Reference</h1>
+<ul>
+<li><a href="https://doc.qt.io/qt-6/qsqlquerymodel.html#details">Detailed Description</a> - QT Offical</li>
+<li><a href="https://blog.csdn.net/lms1008611/article/details/81271712">QT读写Sqlite数据库的三种方式</a></li>
+<li><a href="https://forum.qt.io/topic/74806/open-file-path">Relative paths</a></li>
+</ul> <a class="read-more" href="/cnblogs2/post/qt-sqlite3/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2021-06-18T00:08:08&#43;08:00">
+            18 Jun 2021
+        </time>
+    </footer>
+</article>
+
+	
+	   <article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/cnblogs2/post/php-mysqli-tutorial/">使用mysqli和mysql查询数据库</a></h2>
+    </header>
+    <section class="post-excerpt">
+        
+            <p><h1 id="导入数据">导入数据</h1>
+<p>导入MySQL示例数据库<a href="https://github.com/datacharmer/test_db/releases/tag/v1.0.7">employees</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ownloads<span style="color:#ae81ff">\t</span>est_db&gt;%MYSQL57_HOME%<span style="color:#ae81ff">\b</span>in<span style="color:#ae81ff">\m</span>ysql &lt; employees.sql -u DBAdmin -p
+</span></span><span style="display:flex;"><span>Enter password: *******
+</span></span><span style="display:flex;"><span>INFO
+</span></span><span style="display:flex;"><span>CREATING DATABASE STRUCTURE
+</span></span><span style="display:flex;"><span>INFO
+</span></span><span style="display:flex;"><span>storage engine: InnoDB
+</span></span><span style="display:flex;"><span>INFO
+</span></span><span style="display:flex;"><span>LOADING departments
+</span></span><span style="display:flex;"><span>INFO
+</span></span><span style="display:flex;"><span>LOADING employees
+</span></span><span style="display:flex;"><span>INFO
+</span></span><span style="display:flex;"><span>LOADING dept_emp
+</span></span><span style="display:flex;"><span>INFO
+</span></span><span style="display:flex;"><span>LOADING dept_manager
+</span></span><span style="display:flex;"><span>INFO
+</span></span><span style="display:flex;"><span>LOADING titles
+</span></span><span style="display:flex;"><span>INFO
+</span></span><span style="display:flex;"><span>LOADING salaries
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\t</span>dtc<span style="color:#ae81ff">\D</span>ownloads<span style="color:#ae81ff">\t</span>est_db&gt;
+</span></span></code></pre></div><h1 id="查询数据">查询数据</h1>
+<p>查询固定员工ID的姓名，所属部门，职务</p>
+<blockquote>
+<p>以下为创建SQL的过程。</p></blockquote>
+<h2 id="1-查询姓名">1. 查询姓名</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> concat(first_name, <span style="color:#e6db74">&#39; &#39;</span> , last_name) <span style="color:#66d9ef">as</span> name <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>employees<span style="color:#f92672">`</span> <span style="color:#66d9ef">WHERE</span> emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>
+</span></span></code></pre></div><h2 id="2-查询部门id">2. 查询部门ID</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> dept_no <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>dept_emp<span style="color:#f92672">`</span> <span style="color:#66d9ef">WHERE</span> emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>
+</span></span></code></pre></div><h2 id="3-查询所在部门名称">3. 查询所在部门名称</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> dept_name
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>departments<span style="color:#f92672">`</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">WHERE</span> dept_no <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>		(<span style="color:#66d9ef">SELECT</span> dept_no <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>dept_emp<span style="color:#f92672">`</span> <span style="color:#66d9ef">WHERE</span> emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>)
+</span></span></code></pre></div><h2 id="4-查询员工姓名以及部门名称">4. 查询员工姓名以及部门名称</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>concat(e.first_name, <span style="color:#e6db74">&#39; &#39;</span> , e.last_name) <span style="color:#66d9ef">as</span> name,
+</span></span><span style="display:flex;"><span>d.dept_name
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>employees<span style="color:#f92672">`</span> e, <span style="color:#f92672">`</span>departments<span style="color:#f92672">`</span> d
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">WHERE</span> d.dept_no <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>		(<span style="color:#66d9ef">SELECT</span> dept_no <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>dept_emp<span style="color:#f92672">`</span> <span style="color:#66d9ef">WHERE</span> emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>)
+</span></span><span style="display:flex;"><span>		 <span style="color:#66d9ef">and</span>
+</span></span><span style="display:flex;"><span>		e.emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>
+</span></span></code></pre></div><h2 id="5-整合sql">5. 整合SQL</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>concat(e.first_name, <span style="color:#e6db74">&#39; &#39;</span> , e.last_name) <span style="color:#66d9ef">as</span> name,
+</span></span><span style="display:flex;"><span>d.dept_name,
+</span></span><span style="display:flex;"><span>t.title
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">FROM</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">`</span>employees<span style="color:#f92672">`</span> e,
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">`</span>departments<span style="color:#f92672">`</span> d,
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">`</span>titles<span style="color:#f92672">`</span> t
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">WHERE</span> d.dept_no <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>		(<span style="color:#66d9ef">SELECT</span> dept_no <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span>dept_emp<span style="color:#f92672">`</span> <span style="color:#66d9ef">WHERE</span> emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>)
+</span></span><span style="display:flex;"><span>		 <span style="color:#66d9ef">and</span>
+</span></span><span style="display:flex;"><span>		e.emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#66d9ef">and</span>
+</span></span><span style="display:flex;"><span>		t.emp_no <span style="color:#f92672">=</span> <span style="color:#ae81ff">10001</span>
+</span></span></code></pre></div><h1 id="mysql">mysql</h1>
+<h2 id="1-连接">1. 连接</h2>
+<blockquote>
+<p><a href="http://php.net/manual/en/function.mysql-connect.php">mysql_connect</a> <br>
+( <br>
+server, // 服务器地址 <br>
+username,  // 用户名 <br>
+password // 密码 <br>
+)</p> <a class="read-more" href="/cnblogs2/post/php-mysqli-tutorial/">&raquo;</a></p>
+        
+    </section>
+    <footer class="post-meta">
+        
+
+        
+
+        
+        <time class="post-date" datetime="2021-04-20T20:26:39&#43;08:00">
+            20 Apr 2021
         </time>
     </footer>
 </article>
